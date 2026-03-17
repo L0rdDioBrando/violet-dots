@@ -1,0 +1,95 @@
+@import "macchiato.css";
+
+* {
+    font-family: FiraCode Nerd Font;
+    font-size: 17px;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+button {
+    box-shadow: inset 0 -3px transparent;
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    color: @overlay1;
+}
+
+.modules-left {
+    background-color: @base; 
+    border-radius: 2rem;
+    margin-left: 4px;
+}
+
+#workspaces {
+    color: @text;
+}
+
+#workspaces button.active {
+    color: @text;
+}
+
+#workspaces button {
+    color: @text;
+    min-width: 1rem;
+}
+
+#workspaces button.hover {
+    color: @overlay1;
+}
+
+#group-system {
+    border-radius: 2rem;
+    background-color: @base;
+    color: @text;
+    margin-right: 4px;
+}
+
+#group-other {
+    border-radius: 2rem;
+    background-color: @base;
+    color: @text;
+    margin-right: 4px;
+    margin-left: 4px
+}
+
+#tray {
+    color: @base;
+    margin-right: 4px; 
+}
+
+#clock {
+    color: @text;
+    background-color: @base;
+    border-radius: 2rem;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+#custom-music {
+    color: @text; 
+    background-color: @base; 
+    border-radius: 2rem;
+}
+
+#custom-playpause {
+    padding-right: 7px;
+    padding-left: 7px;
+}
+
+#group-music {
+    background-color: @base;
+    color: @text;
+    border-radius: 2rem;
+}
+
+#custom-power {
+    color: @red;
+    padding-right: 3px;
+    margin-left: 4px;
+    margin-right: 4px;
+}

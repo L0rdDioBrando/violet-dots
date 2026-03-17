@@ -1,0 +1,11 @@
+include catppuccin-macchiato
+
+set font "FiraCode Nerd Font 12"
+set n-completion-items 100
+set scroll-step 60
+set selection-clipboard clipboard
+
+map [Control]scroll_up zoom ou
+map [Control]scroll_down zoom ou
+map J navigate next
+map K navigate previous

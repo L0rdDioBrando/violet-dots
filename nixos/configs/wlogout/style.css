@@ -1,0 +1,52 @@
+* {
+	background-image: none;
+	box-shadow: none;
+}
+
+window {
+	background-color: rgba(30, 30, 46, 0.90);
+}
+
+button {
+	border-radius: 9;
+	margin: 10px;
+	border-color: #b7bdf8;
+	text-decoration-color: #cdd6f4;
+	color: #cdd6f4;
+	background-color: #24273a;
+	border-style: solid;
+	border-width: 2px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 25%;
+}
+
+button:focus, button:active, button:hover {
+	/* 20% Overlay 2, 80% mantle */
+	background-color: #494d64;
+	outline-style: none;
+}
+
+#lock {
+    background-image: url("/home/bopsifox/.config/wlogout/icons/lock.svg");
+}
+
+#logout {
+    background-image: url("/home/bopsifox/.config/wlogout/icons/logout.svg");
+}
+
+#suspend {
+    background-image: url("/home/bopsifox/.config/wlogout/icons/suspend.svg");
+}
+
+#hibernate {
+    background-image: url("/home/bopsifox/.config/wlogout/icons/hibernate.svg");
+}
+
+#shutdown {
+    background-image: url("/home/bopsifox/.config/wlogout/icons/shutdown.svg");
+}
+
+#reboot {
+    background-image: url("/home/bopsifox/.config/wlogout/icons/reboot.svg");
+}

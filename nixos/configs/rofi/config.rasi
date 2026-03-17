@@ -1,0 +1,16 @@
+@theme "catppuccin"
+
+configuration {
+	modes: "window,drun,run,ssh,filebrowser";
+	font: "FiraCode Nerd Font 14";
+	terminal: "kitty";
+
+}
+window {
+    border-radius: 10px;
+    border: 2px;
+    padding: 10px;
+}
+element {
+    padding: 5px;
+}

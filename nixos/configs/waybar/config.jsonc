@@ -1,0 +1,169 @@
+{
+    "height": 36,
+    "spacing": 0,
+    "margin-top": 2,
+    "modules-left": ["niri/workspaces"],
+    "modules-center": ["group/group-music"],
+    "modules-right": ["tray", "group/group-system", "clock", "group/group-other"],
+
+    "niri/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+        "urgent": "",
+        "active": "",
+        "default": ""
+        }
+    },
+
+    "custom/music": {
+        "format": "   {} ",
+        "escape": true,
+        "return-type": "json",
+        "exec": "playerctl --ignore-player firefox metadata --format '{\"text\": \"{{(artist)}} ~ {{(title)}}\", \"tooltip\": \"{{playerName}} : {{(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "max-length": 50,
+        "on-click": "playerctl play-pause"
+    },
+
+    "custom/prev": {
+        "format": "󰙣 ",
+        "tooltip": false,
+        "on-click": "playerctl --ignore-player firefox previous"
+    },
+
+    "custom/playpause": {
+        "format": "{icon}",
+        "return-type": "json",
+        "exec": "playerctl --ignore-player firefox metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "tooltip": false,
+        "format-icons": {
+            "Playing": "",
+            "Paused": ""
+        },
+        "on-click": "playerctl --ignore-player firefox play-pause"
+    },
+
+    "custom/next": {
+        "format": " 󰙡 ",
+        "tooltip": false,
+        "on-click": "playerctl --ignore-player firefox next"
+    },
+
+    "group/group-music": {
+        "max-length": 50,
+        "orientation": "horizontal",
+        "modules": [
+            "custom/music",
+            "custom/prev",
+            "custom/playpause",
+            "custom/next"
+        ]
+    },
+
+    "custom/spotify": {
+        "format": "{}",
+        "exec": "pgrep -x spotify > /dev/null && echo ' '",
+        "interval": 1,
+        "on-click": "spotify",
+        "tooltip": false
+    },
+
+    "custom/steam": {
+        "format": "{}",
+        "exec": "pgrep -x steam > /dev/null && echo ' '",
+        "interval": 1,
+        "on-click": "steam",
+        "tooltip": false
+    },
+
+    "custom/telegram": {
+        "format": "{}",
+        "exec": "pgrep -x .Telegram-wrapp > /dev/null && echo ' '",
+        "interval": 1,
+        "on-click": "Telegram",
+        "tooltip": false
+    },
+
+    "group/group-tray": {
+        "orientation": "horizontal",
+        "spacing": 10,
+        "modules": [
+            "custom/steam",
+            "custom/spotify",
+            "custom/telegram"
+        ]
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+
+    "clock": {
+        "format": " {:%H:%M} ",
+        "format-alt": " {:%Y-%m-%d} ",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#b7bdf8'><b>{}</b></span>",
+                "days": "<span color='#cad3f5'>{}</span>",
+                "weeks": "<span color='#8bd5ca'>W{}</span>",
+                "weekdays": "<span color='#eed49f'><b>{}</b></span>",
+                "today": "<span color='#b7bdf8'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    
+    "wireplumber": {
+        "format": " {volume}%   ",
+        "max-volume": 100,
+        "scroll-step": 5,
+        "on-click": "pavucontrol"
+    },
+
+    "group/group-system": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "memory",
+            "temperature"
+    ]
+    },
+
+    "group/group-other": {
+        "orientation": "horizontal",
+        "modules": [
+            "wireplumber",
+            "niri/language",
+            "custom/power"
+        ]
+    },
+    
+    "cpu": {
+        "format": " {usage}%  ",
+        "tooltip": false
+    },
+    
+    "memory": {
+        "format": " {}%  "
+    }, 
+
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "format": " {temperatureC}°C  ",
+        "tooltip-format": "{temperatureF}°F ",
+        "interval": 1
+    },
+
+    "niri/language": {
+        "format": " {short} "
+    },
+
+    "custom/power": {
+        "format": "  ",
+        "tooltip": false,
+        "on-click": "wlogout"
+    }
+}
