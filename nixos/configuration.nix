@@ -198,21 +198,21 @@
   };
 
   console.useXkbConfig = true;
-
   # Packages
-  systemd.packages = [ pkgs.cloudflare-warp ];
-  systemd.targets.multi-user.wants = [ "warp-svc.service" ];
+  # Uncomment if necessary
+  #systemd.packages = [ pkgs.cloudflare-warp ];
+  #systemd.targets.multi-user.wants = [ "warp-svc.service" ];
+  #services.zapret = {
+  #  enable = true;
+  #  params = [
+  #    "--dpi-desync=disorder2"
+  #    "--dpi-desync-split-pos=midsld"
+  #    "--dpi-desync-ttl=3"
+  #    "--dpi-desync-any-protocol=yes"
+  #    "--dpi-desync-repeats=6"
+  #  ];
+  #};
   programs.firefox.enable = true;
-  services.zapret = {
-    enable = true;
-    params = [
-      "--dpi-desync=disorder2"
-      "--dpi-desync-split-pos=midsld"
-      "--dpi-desync-ttl=3"
-      "--dpi-desync-any-protocol=yes"
-      "--dpi-desync-repeats=6"
-    ];
-  };
   services.flatpak.enable = true;
   programs.xwayland.enable = true;
   programs.zsh.enable = true;
