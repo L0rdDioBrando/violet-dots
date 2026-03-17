@@ -34,3 +34,8 @@ Clone this repository
 git clone https://github.com/LordDioBrande/violet-dots/
 ```
 
+Save your current configs
+
+```bash
+sudo cp -r /etc/nixos/ ~/nixos.back
+```
