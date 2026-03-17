@@ -9,7 +9,7 @@ My goal was to use a single color scheme for the entire system.
 </p>
 
 ---
-**🛠️ Tech Stack:**
+🛠️ **Tech Stack:**
 
 🪟 **Compositor:** [Niri](https://github.com/YaLTeR/niri),
 
@@ -17,7 +17,7 @@ My goal was to use a single color scheme for the entire system.
 
 📂 **File Manager:** [Yazi](https://github.com/sxyazi/yazi) & [Dolphin](https://apps.kde.org/dolphin/),
 
-🔡 **Font:** [FiraCode](https://github.com/tonsky/FiraCode?tab=readme-ov-file)
+🔡 **Font:** [FiraCode](https://github.com/tonsky/FiraCode?tab=readme-ov-file),
 
 💻 **Terminal:** [Kitty](https://sw.kovidgoyal.net/kitty/),
 
@@ -26,3 +26,4 @@ My goal was to use a single color scheme for the entire system.
 🚀 **Application Launcher:** [Rofi](https://github.com/davatorium/rofi).
 
 ---
+🚀 **Install**
