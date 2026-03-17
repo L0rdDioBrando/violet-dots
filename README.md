@@ -27,3 +27,7 @@ My goal was to use a single color scheme for the entire system.
 
 ---
 🚀 **Install**
+Clone this repository
+```bash
+git clone https://github.com/LordDioBrande/violet-dots/
+```
