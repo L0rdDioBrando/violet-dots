@@ -28,14 +28,14 @@ My goal was to use a single color scheme for the entire system.</p>
 ---
 🚀 **Install**
 
-Clone this repository
-
-```bash
-git clone https://github.com/LordDioBrande/violet-dots/
-```
-
 Save your current configs
 
 ```bash
 sudo cp -r /etc/nixos/ ~/nixos.back
+```
+
+Clone this repository
+
+```bash
+cd ~/ && git clone https://github.com/LordDioBrande/violet-dots/
 ```
