@@ -56,4 +56,4 @@ sudo nixos-rebuild switch && nix flake update && sudo nixos-rebuild switch
 
 📬 **Contact me**
 
-[![Telegram](https://img.shields.io/badge/Telegram-8AADF4?style=for-the-badge&logo=telegram&logoColor=CAD3F5)](https://t.me/bopsifox)   [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:kazukiobsidian@gmail.com)
+[![Telegram](https://img.shields.io/badge/Telegram-8AADF4?style=for-the-badge&logo=telegram&logoColor=CAD3F5)](https://t.me/bopsifox)   [![Gmail](https://img.shields.io/badge/Gmail-B7BDF8?style=for-the-badge&logo=gmail&logoColor=CAD3F5)](mailto:kazukiobsidian@gmail.com)
