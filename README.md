@@ -1,6 +1,6 @@
 # <p align="center"> Violet-dots </p>
 
-<p align="center">My goal was to use a single color scheme for the entire system</p>
+My goal was to use a single color scheme for the entire system
 ---
 <p align="center">
   <img src="./assets/screenshot1.png" width="49%">
