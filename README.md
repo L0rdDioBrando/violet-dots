@@ -39,3 +39,15 @@ Clone this repository
 ```bash
 cd ~/ && git clone https://github.com/LordDioBrande/violet-dots/
 ```
+
+Install my dots
+
+```bash
+sudo rm -rf /etc/nixos/* && sudo cp -r ~/violet-dots/nixos/* /etc/nixos/
+```
+
+Apply current settings
+
+```bash
+sudo nixos-rebuild switch && nix flake update && sudo nixos-rebuild switch
+```
