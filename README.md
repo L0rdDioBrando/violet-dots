@@ -17,7 +17,7 @@ My goal was to use a single color scheme for the entire system.
 
 📂 **File Manager:** [Yazi](https://github.com/sxyazi/yazi) & [Dolphin](https://apps.kde.org/dolphin/),
 
-🔡 **Font:** [FiraCode]([https://www.zsh.org/](https://github.com/tonsky/FiraCode?tab=readme-ov-file)),
+🔡 **Font:** [FiraCode](https://github.com/tonsky/FiraCode?tab=readme-ov-file)
 
 💻 **Terminal:** [Kitty](https://sw.kovidgoyal.net/kitty/),
 
