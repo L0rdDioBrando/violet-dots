@@ -8,8 +8,9 @@ My goal was to use a single color scheme for the entire system.
   <img src="./assets/screenshot4.png" width="49%">
 </p>
 ---
-### 🛠️ Tech Stack
+** 🛠️ Tech Stack **
 ---
+
 🪟 **Compositor:** [Niri](https://github.com/YaLTeR/niri)
 
 🐚 **Shell:** [Zsh](https://www.zsh.org/)
