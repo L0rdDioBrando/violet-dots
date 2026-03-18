@@ -225,8 +225,6 @@
   # Unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.etc."xdg/menus/applications.menu".source = "${pkgs.gnome-menus}/etc/xdg/menus/applications.menu";
-
   # System packages
   environment.systemPackages = with pkgs; [
     # Utils
