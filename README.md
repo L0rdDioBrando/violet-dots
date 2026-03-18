@@ -49,7 +49,7 @@ sudo rm -rf /etc/nixos/* && sudo cp -r ~/violet-dots/nixos/* /etc/nixos/
 Apply current settings
 
 ```bash
-sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix && sudo nixos-rebuild switch && nix flake update && sudo nixos-rebuild switch
+sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix && nix flake update && sudo nixos-rebuild switch --flake .#nixos
 ```
 
 ---
