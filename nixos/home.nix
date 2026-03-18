@@ -31,14 +31,9 @@ in {
     # Graphics and media
     swww
     vlc
-    telegram-desktop
-    neovim
     loupe
     zathura
     pavucontrol
-    obsidian
-    discord
-    nicotine-plus
     kitty
     fzf
     mako
@@ -46,7 +41,6 @@ in {
     wlogout
     vscode
     waybar
-    strawberry
     # XWayland
     xwayland-satellite
     # Qt
