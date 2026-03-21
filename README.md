@@ -37,7 +37,7 @@ sudo cp -r /etc/nixos/ ~/nixos.back
 Clone this repository
 
 ```bash
-cd ~/ && git clone https://github.com/LordDioBrande/violet-dots/
+cd ~/ && git clone https://github.com/L0rdDioBrando/violet-dots/
 ```
 
 Install my dots
