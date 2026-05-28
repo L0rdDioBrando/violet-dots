@@ -9,7 +9,7 @@ My goal was to use a single color scheme for the entire system.</p>
 </p>
 
 ---
-🛠️ **Tech Stack:**
+## 🛠️ Tech Stack:
 
 🪟 **Compositor:** [Niri](https://github.com/YaLTeR/niri),
 
@@ -26,32 +26,25 @@ My goal was to use a single color scheme for the entire system.</p>
 🚀 **Application Launcher:** [Rofi](https://github.com/davatorium/rofi).
 
 ---
-🚀 **Install**
+## 🚀 Install
 
-Save your current configs
+Save your current configs:
 
 ```bash
 sudo cp -r /etc/nixos/ ~/nixos.back
 ```
 
-Clone this repository
+Clone this repository:
 
 ```bash
 cd ~/ && git clone https://github.com/L0rdDioBrando/violet-dots/
 ```
 
-Install my dots
+Install my dots:
 
 ```bash
 sudo rm -rf /etc/nixos/* && sudo cp -r ~/violet-dots/nixos/* /etc/nixos/
 ```
-
-Apply current settings
-
-```bash
-sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix && nix flake update && sudo nixos-rebuild switch --flake .#nixos
-```
-
 ---
 
 📬 **Contact me**
