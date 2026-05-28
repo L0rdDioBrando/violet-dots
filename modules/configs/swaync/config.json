@@ -1,0 +1,36 @@
+{
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "top",
+  "ignore-gtk-theme": true,
+  "control-center-width": 380,
+  "control-center-margin-top": 5,
+  "control-center-margin-bottom": 5,
+  "control-center-margin-right": 5,
+  "control-center-margin-left": 5,
+  "notification-icon-size": 80,
+  "notification-body-image-height": 150,
+  "notification-body-image-width": 300,
+  "keyboard-shortcuts": true,
+  "widgets": [
+    "label",
+    "mpris",
+    "dnd",
+    "notifications",
+    "volume"
+  ],
+  "widget-config": {
+    "label": {
+      "text": "Notifications Center"
+    },
+    "volume": {
+      "label": "󰕾",
+      "show-per-app": true
+    },
+    "mpris": {
+      "image-size": 100,
+      "image-radius": 12
+    }
+  }
+}
+

@@ -1,0 +1,328 @@
+// There is no title bar in windows
+prefer-no-csd
+
+// Cursor
+cursor {
+  xcursor-theme "catppuccin-macchiato-dark-cursors"
+  xcursor-size 24
+}
+
+// Hide hotkey overlay when Niri starts
+hotkey-overlay {
+  skip-at-startup
+}
+
+// Super+O to open Overview
+overview {
+  backdrop-color "#24273a"
+  workspace-shadow {
+    softness 20
+    offset x=0 y=0
+    color "#24273a"
+  }
+}
+
+// Keyboard
+input {
+  keyboard {
+    xkb {
+      layout "us,ru"
+      options "grp:alt_shift_toggle,caps:escape"
+    }
+  }
+
+  mouse {
+    accel-speed 0.2
+  }
+
+  focus-follows-mouse max-scroll-amount="0%"
+  mod-key-nested "Super"
+}
+
+// Display
+output "DP-1" {
+  mode "1920x1080@180"
+  scale 1
+  background-color "#24273a"
+  backdrop-color "#24273a"
+  focus-at-startup
+}
+
+// Windows
+layout {
+  gaps 9
+  center-focused-column "never"
+  background-color "#24273a"
+
+  preset-column-widths {
+    proportion 0.5
+    proportion 0.75
+    proportion 1.0
+  }
+
+  default-column-width { proportion 1.0; }
+
+  preset-window-heights {
+    proportion 0.5
+    proportion 0.75
+    proportion 1.0
+  }
+
+  focus-ring {
+    width 3
+    active-color "#b7bdf8"
+    inactive-color "#494d64"
+  }
+
+  border {
+    off
+  }
+
+  shadow {
+    on
+    softness 20
+    color "#363a4f"
+    offset x=0 y=0
+  }
+
+  tab-indicator {
+    place-within-column
+    hide-when-single-tab
+    width 4
+    gap 5
+    length total-proportion=0.5
+    position "right"
+    gaps-between-tabs 2
+    corner-radius 100
+    active-color "#ed8796"
+    inactive-color "#494d64"
+    urgent-color "#f5a97f"
+  }
+
+}
+
+// Screenshot path
+screenshot-path "~/ from %Y-%m-%d %H-%M-%S.png"
+
+// Autostart
+spawn-at-startup "waybar"
+spawn-at-startup "swaync"
+spawn-at-startup "hyprpolkitagent"
+spawn-sh-at-startup "awww-daemon"
+spawn-sh-at-startup "wl-paste --watch cliphist store"
+
+
+// Animations
+animations {
+  window-open { spring damping-ratio=0.9 stiffness=900 epsilon=0.00001; }
+
+  window-close { spring damping-ratio=0.9 stiffness=900 epsilon=0.00001; }
+
+  horizontal-view-movement { spring damping-ratio=1.0 stiffness=900 epsilon=0.0001; }
+
+  workspace-switch { spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001; }
+
+  window-movement { spring damping-ratio=1.0 stiffness=800 epsilon=0.0001; }
+
+  window-resize { spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001; }
+
+  config-notification-open-close { spring damping-ratio=1.0 stiffness=1150 epsilon=0.0001; }
+
+  screenshot-ui-open {
+    duration-ms 300
+    curve "ease-out-quad"
+  }
+
+  overview-open-close { spring damping-ratio=1.0 stiffness=900 epsilon=0.0001; }
+}
+
+// Window/Layer rules
+window-rule {
+  geometry-corner-radius 8
+  default-column-width { proportion 1.0; }
+  clip-to-geometry true
+  draw-border-with-background false
+}
+
+window-rule {
+  match title="Firefox"
+  open-maximized true
+}
+
+window-rule {
+  match title="osu!"
+  open-fullscreen true
+  open-maximized true
+}
+
+layer-rule {
+  match namespace="waybar"
+  match at-startup=true
+  opacity 0.99
+}
+
+layer-rule {
+  match namespace="^notifications$"
+  block-out-from "screencast"
+}
+
+// Key binds
+binds {
+  // Apps
+  Mod+Slash { show-hotkey-overlay; }
+
+  Mod+Q hotkey-overlay-title="Open Terminal: kitty" { spawn "kitty"; }
+
+  Mod+S hotkey-overlay-title="Open Spotify" { spawn "spotify"; }
+
+  Mod+R hotkey-overlay-title="Open Applications Launcher: Rofi" { spawn-sh "rofi -show drun"; }
+
+  Mod+W hotkey-overlay-title="Open Browser: Firefox" { spawn "firefox"; }
+
+  Mod+E hotkey-overlay-title="Open File Manager: Yazi" { spawn "kitty" "zsh" "-i" "-c" "yazi"; }
+
+  Mod+A hotkey-overlay-title="Open osu!" { spawn "osu!"; }
+
+  Mod+D hotkey-overlay-title="Open Steam" { spawn "steam"; }
+
+  Mod+G hotkey-overlay-title="Open Power Menu" { spawn "~/.config/niri/scripts/power-menu.sh"; }
+
+  Mod+T hotkey-overlay-title="Open Control Center" { spawn-sh "swaync-client -t -sw"; }
+
+
+
+  // Audio
+  Mod+H hotkey-overlay-title="Previous Track" { spawn-sh "playerctl -p spotify,firefox,vlc,%any previous"; }
+
+  Mod+L hotkey-overlay-title="Next Track" { spawn-sh "playerctl -p spotify,firefox,vlc,%any next"; }
+
+  Mod+Space hotkey-overlay-title="Play/Pause" { spawn-sh "playerctl -p spotify,firefox,vlc,%any play-pause"; }
+
+  Mod+K hotkey-overlay-title="Volume Up" { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"; }
+
+  Mod+J hotkey-overlay-title="Volume Down" { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"; }
+
+
+
+  // Windows
+  Mod+O hotkey-overlay-title="Toggle Overview" { toggle-overview; }
+
+  Mod+C hotkey-overlay-title="Close Window" { close-window; }
+
+  Mod+V hotkey-overlay-title="Floating Mode" { toggle-window-floating; }
+
+  Mod+Shift+V hotkey-overlay-title="Centralize Column" { center-column; }
+
+  Mod+F hotkey-overlay-title="Maximize Column" { maximize-column; }
+
+  Mod+Shift+F hotkey-overlay-title="Maximize Height" { set-window-height "+100%"; }
+
+  Mod+Ctrl+F hotkey-overlay-title="Fullscreen Window" { fullscreen-window; }
+
+  Mod+X hotkey-overlay-title="Switch Height" { switch-preset-window-height; }
+
+  Mod+Z hotkey-overlay-title="Switch Width" { switch-preset-column-width; }
+
+  Mod+Left hotkey-overlay-title="Focus Left Column" { focus-column-left; }
+
+  Mod+Right hotkey-overlay-title="Focus Right Column" { focus-column-right; }
+
+  Mod+Ctrl+Left hotkey-overlay-title="Move Column Left" { move-column-left; }
+
+  Mod+Ctrl+Right hotkey-overlay-title="Move Column right" { move-column-right; }
+
+  Mod+Ctrl+Up hotkey-overlay-title="Move Collumn To Workspace Up" { move-column-to-workspace-up; }
+
+  Mod+Ctrl+Down hotkey-overlay-title="Move Collumn To Workspace Down" { move-column-to-workspace-down; }
+
+  Mod+Up hotkey-overlay-title="Focus Window Up" { focus-window-up; }
+
+  Mod+Down hotkey-overlay-title="Focus Window Down" { focus-window-down; }
+
+  Mod+Minus hotkey-overlay-title="-10% Of Width" { set-column-width "-10%"; }
+
+  Mod+Shift+Minus hotkey-overlay-title="-10% Of Height" { set-window-height "-10%"; }
+
+  Mod+Equal hotkey-overlay-title="+10% Of Width" { set-column-width "+10%"; }
+
+  Mod+Shift+Equal hotkey-overlay-title="+10% Of Height" { set-window-height "+10%"; }
+
+  Mod+Shift+Left hotkey-overlay-title="Move Window To Column"  { consume-window-into-column; }
+
+  Mod+Shift+Right hotkey-overlay-title="Move Window Out Of Column" { expel-window-from-column; }
+
+
+
+  // Workspaces
+  Mod+WheelScrollUp cooldown-ms=150 hotkey-overlay-title="Scroll Up Stack" { focus-workspace-up; }
+
+  Mod+WheelScrollDown cooldown-ms=150 hotkey-overlay-title="Scroll Down Stack" { focus-workspace-down; }
+
+  Mod+Shift+Up hotkey-overlay-title="Focus Workspace Up" { focus-workspace-up; }
+
+  Mod+Shift+Down hotkey-overlay-title="Focus Workspace Down" { focus-workspace-down; }
+
+  Mod+1 hotkey-overlay-title="Switch To Workspace To Workspace 1-9" { focus-workspace 1; }
+
+  Mod+2 { focus-workspace 2; }
+
+  Mod+3 { focus-workspace 3; }
+
+  Mod+4 { focus-workspace 4; }
+
+  Mod+5 { focus-workspace 5; }
+
+  Mod+6 { focus-workspace 6; }
+
+  Mod+7 { focus-workspace 7; }
+
+  Mod+8 { focus-workspace 8; }
+
+  Mod+9 { focus-workspace 9; }
+
+  Mod+Ctrl+1 hotkey-overlay-title="Move Column To Workspace 1-9" { move-column-to-workspace 1; }
+
+  Mod+Ctrl+2 { move-column-to-workspace 2; }
+
+  Mod+Ctrl+3 { move-column-to-workspace 3; }
+
+  Mod+Ctrl+4 { move-column-to-workspace 4; }
+
+  Mod+Ctrl+5 { move-column-to-workspace 5; }
+
+  Mod+Ctrl+6 { move-column-to-workspace 6; }
+
+  Mod+Ctrl+7 { move-column-to-workspace 7; }
+
+  Mod+Ctrl+8 { move-column-to-workspace 8; }
+
+  Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+
+
+  // Other
+  // Wallpapers
+  Mod+U hotkey-overlay-title="Switch Wallpaper" { spawn-sh "sh ~/.config/niri/scripts/wallpaper-selector.sh" ; }
+
+  // Lock
+  Mod+Y hotkey-overlay-title="Lock" { spawn-sh "LC_TIME=C hyprlock -c ~/.config/niri/hyprlock.conf"; }
+
+  // Clipboard History
+  Mod+Shift+H hotkey-overlay-title="Clipboard History" { spawn-sh "cliphist list | rofi -dmenu | cliphist decode | wl-copy"; }
+
+  // Notifications
+  Mod+Shift+T hotkey-overlay-title="Close Notification" { spawn-sh "swaync-client --close-latest"; }
+
+  Mod+Alt+T hotkey-overlay-title="Clear All Notifications" { spawn-sh "swaync-client -C"; }
+
+  // Screenshots
+  Print hotkey-overlay-title="Take a Screenshot" { spawn-sh "grim -g \"$(slurp)\" - | tee ~/Pictures/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy && notify-send \"Screenshot taken\" \"Screenshot copied to clipboard\""; }
+
+  Alt+Print hotkey-overlay-title="Take a Full-screen Screenshot" { spawn-sh "grim - | wl-copy && notify-send \"Screenshot taken\" \"Screenshot copied to clipboard\""; }
+
+  Mod+Print hotkey-overlay-title="Pick a Color" { spawn-sh "COLOR=$(hyprpicker -n); [ -n \"$COLOR\" ] && (echo \"$COLOR\" | wl-copy; notify-send \"Color Picked\" \"$COLOR copied to clipboard\")"; }
+
+  Mod+SHift+Print hotkey-overlay-title="Window Screenshot" { screenshot-window; }
+  // Quit
+  Mod+M hotkey-overlay-title="Quit Niri" { quit; }
+}
