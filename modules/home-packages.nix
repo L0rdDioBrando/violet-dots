@@ -62,8 +62,6 @@ in
     ninja
     cmake
     pkg-config
-    grim
-    slurp
     nicotine-plus
     # Graphics and media
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww

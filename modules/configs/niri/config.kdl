@@ -316,13 +316,12 @@ binds {
   Mod+Alt+T hotkey-overlay-title="Clear All Notifications" { spawn-sh "swaync-client -C"; }
 
   // Screenshots
-  Print hotkey-overlay-title="Take a Screenshot" { spawn-sh "grim -g \"$(slurp)\" - | tee ~/Pictures/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy && notify-send \"Screenshot taken\" \"Screenshot copied to clipboard\""; }
-
-  Alt+Print hotkey-overlay-title="Take a Full-screen Screenshot" { spawn-sh "grim - | wl-copy && notify-send \"Screenshot taken\" \"Screenshot copied to clipboard\""; }
+  Print hotkey-overlay-title="Take a Screenshot" { screenshot; }
 
   Mod+Print hotkey-overlay-title="Pick a Color" { spawn-sh "COLOR=$(hyprpicker -n); [ -n \"$COLOR\" ] && (echo \"$COLOR\" | wl-copy; notify-send \"Color Picked\" \"$COLOR copied to clipboard\")"; }
 
   Mod+SHift+Print hotkey-overlay-title="Window Screenshot" { screenshot-window; }
+
   // Quit
   Mod+M hotkey-overlay-title="Quit Niri" { quit; }
 }

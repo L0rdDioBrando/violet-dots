@@ -8,6 +8,5 @@
     ./user.nix
     ./boot.nix
     ./style.nix
-    ./plymouth.nix
   ];
 }

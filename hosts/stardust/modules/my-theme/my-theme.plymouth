@@ -1,8 +1,0 @@
-[Plymouth Theme]
-Name=Macchiato Lavender Plymouth
-Description=A very custom boot splash
-ModuleName=script
-
-[script]
-ImageDir=/usr/share/plymouth/themes/my-theme
-ScriptFile=/usr/share/plymouth/themes/my-theme/my-theme.script
