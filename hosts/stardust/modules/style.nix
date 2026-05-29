@@ -8,7 +8,6 @@
     accent = "lavender";
     sddm.font = "FiraCode Nerd Font";
     tty.enable = true;
-    plymouth.enable = false;
   };
 
   # Console
@@ -26,7 +25,6 @@
     packages = with pkgs; [
       nerd-fonts.fira-code
       nerd-fonts.fira-mono
-      nerd-fonts.dejavu-sans-mono
       terminus_font
     ];
 
