@@ -49,7 +49,7 @@ sudo cp -r ~/violet-dots/* /etc/nixos/
 Fix git:
 
 ```bash
-cd && git config --global --add safe.directory /etc/nixos && git add .
+cd /etc/nixos/ && git config --global --add safe.directory /etc/nixos && git add .
 ```
 
 Rebuild system:
