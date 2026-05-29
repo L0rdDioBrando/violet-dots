@@ -43,7 +43,7 @@ cd ~/ && git clone https://github.com/L0rdDioBrando/violet-dots/
 Install my dots:
 
 ```bash
-sudo rm -rf /etc/nixos/* && sudo cp -r ~/violet-dots/nixos/* /etc/nixos/
+sudo rm -rf /etc/nixos/* && sudo cp -r ~/violet-dots/* /etc/nixos/
 ```
 
 Fix git:
