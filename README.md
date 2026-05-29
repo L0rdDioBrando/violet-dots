@@ -26,7 +26,7 @@ My goal was to use a single color scheme for the entire system.</p>
 🚀 **Application Launcher:** [Rofi](https://github.com/davatorium/rofi).
 
 ---
-## 🚀 Install
+## 🚀 Install:
 
 Save your current configs:
 
@@ -44,6 +44,12 @@ Install my dots:
 
 ```bash
 sudo rm -rf /etc/nixos/* && sudo cp -r ~/violet-dots/nixos/* /etc/nixos/
+```
+
+Fix git:
+
+```bash
+git config --global --add safe.directory /etc/nixos && git add .
 ```
 ---
 
