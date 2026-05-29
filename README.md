@@ -43,14 +43,21 @@ cd ~/ && git clone https://github.com/L0rdDioBrando/violet-dots/
 Install my dots:
 
 ```bash
-sudo rm -rf /etc/nixos/* && sudo cp -r ~/violet-dots/* /etc/nixos/
+sudo cp -r ~/violet-dots/* /etc/nixos/
 ```
 
 Fix git:
 
 ```bash
-git config --global --add safe.directory /etc/nixos && git add .
+cd && git config --global --add safe.directory /etc/nixos && git add .
 ```
+
+Rebuild system:
+
+```bash
+sudo nixos-rebuild switch
+```
+
 ---
 
 📬 **Contact me**
