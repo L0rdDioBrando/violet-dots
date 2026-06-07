@@ -177,7 +177,7 @@ binds {
 
   Mod+R hotkey-overlay-title="Open Applications Launcher: Rofi" { spawn-sh "rofi -show drun"; }
 
-  Mod+W hotkey-overlay-title="Open Browser: Firefox" { spawn "firefox"; }
+  Mod+W hotkey-overlay-title="Open Browser: Zen" { spawn "zen"; }
 
   Mod+E hotkey-overlay-title="Open File Manager: Yazi" { spawn "kitty" "zsh" "-i" "-c" "yazi"; }
 

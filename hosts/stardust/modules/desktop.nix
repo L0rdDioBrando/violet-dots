@@ -1,9 +1,8 @@
-{ pkgs, ... }:
-
-{ 
+{ pkgs, inputs, ... }:
+{
   # Niri
   programs.niri.enable = true;
-  #  programs.niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri; # Optional
+  #programs.niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri; # Optional
 
   environment.sessionVariables = {
     XCURSOR_SIZE = "24";
@@ -22,8 +21,10 @@
   services.dbus.packages = [ pkgs.gcr ];
 
   # Sddm
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
 
   # Configure xkb
   services.xserver.xkb = {

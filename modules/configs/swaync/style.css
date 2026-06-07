@@ -1,7 +1,7 @@
 * {
   all: unset;
   font-size: 14px;
-  font-family: "FiraCode Nerd Font";
+  font-family: "FiraCode Nerd Font Mono";
   transition: 200ms;
 }
 
@@ -74,7 +74,7 @@ trough {
   color: #b8c0e0;
 }
 
-.notification > *:last-child > * {
+.notification>*:last-child>* {
   min-height: 3.4em;
 }
 
@@ -130,7 +130,7 @@ trough {
   opacity: 0.8;
 }
 
-.control-center .widget-title > label {
+.control-center .widget-title>label {
   color: #cad3f5;
   font-size: 1.3em;
 }
@@ -175,18 +175,18 @@ scrollbar trough {
   font-size: 1.1rem;
 }
 
-.widget-dnd > switch {
+.widget-dnd>switch {
   font-size: initial;
   border-radius: 8px;
   background: #363a4f;
   box-shadow: none;
 }
 
-.widget-dnd > switch:checked {
+.widget-dnd>switch:checked {
   background: #b7bdf8;
 }
 
-.widget-dnd > switch slider {
+.widget-dnd>switch slider {
   background: #494d64;
   border-radius: 8px;
 }
@@ -233,7 +233,12 @@ scrollbar trough {
   -gtk-icon-size: 1.8rem;
 }
 
-.notification-content > image {
+.widget-mpris button:nth-child(3),
+.widget-mpris button:nth-child(4) {
+  margin-top: 5px;
+}
+
+.notification-content>image {
   margin-right: 10px;
 }
 
@@ -250,11 +255,6 @@ scrollbar trough {
   opacity: 0.5;
 }
 
-.control-center .widget-label > label {
-  color: #b7bdf8;
-  font-size: 2rem;
-}
-
 .widget-volume {
   padding: 1rem 0;
   margin-bottom: 1rem;
@@ -262,8 +262,8 @@ scrollbar trough {
 }
 
 .widget-volume scale {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .widget-volume label {

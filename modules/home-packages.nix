@@ -4,13 +4,8 @@
   ...
 }:
 
-let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in
-
 {
   imports = [
-    inputs.spicetify-nix.homeManagerModules.default
     inputs.catppuccin.homeModules.catppuccin
   ];
 
@@ -28,12 +23,14 @@ in
     obs.enable = true;
     mpv.enable = true;
     cava.enable = false;
+    lazygit.enable = true;
+    zellij.enable = false;
   };
 
   # Home-manager packages
   home.packages = with pkgs; [
     # Utils
-    tmux
+    zellij
     chafa
     wget
     psmisc
@@ -53,10 +50,13 @@ in
     fd
     jq
     viu
+    gvfs
+    ffmpeg-full
     ueberzugpp
     dust
     duf
     bc
+    lazygit
     wl-clipboard
     cliphist
     ninja
@@ -64,6 +64,8 @@ in
     pkg-config
     nicotine-plus
     # Graphics and media
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    chromium
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
     steam
     hyprlock
@@ -78,7 +80,9 @@ in
     kdePackages.dolphin
     pavucontrol
     obsidian
+    osu-lazer-bin
     kitty
+    ghostty
     swaynotificationcenter
     rofi
     waybar
@@ -100,8 +104,8 @@ in
     cargo
     nixd
     nixfmt
+    kdlfmt
     gnumake
-    osu-lazer-bin
     luarocks
     lua51Packages.jsregexp
     lua51Packages.tree-sitter-cli
@@ -127,7 +131,7 @@ in
   programs.yazi = {
     enable = true;
     package = pkgs.yazi.override {
-      _7zz = pkgs._7zz-rar; 
+      _7zz = pkgs._7zz-rar;
     };
   };
 
@@ -139,29 +143,6 @@ in
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
-  };
-
-  # Spicetify
-  programs.spicetify = {
-    enable = true;
-    wayland = true;
-    theme = spicePkgs.themes.catppuccin;
-    colorScheme = "macchiato";
-    enabledExtensions = with spicePkgs.extensions; [
-      adblock
-      fullAppDisplay
-      shuffle
-      history
-      hidePodcasts
-      beautifulLyrics
-      wikify
-    ];
-    enabledCustomApps = with spicePkgs.apps; [
-      newReleases
-      ncsVisualizer
-      lyricsPlus
-      marketplace
-    ];
   };
 
   programs.firefox = {

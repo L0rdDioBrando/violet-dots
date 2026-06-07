@@ -22,6 +22,7 @@
   selected-normal-background:  @lightfg;
   alternate-normal-background: @background;
   foreground:                  @text;
+  sub-foreground:              @subtext0;
   selected-urgent-foreground:  @background;
   normal-foreground:           @foreground;
   alternate-urgent-foreground: @red;
@@ -125,16 +126,16 @@ button selected {
 }
 num-filtered-rows {
     expand:     false;
-    text-color: Gray;
+    text-color: @sub-foreground;
 }
 num-rows {
     expand:     false;
-    text-color: Gray;
+    text-color: @sub-foreground;
 }
 textbox-num-sep {
     expand:     false;
     str:        "/";
-    text-color: Gray;
+    text-color: @sub-foreground;
 }
 inputbar {
     padding:    1px ;
@@ -156,7 +157,7 @@ entry {
     text-color:        @normal-foreground;
     cursor:            text;
     spacing:           0;
-    placeholder-color: Gray;
+    placeholder-color: @sub-foreground;
     placeholder:       "Type to filter";
 }
 prompt {

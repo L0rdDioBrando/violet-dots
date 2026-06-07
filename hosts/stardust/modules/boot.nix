@@ -3,13 +3,6 @@
 {
   # Bootloader
   boot.loader = {
-  # Using GRUB for BIOS systems
-#    grub = {
-#      enable = true;
-#      useOSProber = false;
-#      efiSupport = true;
-#      device = "nodev";
-#    };
     limine = {
       enable = true;
       efiSupport = true;
@@ -20,11 +13,11 @@
   };
 
   # Kernel
-  boot.kernelModules = [ "nft_queue" "nfnetlink_queue" ];
+  boot.kernelModules = [
+    "nft_queue"
+    "nfnetlink_queue"
+  ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.consoleLogLevel = 0;
-  boot.initrd.verbose = false;
-  boot.loader.timeout = 0;
 
   boot.kernelParams = [
     "quiet"
@@ -40,7 +33,10 @@
   fileSystems."/mnt/storage" = {
     device = "/dev/disk/by-uuid/74762bf2-2f76-47ef-a3f1-adc34549cced";
     fsType = "ext4";
-    options = [ "defaults" "nofail" ];
+    options = [
+      "defaults"
+      "nofail"
+    ];
   };
 
   # Graphics

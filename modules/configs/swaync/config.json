@@ -13,16 +13,12 @@
   "notification-body-image-width": 300,
   "keyboard-shortcuts": true,
   "widgets": [
-    "label",
     "mpris",
     "dnd",
     "notifications",
     "volume"
   ],
   "widget-config": {
-    "label": {
-      "text": "Notifications Center"
-    },
     "volume": {
       "label": "󰕾",
       "show-per-app": true
@@ -33,4 +29,3 @@
     }
   }
 }
-

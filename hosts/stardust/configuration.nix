@@ -8,7 +8,10 @@
   ];
 
   # Experimental
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Nix Garbage Collector settings
   nix.settings.auto-optimise-store = true;
@@ -29,15 +32,6 @@
     nh
     nvd
     nix-output-monitor
-    # Libraries
-    libxi
-    glibc.dev
-    libgdiplus
-    libxcursor
-    libnotify
-    libxinerama
-    libadwaita
-    gdk-pixbuf-xlib
     # Other
     cacert
   ];

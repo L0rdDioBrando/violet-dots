@@ -51,7 +51,7 @@
     "format": "  {}",
     "escape": false,
     "return-type": "json",
-    "exec": "~/music-info.sh",
+    "exec": "~/.config/waybar/music-info.sh",
     "max-length": 50,
     "on-click": "~/.config/waybar/active-player.sh"
   },
@@ -185,10 +185,10 @@
       "none": "<span foreground='#b7bdf8'><sup></sup></span>",
       "inhibited-notification": "<span foreground='#ed8796'><sup></sup></span>",
       "inhibited-none": "<span foreground='#ed8796'><sup></sup></span>",
-      "dnd-notification": "󰂛<span foreground='#8aadf4'><sup></sup></span>",
-      "dnd-none": "󰂛<span foreground='#8aadf4'><sup></sup></span>",
-      "dnd-inhibited-notification": "󰂛<span foreground='#8aadf4'><sup></sup></span>",
-      "dnd-inhibited-none": "󰂛<span foreground='#8aadf4'><sup></sup></span>"
+      "dnd-notification": "󰂛",
+      "dnd-none": "󰂛",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰂛"
     },
     "return-type": "json",
     "exec-if": "which swaync-client",

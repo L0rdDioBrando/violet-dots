@@ -6,7 +6,7 @@ export FZF_DEFAULT_OPTS=" \
   --color=selected-bg:#494D64 \
   --color=border:#B7BDF8,label:#CAD3F5 \
   --style=full \
-  --preview '[ -d {} ] && eza --tree --level=2 --color=always {} || bat --style=numbers --color=always --line-range :500 {} || ~/.fzf-preview.sh {}'
+  --preview '[ -d {} ] && eza --tree --level=2 --color=always {} || bat --style=numbers --color=always --line-range :500 {}'
   --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort' \
   --bind 'ctrl-e:execute(nvim {})+abort' \
   --bind 'ctrl-u:preview-page-up' \
@@ -67,11 +67,11 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Plugins
-zinit ice wait"0" lucid
-zinit light aloxaf/fzf-tab
+#zinit ice wait"0" lucid
+#zinit light aloxaf/fzf-tab
 zinit ice wait"0" lucid
 zinit light zsh-users/zsh-completions
-zinit ice wait"0" lucid
+zinit ice atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 zinit ice wait"0" lucid
 zinit light zdharma-continuum/fast-syntax-highlighting

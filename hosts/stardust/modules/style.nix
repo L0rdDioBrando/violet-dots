@@ -3,11 +3,11 @@
 {
   # Catppuccin
   catppuccin = {
-    enable = true;
+    enable = false;
     flavor = "macchiato";
     accent = "lavender";
-    sddm.font = "FiraCode Nerd Font";
     tty.enable = true;
+    limine.enable = true;
   };
 
   # Console
@@ -32,6 +32,10 @@
       enable = true;
       antialias = true;
       hinting.enable = true;
+      subpixel = {
+        rgba = "rgb";
+        lcdfilter = "default";
+      };
       defaultFonts = {
         monospace = [ "FiraCode Nerd Font Mono" ];
         sansSerif = [ "FiraCode Nerd Font Mono" ];
