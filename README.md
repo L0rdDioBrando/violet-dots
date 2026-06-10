@@ -30,7 +30,7 @@
 Save your current configs:
 
 ```bash
-sudo cp -r /etc/nixos/ ~/nixos.back
+sudo mv /etc/nixos/ ~/nixos.back
 ```
 
 Clone this repository:
