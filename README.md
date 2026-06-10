@@ -8,7 +8,7 @@
 </p>
 
 ---
-## 🛠️ Tech Stack:
+## Tech Stack:
 
 **Compositor:** [Niri](https://github.com/YaLTeR/niri),
 
