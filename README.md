@@ -11,22 +11,22 @@ My goal was to use a single color scheme for the entire system.</p>
 ---
 ## 🛠️ Tech Stack:
 
-🪟 **Compositor:** [Niri](https://github.com/YaLTeR/niri),
+**Compositor:** [Niri](https://github.com/YaLTeR/niri),
 
-🐚 **Shell:** [Zsh](https://www.zsh.org/),
+**Shell:** [Zsh](https://www.zsh.org/),
 
-📂 **File Manager:** [Yazi](https://github.com/sxyazi/yazi) & [Dolphin](https://apps.kde.org/dolphin/),
+**File Manager:** [Yazi](https://github.com/sxyazi/yazi) & [Dolphin](https://apps.kde.org/dolphin/),
 
-🔡 **Font:** [FiraCode](https://github.com/tonsky/FiraCode?tab=readme-ov-file),
+**Font:** [FiraCode](https://github.com/tonsky/FiraCode?tab=readme-ov-file),
 
-💻 **Terminal:** [Kitty](https://sw.kovidgoyal.net/kitty/),
+**Terminal:** [Kitty](https://sw.kovidgoyal.net/kitty/),
 
-📊 **Bar:** [Waybar](https://github.com/Alexays/Waybar),
+**Bar:** [Waybar](https://github.com/Alexays/Waybar),
 
-🚀 **Application Launcher:** [Rofi](https://github.com/davatorium/rofi).
+**Application Launcher:** [Rofi](https://github.com/davatorium/rofi).
 
 ---
-## 🚀 Install:
+## Install:
 
 Save your current configs:
 
@@ -43,13 +43,7 @@ cd ~/ && git clone https://github.com/L0rdDioBrando/violet-dots.git
 Install my dots:
 
 ```bash
-sudo cp -r ~/violet-dots/* /etc/nixos/
-```
-
-Fix git:
-
-```bash
-cd /etc/nixos/ && sudo git config --global --add safe.directory /etc/nixos && git add .
+sudo cp -r ~/violet-dots/nixos/ /etc/
 ```
 
 Rebuild system:
