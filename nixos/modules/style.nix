@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   # GTK theme
@@ -14,10 +19,12 @@
     };
     iconTheme = {
       name = "Papirus-Dark";
-      package = lib.mkForce (pkgs.catppuccin-papirus-folders.override {
-        flavor = "macchiato";
-        accent = "lavender";
-      });
+      package = lib.mkForce (
+        pkgs.catppuccin-papirus-folders.override {
+          flavor = "macchiato";
+          accent = "lavender";
+        }
+      );
     };
     cursorTheme = {
       name = "catppuccin-macchiato-dark-cursors";
@@ -30,7 +37,7 @@
     platformTheme.name = "qtct";
     style.name = "kvantum";
   };
-  
+
   # For KDE apps
   xdg.configFile."kdeglobals".text = ''
     [Icons]

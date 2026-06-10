@@ -12,8 +12,14 @@
 
   networking.firewall = {
     enable = false;
-    allowedTCPPorts = [ 1111 ];
-    allowedUDPPorts = [ 1111 ];
+    allowedTCPPorts = [
+      1111
+      4533
+    ];
+    allowedUDPPorts = [
+      1111
+      4533
+    ];
   };
 
   services.zapret = {
@@ -48,7 +54,7 @@
   '';
 
   # Cloudflare warp
-  #services.cloudflare-warp.enable = true;
-  #systemd.packages = [ pkgs.cloudflare-warp ];
-  #systemd.targets.multi-user.wants = [ "warp-svc.service" ];
+  services.cloudflare-warp.enable = true;
+  systemd.packages = [ pkgs.cloudflare-warp ];
+  systemd.targets.multi-user.wants = [ "warp-svc.service" ];
 }

@@ -3,10 +3,13 @@
   inputs,
   ...
 }:
-
+let
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in
 {
   imports = [
     inputs.catppuccin.homeModules.catppuccin
+    inputs.spicetify-nix.homeManagerModules.default
   ];
 
   # Catppuccin
@@ -16,7 +19,6 @@
     accent = "lavender";
     kvantum.enable = false;
     bat.enable = true;
-    firefox.enable = false;
     yazi.enable = false;
     kitty.enable = true;
     zathura.enable = true;
@@ -64,8 +66,8 @@
     pkg-config
     nicotine-plus
     # Graphics and media
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     chromium
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
     steam
     hyprlock
@@ -82,7 +84,6 @@
     obsidian
     osu-lazer-bin
     kitty
-    ghostty
     swaynotificationcenter
     rofi
     waybar
@@ -114,18 +115,39 @@
     # XWayland
     xwayland-satellite
     # Qt
-    pkgs.libsForQt5.qtstyleplugin-kvantum
     pkgs.kdePackages.qtstyleplugin-kvantum
     kdePackages.qt6ct
     kdePackages.qtwayland
     kdePackages.kde-cli-tools
-    catppuccin-qt5ct
     # Cursors
     catppuccin-cursors.macchiatoDark
     # Other
     vulkan-tools
     steam-run
   ];
+
+  # Spicetify
+  programs.spicetify = {
+    enable = true;
+    wayland = true;
+    theme = spicePkgs.themes.catppuccin;
+    colorScheme = "macchiato";
+    enabledExtensions = with spicePkgs.extensions; [
+      adblock
+      fullAppDisplay
+      shuffle
+      history
+      hidePodcasts
+      beautifulLyrics
+      wikify
+    ];
+    enabledCustomApps = with spicePkgs.apps; [
+      newReleases
+      ncsVisualizer
+      lyricsPlus
+      marketplace
+    ];
+  };
 
   # Yazi
   programs.yazi = {
@@ -135,28 +157,9 @@
     };
   };
 
-  programs.prismlauncher = {
-    enable = true;
-  };
-
   # Fzf
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
-  };
-
-  programs.firefox = {
-    enable = true;
-    configPath = ".config/mozilla/firefox";
-    profiles.bopsifox = {
-      extensions = {
-        packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
-          ublock-origin
-          sponsorblock
-          vimium
-          privacy-badger
-        ];
-      };
-    };
   };
 }

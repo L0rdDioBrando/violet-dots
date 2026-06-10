@@ -11,6 +11,5 @@
     ./obs.nix
     ./mpv.nix
     ./cava.nix
-    ./spicetify/spicetify.nix
   ];
 }

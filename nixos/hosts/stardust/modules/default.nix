@@ -8,5 +8,6 @@
     ./user.nix
     ./boot.nix
     ./style.nix
+    ./navidrome.nix
   ];
 }

@@ -32,6 +32,11 @@
       "audio/aac" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
       "audio/opus" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
       "audio/flac" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
+
+      # Default broswer
+      "text/html" = "zen.desktop";
+      "x-scheme-handler/http" = "zen.desktop";
+      "x-scheme-handler/https" = "zen.desktop";
     };
 
     associations.added = {
