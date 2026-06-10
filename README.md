@@ -1,5 +1,4 @@
 # <p align="center"> Violet-dots
-My goal was to use a single color scheme for the entire system.</p>
 ---
 <p align="center">
   <img src="./assets/screenshot1.png" width="49%">
@@ -54,6 +53,6 @@ sudo nixos-rebuild switch
 
 ---
 
-📬 **Contact me**
+## Contact me
 
 [![Telegram](https://img.shields.io/badge/Telegram-8AADF4?style=for-the-badge&logo=telegram&logoColor=CAD3F5)](https://t.me/bopsifox)   [![Gmail](https://img.shields.io/badge/Gmail-B7BDF8?style=for-the-badge&logo=gmail&logoColor=CAD3F5)](mailto:kazukiobsidian@gmail.com)
