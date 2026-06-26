@@ -38,7 +38,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
-            home-manager.users.bopsifox = import ./modules/home.nix;
+            home-manager.users.bopsifox = import ./home-manager/home.nix;
             home-manager.extraSpecialArgs = {
               inherit inputs;
             };
