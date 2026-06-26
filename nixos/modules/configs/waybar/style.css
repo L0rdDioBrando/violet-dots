@@ -1,0 +1,80 @@
+@import "macchiato.css";
+
+* {
+  font-family: "FiraCode Nerd Font";
+  font-size: 15px;
+  padding: 0;
+}
+
+window#waybar {
+  background-color: @base;
+  border-radius: 8px;
+}
+
+tooltip {
+  background-color: @base;
+  border-radius: 8px;
+  color: @text;
+  padding: 0px 15px;
+}
+
+tooltip label {
+  padding: 5px 15px;
+}
+
+button:hover {
+  color: @overlay1;
+}
+
+#workspaces,
+#workspaces button {
+  color: @sky;
+}
+
+#workspaces button.active,
+#custom-notification,
+#cpu,
+#memory,
+#temperature,
+#clock,
+#network,
+#wireplumber {
+  color: @lavender;
+}
+
+#cava {
+  color: @lavender;
+  margin-left: 4px;
+  margin-right: 7px;
+}
+
+#custom-playpause {
+  padding-right: 7px;
+  padding-left: 7px;
+}
+
+#group-music {
+  color: @lavender;
+  border-radius: 2rem;
+}
+
+.modules-left {
+  border-radius: 2rem;
+}
+
+/*#group-other,
+#group-status,
+#group-hard {
+  border-radius: 2rem;
+  padding: 2px;
+}*/
+
+#language {
+  color: @lavender;
+  margin-left: 7px;
+  margin-right: 4px;
+}
+
+#temperature.critical {
+  color: @maroon;
+}

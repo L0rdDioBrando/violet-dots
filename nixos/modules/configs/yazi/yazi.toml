@@ -1,0 +1,13 @@
+[mgr]
+show_hidden = true
+sort_by        = "alphabetical"
+sort_sensitive = false
+
+[opener]
+edit = [
+	{ run = "nvim %s", block = true, for = "unix" },
+]
+
+play = [
+	{ run = "mpv %s", orphan = true, for = "unix" },
+]
