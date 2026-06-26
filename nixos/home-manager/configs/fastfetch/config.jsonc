@@ -1,0 +1,123 @@
+{
+  "logo": {
+    "source": "~/.config/fastfetch/ascii.txt",
+    "padding": {
+      "top": 2,
+      "left": 0,
+      "right": 2
+    },
+    "color": {
+      "1": "#b7bdf8"
+    }
+  },
+  "display": {
+    "separator": ": ",
+    "key": {
+      "width": 14,
+      "type": "string"
+    }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "{#blue}┌ OS ────────────────────────────{#}"
+    },
+    {
+      "type": "os",
+      "key": "├─ os",
+      "keyColor": "blue",
+      "format": "{name} {version}"
+    },
+    {
+      "type": "kernel",
+      "key": "├─ kernel",
+      "keyColor": "blue"
+    },
+    {
+      "type": "shell",
+      "key": "└─ shell",
+      "keyColor": "blue"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "{#cyan}┌ HARDWARE ──────────────────────{#}",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "display",
+      "key": "├─ display",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "cpu",
+      "key": "├─ cpu",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "gpu",
+      "key": "├─ gpu",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "disk",
+      "key": "├─ disk",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "memory",
+      "key": "└─ memory",
+      "keyColor": "cyan"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "{##b7bdf8}┌ APPEARANCE ────────────────────{#}"
+    },
+    {
+      "type": "de",
+      "key": "├─ de",
+      "keyColor": "#b7bdf8"
+    },
+    {
+      "type": "wm",
+      "key": "├─ wm",
+      "keyColor": "#b7bdf8"
+    },
+    {
+      "type": "theme",
+      "key": "├─ theme",
+      "format": "catppuccin-macchiato-lavender [Qt]",
+      "keyColor": "#b7bdf8"
+    },
+    {
+      "type": "cursor",
+      "key": "├─ cursor",
+      "keyColor": "#b7bdf8"
+    },
+    {
+      "type": "icons",
+      "key": "├─ icons",
+      "keyColor": "#b7bdf8"
+    },
+    {
+      "type": "font",
+      "key": "├─ font",
+      "keyColor": "#b7bdf8"
+    },
+    {
+      "type": "terminal",
+      "key": "├─ terminal",
+      "keyColor": "#b7bdf8"
+    },
+    {
+      "type": "media",
+      "key": "└─ music",
+      "keyColor": "#b7bdf8"
+    },
+    {
+      "type": "colors",
+      "symbol": "circle"
+    }
+  ]
+}
