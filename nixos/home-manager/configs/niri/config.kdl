@@ -144,10 +144,6 @@ layer-rule {
     match at-startup=true
     opacity 0.99
 }
-/*layer-rule {
-match namespace="^notifications$"
-block-out-from "screencast"
-}*/
 // Key binds
 binds {
     // Apps
@@ -337,7 +333,7 @@ binds {
     // Other
     // Wallpapers
     Mod+U hotkey-overlay-title="Switch Wallpaper" {
-        spawn-sh "sh ~/.config/niri/scripts/wallpaper-selector.sh"
+        spawn-sh "sh ~/.config/niri/scripts/wallpaper.sh"
     }
     // Lock
     Mod+Y hotkey-overlay-title="Lock" {
