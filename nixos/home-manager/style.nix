@@ -4,7 +4,6 @@
   config,
   ...
 }:
-
 {
   # GTK theme
   gtk = {

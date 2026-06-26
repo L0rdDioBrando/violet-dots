@@ -111,6 +111,10 @@ in
     qt6.qtwayland
     kdePackages.qtwayland
     kdePackages.kde-cli-tools
+    # GTK
+    sassc
+    gnome-themes-extra
+    magnetic-catppuccin-gtk
     # Cursors
     catppuccin-cursors.macchiatoDark
     # Libs
