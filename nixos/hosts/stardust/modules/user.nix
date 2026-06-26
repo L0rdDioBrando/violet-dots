@@ -42,44 +42,6 @@
   programs.zsh.enable = true;
   programs.fish.enable = true;
   programs.amnezia-vpn.enable = true;
-  services.sing-box = {
-    enable = false;
-    settings = {
-      log = {
-        level = "info";
-      };
-      inbounds = [
-        {
-          type = "socks";
-          listen = "127.0.0.1";
-          listen_port = 1080;
-        }
-      ];
-      outbounds = [
-        {
-          type = "vless";
-          tag = "proxy";
-          server = "212.113.104.148";
-          server_port = 443;
-          uuid = "1b831036-b70f-4c86-9b3f-fd2ba3771732";
-          flow = "xtls-rprx-vision";
-          tls = {
-            enabled = true;
-            server_name = "www.asus.com";
-            utls = {
-              enabled = true;
-              fingerprint = "firefox";
-            };
-            reality = {
-              enabled = true;
-              public_key = "qZux7SVDs3RegL-faeG1AXKpPYn1sHz_e1HUSKW9e3o";
-              short_id = "cf";
-            };
-          };
-        }
-      ];
-    };
-  };
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
