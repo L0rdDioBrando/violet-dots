@@ -44,17 +44,7 @@
   */
 
   networking.nftables.enable = true;
-  /*
-    networking.nftables.ruleset = ''
-      table inet zapret {
-        chain preamble {
-          type filter hook output priority mangle; policy accept;
-          tcp dport { 80, 443 } counter queue num 0 bypass
-          udp dport 443 counter queue num 0 bypass
-        }
-      }
-    '';
-  */
+
   # Cloudflare warp
   services.cloudflare-warp.enable = true;
   systemd.packages = [ pkgs.cloudflare-warp ];
