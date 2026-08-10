@@ -128,9 +128,6 @@ animations {
 // Window/Layer rules
 window-rule {
     geometry-corner-radius 8
-    default-column-width {
-        proportion 1.0
-    }
     clip-to-geometry true
     draw-border-with-background false
 }
@@ -153,8 +150,8 @@ binds {
     Mod+Q hotkey-overlay-title="Open Terminal: kitty" {
         spawn "kitty"
     }
-    Mod+S hotkey-overlay-title="Open Spotify" {
-        spawn "spotify"
+    Mod+S hotkey-overlay-title="Open Strawberry" {
+        spawn "strawberry"
     }
     Mod+R hotkey-overlay-title="Open Applications Launcher: Rofi" {
         spawn-sh "rofi -show drun"
@@ -179,13 +176,13 @@ binds {
     }
     // Audio
     Mod+H hotkey-overlay-title="Previous Track" {
-        spawn-sh "playerctl -p spotify,firefox,vlc,%any previous"
+        spawn-sh "playerctl -p spotify,strawberry,mpv,firefox,%any previous"
     }
     Mod+L hotkey-overlay-title="Next Track" {
-        spawn-sh "playerctl -p spotify,firefox,vlc,%any next"
+        spawn-sh "playerctl -p spotify,strawberry,mpv,firefox,%any next"
     }
     Mod+Space hotkey-overlay-title="Play/Pause" {
-        spawn-sh "playerctl -p spotify,firefox,vlc,%any play-pause"
+        spawn-sh "playerctl -p spotify,strawberry,mpv,firefox,%any play-pause"
     }
     Mod+K hotkey-overlay-title="Volume Up" {
         spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
