@@ -38,7 +38,7 @@ in
     fastfetch
     ffmpeg-full
     yt-dlp
-    flac
+    opus-tools
     ueberzugpp
     dust
     duf
@@ -51,13 +51,13 @@ in
     pkg-config
     wails
     # Graphics and media
+    pcsx2
     chromium
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
     steam
     hyprlock
     gimp
-    discord
     nicotine-plus
     hyprpicker
     imv
@@ -65,7 +65,6 @@ in
     telegram-desktop
     zathura
     pkgs.zathuraPkgs.zathura_pdf_mupdf
-    kdePackages.okular
     kdePackages.dolphin
     pavucontrol
     qbittorrent
@@ -75,9 +74,9 @@ in
     swaynotificationcenter
     rofi
     waybar
-    quickshell
     strawberry
     neovim
+    kid3
     # Languages
     python3
     nodejs
@@ -97,6 +96,9 @@ in
     nixfmt
     kdlfmt
     gnumake
+    bash-language-server
+    shellcheck
+    shfmt
     luarocks
     lua51Packages.jsregexp
     lua51Packages.tree-sitter-cli
@@ -114,13 +116,16 @@ in
     # GTK
     sassc
     gnome-themes-extra
-    magnetic-catppuccin-gtk
     # Cursors
     catppuccin-cursors.macchiatoDark
     # Libs
     libnotify
     libxcursor
     libGL
+    frei0r
+    ladspaPlugins
+    mediainfo
+    glaxnimate
     # Other
     vulkan-tools
     steam-run
