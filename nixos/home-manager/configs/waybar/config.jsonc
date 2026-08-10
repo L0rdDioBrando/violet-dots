@@ -48,37 +48,37 @@
     "input_delay": 2
   },
   "custom/music": {
-    "format": "  {}",
+    "format": "  {} ",
     "escape": false,
-    "return-type": "json",
-    "exec": "~/.config/waybar/music-info.sh",
+    "exec": "playerctl -p spotify,strawberry,mpv,firefox,%any metadata --follow --format '{{artist}} ~ {{title}}' 2>/dev/null",
     "max-length": 50,
-    "on-click": "~/.config/waybar/active-player.sh"
+    "on-click": "~/.config/waybar/active-player.sh",
+    "tooltip": false
   },
   "custom/prev": {
     "format": "󰙣 ",
     "return-type": "json",
-    "exec": "playerctl -p spotify,strawberry,firefox,mpv,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F 2>/dev/null",
-    "tooltip": true,
-    "on-click": "playerctl -p spotify,strawberry,firefox,mpv,%any previous"
+    "exec": "playerctl -p spotify,strawberry,mpv,firefox,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F 2>/dev/null",
+    "tooltip": false,
+    "on-click": "playerctl -p spotify,strawberry,mpv,firefox,%any previous"
   },
   "custom/playpause": {
     "format": "{icon}",
     "return-type": "json",
-    "exec": "playerctl -p spotify,strawberry,firefox,mpv,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "exec": "playerctl -p spotify,strawberry,mpv,firefox,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F 2>/dev/null",
     "tooltip": false,
     "format-icons": {
       "Playing": "",
       "Paused": ""
     },
-    "on-click": "playerctl -p spotify,strawberry,firefox,mpv,%any play-pause"
+    "on-click": "playerctl -p spotify,strawberry,mpv,firefox,%any play-pause"
   },
   "custom/next": {
     "format": " 󰙡 ",
     "return-type": "json",
-    "exec": "playerctl -p spotify,strawberry,firefox,mpv,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F 2>/dev/null",
+    "exec": "playerctl -p spotify,strawberry,mpv,firefox,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F 2>/dev/null",
     "tooltip": false,
-    "on-click": "playerctl -p spotify,strawberry,firefox,mpv,%any next"
+    "on-click": "playerctl -p spotify,strawberry,mpv,firefox,%any next"
   },
   "group/group-music": {
     "max-length": 50,
