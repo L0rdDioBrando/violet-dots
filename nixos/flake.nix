@@ -30,7 +30,7 @@
           inherit inputs;
         };
         modules = [
-          ./hosts/stardust/configuration.nix
+          ./system/configuration.nix
           { nixpkgs.hostPlatform = "x86_64-linux"; }
           catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
