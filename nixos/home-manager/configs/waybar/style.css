@@ -23,7 +23,7 @@ tooltip label {
 }
 
 button:hover {
-  color: @overlay1;
+  color: @surface0;
 }
 
 #workspaces,
@@ -61,13 +61,6 @@ button:hover {
 .modules-left {
   border-radius: 2rem;
 }
-
-/*#group-other,
-#group-status,
-#group-hard {
-  border-radius: 2rem;
-  padding: 2px;
-}*/
 
 #language {
   color: @lavender;
