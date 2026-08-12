@@ -44,17 +44,16 @@ Install my dots:
 ```bash
 sudo cp -r ~/violet-dots/nixos/ /etc/
 ```
+Generate hardware-configuration.nix:
+
+```bash
+sudo nixos-generate-config
+```
 
 Rebuild system:
 
 ```bash
 sudo nixos-rebuild switch
-```
-
-Generate hardware-configuration.nix:
-
-```bash
-sudo nixos-generate-config
 ```
 
 ---
