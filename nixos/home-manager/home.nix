@@ -55,12 +55,15 @@ in
     chromium
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
+    inputs.prismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.prismlauncher
     steam
     hyprlock
     gimp
     nicotine-plus
     hyprpicker
     imv
+    vlc
+    scanmem
     hyprpolkitagent
     telegram-desktop
     zathura
@@ -76,7 +79,6 @@ in
     waybar
     strawberry
     neovim
-    kid3
     # Languages
     python3
     nodejs
