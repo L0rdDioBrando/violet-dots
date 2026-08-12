@@ -43,7 +43,7 @@
     Theme=Papirus-Dark
 
     [UiSettings]
-    ColorScheme=qt6ct
+    ColorScheme=CatppuccinMacchiatoLavender
 
     [General]
     TerminalApplication=kitty
