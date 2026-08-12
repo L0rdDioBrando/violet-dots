@@ -51,6 +51,12 @@ Rebuild system:
 sudo nixos-rebuild switch
 ```
 
+Generate hardware-configuration.nix:
+
+```bash
+sudo nixos-generate-config
+```
+
 ---
 
 ## Contact me
