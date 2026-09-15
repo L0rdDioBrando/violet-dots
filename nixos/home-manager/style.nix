@@ -33,19 +33,7 @@
   # Qt theme
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
+    platformTheme.name = "qt6ct";
     style.name = "kvantum";
   };
-
-  # For KDE apps
-  xdg.configFile."kdeglobals".text = ''
-    [Icons]
-    Theme=Papirus-Dark
-
-    [UiSettings]
-    ColorScheme=CatppuccinMacchiatoLavender
-
-    [General]
-    TerminalApplication=kitty
-  '';
 }
