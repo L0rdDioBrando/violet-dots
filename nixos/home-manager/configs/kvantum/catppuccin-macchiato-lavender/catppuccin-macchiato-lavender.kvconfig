@@ -74,10 +74,10 @@ menu_blur_radius=0
 tooltip_blur_radius=0
 
 [GeneralColors]
-window.color=#363a4f
+window.color=#24273a
 base.color=#24273a
-tooltipbase.color=#363a4f
-alt.base.color=#363a4f
+tooltipbase.color=#24273a
+alt.base.color=#1e2030
 inactive.alt.base.color=#1e2030
 button.color=#1e2030
 light.color=#494D64
@@ -366,8 +366,8 @@ frame.right=2
 text.margin=0
 text.normal.color=#CAD3F5
 text.focus.color=#CAD3F5
-text.press.color=#1E2030
-text.toggle.color=#1E2030
+text.press.color=#CAD3F5
+text.toggle.color=#CAD3F5
 text.bold=false
 frame.expansion=18
 
@@ -378,8 +378,8 @@ inherits=PanelButtonCommand
 frame.element=menu
 interior.element=menu
 inherits=PanelButtonCommand
-text.press.color=#1E2030
-text.toggle.color=#1E2030
+text.press.color=#CAD3F5
+text.toggle.color=#CAD3F5
 text.bold=false
 frame.top=3
 frame.bottom=3
