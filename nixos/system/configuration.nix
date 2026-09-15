@@ -61,6 +61,15 @@
 
   boot.initrd.kernelModules = [ "amdgpu" ];
 
+  # Bluetooth
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    enableRedistributableFirmware = true;
+  };
+
   # Choose your locale
   i18n.supportedLocales = [
     "ru_RU.UTF-8/UTF-8"
@@ -100,173 +109,6 @@
     };
   };
 
-  # Network
-  networking.networkmanager.enable = true;
-  networking.hostName = "nixos";
-  networking.nameservers = [
-    "8.8.8.8"
-    "8.8.4.4"
-  ];
-
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [
-      1111
-      4533
-      4010
-      8080
-    ];
-    allowedUDPPorts = [
-      1111
-      4533
-      4010
-      8080
-    ];
-  };
-
-  networking.nftables.enable = true;
-  networking.enableIPv6 = false;
-
-  # Cloudflare warp
-  services.cloudflare-warp.enable = true;
-  systemd.packages = [ pkgs.cloudflare-warp ];
-  systemd.targets.multi-user.wants = [ "warp-svc.service" ];
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  environment.sessionVariables = {
-    XCURSOR_SIZE = "24";
-    XDG_CURRENT_DESKTOP = "niri";
-    NIXOS_OZONE_WL = "1";
-    QT_QPA_PLATFORM = "wayland;xcb";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    XCURSOR_THEME = "catppuccin-macchiato-dark-cursors";
-    TERMINAL_FONT = "FiraCode Nerd Font Mono";
-    GTK_USE_PORTAL = "1";
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.kdePackages.xdg-desktop-portal-kde
-    ];
-    config.common.default = "*";
-  };
-
-  # Xserver
-  services.xserver.enable = true;
-
-  environment.pathsToLink = [ "/share/bash-completion" ];
-  services.dbus.packages = [ pkgs.gcr ];
-
-  # Sddm
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-
-  # Configure xkb
-  services.xserver.xkb = {
-    layout = "us,ru";
-    variant = "";
-    options = "grp:alt_shift_toggle,caps:escape";
-  };
-
-  # Audio
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-    jack.enable = true;
-  };
-
-  # User
-  users.users.bopsifox = {
-    shell = pkgs.zsh;
-    isNormalUser = true;
-    description = "bopsifox";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "video"
-      "input"
-      "docker"
-    ];
-  };
-
-  # Unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # System packages
-  environment.systemPackages = with pkgs; [
-    # Utils
-    docker
-    dracut
-    sqlite
-    limine-full
-    nh
-    nvd
-    nix-output-monitor
-    wireguard-tools
-    pulseaudio
-    (callPackage ./modules/naiveproxy.nix { })
-    # Other
-    cacert
-  ];
-
-  # Niri
-  programs.niri.enable = true;
-  #programs.niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri; # Optional
-
-  # Packages
-  services.flatpak.enable = true;
-  programs.xwayland.enable = true;
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
-  services.devmon.enable = true;
-  services.dbus.enable = true;
-  programs.nix-ld.enable = true;
-  programs.steam.enable = true;
-  hardware.steam-hardware.enable = true;
-  programs.gamemode.enable = true;
-  programs.zsh.enable = true;
-  programs.fish.enable = true;
-  programs.amnezia-vpn.enable = true;
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-  programs.throne = {
-    enable = true;
-    tunMode.enable = true;
-  };
-  programs.kdeconnect.enable = true;
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
-  };
-
-  # Nix helper settings
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 3d --keep 5";
-  };
-
-  # Catppuccin
-  catppuccin = {
-    enable = false;
-    flavor = "macchiato";
-    accent = "lavender";
-    tty.enable = true;
-    limine.enable = true;
-  };
-
   # Console
   console = {
     enable = true;
@@ -298,6 +140,191 @@
         sansSerif = [ "FiraCode Nerd Font Mono" ];
       };
     };
+  };
+
+  # Network
+  networking.networkmanager.enable = true;
+  networking.hostName = "nixos";
+  networking.nameservers = [
+    "8.8.8.8"
+    "8.8.4.4"
+  ];
+
+  networking.firewall = {
+    enable = true;
+    trustedInterfaces = [ "tun0" ];
+    allowedTCPPorts = [
+      1111
+    ];
+    allowedUDPPorts = [
+      1111
+    ];
+  };
+
+  networking.nftables.enable = true;
+  networking.enableIPv6 = false;
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  # Environment
+
+  environment.shellAliases = {
+    steam = "env -u all_proxy steam";
+  };
+
+  environment.sessionVariables = {
+    XCURSOR_SIZE = "24";
+    XDG_CURRENT_DESKTOP = "niri";
+    NIXOS_OZONE_WL = "1";
+    QT_QPA_PLATFORM = "wayland;xcb";
+    XCURSOR_THEME = "catppuccin-macchiato-dark-cursors";
+    TERMINAL_FONT = "FiraCode Nerd Font Mono";
+    GTK_USE_PORTAL = "1";
+  };
+
+  # XDG
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.kdePackages.xdg-desktop-portal-kde
+    ];
+    config.common.default = "*";
+  };
+
+  # Xserver
+  services.xserver.enable = true;
+
+  environment.pathsToLink = [ "/share/bash-completion" ];
+  services.dbus.packages = [ pkgs.gcr_4 ];
+
+  # SDDM
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
+
+  # Configure xkb
+  services.xserver.xkb = {
+    layout = "us,ru";
+    variant = "";
+    options = "grp:alt_shift_toggle,caps:escape";
+  };
+
+  # Audio
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+    jack.enable = true;
+    extraConfig.pipewire."10-mono" = {
+      "context.modules" = [
+        {
+          name = "libpipewire-module-loopback";
+          args = {
+            "node.description" = "Mono Sink";
+            "capture.props" = {
+              "node.name" = "mono_sink";
+              "media.class" = "Audio/Sink";
+              "audio.position" = [
+                "FL"
+                "FR"
+              ];
+            };
+            "playback.props" = {
+              "node.passive" = true;
+              "audio.position" = [ "MONO" ];
+            };
+          };
+        }
+      ];
+    };
+  };
+
+  # User
+  users.users.bopsifox = {
+    shell = pkgs.zsh;
+    isNormalUser = true;
+    description = "bopsifox";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "video"
+      "input"
+      "docker"
+    ];
+  };
+
+  # Catppuccin
+  catppuccin = {
+    enable = false;
+    flavor = "macchiato";
+    accent = "lavender";
+    tty.enable = true;
+    limine.enable = true;
+  };
+
+  # Unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  # System packages
+  environment.systemPackages = with pkgs; [
+    # Utils
+    dracut
+    limine-full
+    (callPackage ./modules/naiveproxy.nix { })
+    (callPackage ./modules/osu.nix { })
+    android-tools
+    proxychains-ng
+    # Other
+    cacert
+  ];
+
+  # Niri
+  programs.niri.enable = true;
+  # programs.niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri; # Optional
+
+  # Packages
+  services.flatpak.enable = true;
+  programs.xwayland.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+  virtualisation.docker.enable = true;
+  services.devmon.enable = true;
+  services.dbus.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      zlib
+      fuse3
+      alsa-lib
+      icu
+      libadwaita
+      gtk4
+      graphene
+      libGLU
+      (pkgs.runCommand "steamrun-lib" { } "mkdir $out; ln -s ${pkgs.steam-run.fhsenv}/usr/lib64 $out/lib")
+    ];
+  };
+  programs.steam.enable = true;
+  hardware.steam-hardware.enable = true;
+  programs.gamemode.enable = true;
+  programs.zsh.enable = true;
+  programs.fish.enable = true;
+  programs.amnezia-vpn.enable = true;
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+  programs.kdeconnect.enable = true;
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
   };
 
   # System version
