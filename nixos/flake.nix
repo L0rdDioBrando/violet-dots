@@ -7,7 +7,10 @@
     awww.url = "git+https://codeberg.org/LGFae/awww";
     catppuccin.url = "github:catppuccin/nix/release-25.11";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    prismlauncher.url = "github:ElyPrismLauncher/Launcher";
+    pineconemc = {
+      url = "github:ElyPrismLauncher/Launcher";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,7 +26,6 @@
       nixpkgs,
       catppuccin,
       home-manager,
-      prismlauncher,
       ...
     }@inputs:
     {
