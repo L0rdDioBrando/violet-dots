@@ -24,14 +24,18 @@
       "video/quicktime" = [ "mpv.desktop" ];
       "video/x-flv" = [ "mpv.desktop" ];
       "video/x-msvideo" = [ "mpv.desktop" ];
-      "audio/mpeg" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/x-flac" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/mp4" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/ogg" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/x-wav" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/aac" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/opus" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/flac" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
+      "audio/mpeg" = [ "mpv.desktop" ];
+      "audio/x-flac" = [ "mpv.desktop" ];
+      "audio/mp4" = [ "mpv.desktop" ];
+      "audio/ogg" = [ "mpv.desktop" ];
+      "audio/x-wav" = [ "mpv.desktop" ];
+      "audio/aac" = [ "mpv.desktop" ];
+      "audio/opus" = [ "mpv.desktop" ];
+      "audio/flac" = [ "mpv.desktop" ];
+
+      # Neovim
+      "text/plain" = [ "neovim.desktop" ];
+      "text/markdown" = [ "neovim.desktop" ];
 
       # Default broswer
       "text/html" = "zen.desktop";
@@ -44,14 +48,14 @@
       "image/jpeg" = [ "imv.desktop" ];
       "application/pdf" = [ "org.pwmt.zathura.desktop" ];
       "video/mp4" = [ "mpv.desktop" ];
-      "audio/mpeg" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/x-flac" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/mp4" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/ogg" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/x-wav" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/aac" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/opus" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
-      "audio/flac" = [ "org.strawberrymusicplayer.strawberry.desktop" ];
+      "audio/mpeg" = [ "mpv.desktop" ];
+      "audio/x-flac" = [ "mpv.desktop" ];
+      "audio/mp4" = [ "mpv.desktop" ];
+      "audio/ogg" = [ "mpv.desktop" ];
+      "audio/x-wav" = [ "mpv.desktop" ];
+      "audio/aac" = [ "mpv.desktop" ];
+      "audio/opus" = [ "mpv.desktop" ];
+      "audio/flac" = [ "mpv.desktop" ];
     };
   };
 }
