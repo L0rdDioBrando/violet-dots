@@ -1,7 +1,7 @@
 [[plugin.deps]]
-use = "yazi-rs/plugins:full-border"
-rev = "be524fb"
-hash = "7b625412411be411153886894d9acaf"
+use = "XYenon/clipboard"
+rev = "b25ec96"
+hash = "9f07d7de37a430833ef33b92c0bcf8cb"
 
 [flavor]
 deps = []
