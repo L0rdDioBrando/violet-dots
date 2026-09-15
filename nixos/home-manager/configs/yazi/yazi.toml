@@ -1,6 +1,6 @@
 [mgr]
 show_hidden = true
-sort_by        = "alphabetical"
+sort_by = "alphabetical"
 sort_sensitive = false
 
 [opener]
