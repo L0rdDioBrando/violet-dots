@@ -20,14 +20,17 @@
     "Kvantum/kvantum.kvconfig".source = ./configs/kvantum/kvantum.kvconfig;
     "Kvantum/catppuccin-macchiato-lavender/".source = ./configs/kvantum/catppuccin-macchiato-lavender;
 
+    # Qt6ct
+    "qt6ct/".source = ./configs/qt6ct;
+
+    # KDE
+    "kdeglobals".source = ./configs/kde/kdeglobals;
+
     # Swaync
     "swaync/".source = ./configs/swaync;
 
     # Waybar
     "waybar/".source = ./configs/waybar;
-
-    # Qt6ct
-    "qt6ct/".source = ./configs/qt6ct;
 
     # Yazi
     "yazi/".source = ./configs/yazi;
