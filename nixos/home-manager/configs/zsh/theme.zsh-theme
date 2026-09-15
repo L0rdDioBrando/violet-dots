@@ -1,13 +1,11 @@
 setopt prompt_subst
 autoload -Uz add-zsh-hook
 
-SEP=""
-
 function build_prompt() {
+  local SEP=""
   local p=""
   local cur_bg="#363a4f"
   p+="%F{$cur_bg}░▒▓%f"
-
   p+="%K{$cur_bg}%F{#b7bdf8}  %f"
 
   local branch=$(git branch --show-current 2>/dev/null)

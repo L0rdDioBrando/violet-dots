@@ -31,6 +31,8 @@ fn() {
   [ -n "$file" ] && nvim "$file"
 }
 
+source <(fzf --zsh)
+
 # Eza
 alias eza='LC_TIME=C eza --icons=auto -l --modified --time-style="+%d %B %H:%M" --no-permissions --group-directories-first --header'
 alias ls='eza'
@@ -39,10 +41,7 @@ alias ls='eza'
 alias cd='z'
 
 # NixOS alias
-alias rebuild='nh os switch' # Analogue nixos-rebuild switch
 alias nos='nh os switch'
-alias ns='nh search' # Search packages
-alias nc="nh clean all --keep 5" # Keep only the 5 most recent system generations
 
 # Bat
 alias cat='bat'
@@ -67,15 +66,17 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Plugins
-#zinit ice wait"0" lucid
-#zinit light aloxaf/fzf-tab
 zinit ice wait"0" lucid
 zinit light zsh-users/zsh-completions
 zinit ice atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 zinit ice wait"0" lucid
 zinit light zdharma-continuum/fast-syntax-highlighting
-zstyle ':fzf-tab:*' fzf-flags ${(z)FZF_DEFAULT_OPTS}
+zinit ice wait"0" lucid
+zinit light Aloxaf/fzf-tab
+zstyle ':fzf-tab:*' fzf-flags --border --color=bg+:#363A4F,bg:#24273A,spinner:#F4DBD6,hl:#ED8796,fg:#CAD3F5,header:#ED8796,info:#B7BDF8,pointer:#B7BDF8,marker:#B7BDF8,fg+:#B7BDF8,prompt:#B7BDF8,hl+:#ED8796,selected-bg:#494D64,border:#B7BDF8,label:#CAD3F5
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
 
 # Theme
 source ~/.theme.zsh-theme
@@ -89,5 +90,5 @@ setopt CORRECT
 # NH
 export NH_FLAKE="/etc/nixos/"
 
-# Set up fzf key bindings and fuzzy completion
-#source <(fzf --zsh)
+# Neovim
+export EDITOR=nvim
