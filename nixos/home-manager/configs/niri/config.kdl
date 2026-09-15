@@ -8,6 +8,7 @@ cursor {
 // Hide hotkey overlay when Niri starts
 hotkey-overlay {
     skip-at-startup
+    hide-not-bound
 }
 // Super+O to open Overview
 overview {
@@ -91,7 +92,6 @@ screenshot-path "~/ from %Y-%m-%d %H-%M-%S.png"
 // Autostart
 spawn-at-startup "waybar"
 spawn-at-startup "swaync"
-spawn-at-startup "hyprpolkitagent"
 spawn-sh-at-startup "awww-daemon"
 spawn-sh-at-startup "wl-paste --watch cliphist store"
 // Animations
@@ -150,7 +150,7 @@ binds {
     Mod+Q hotkey-overlay-title="Open Terminal: kitty" {
         spawn "kitty"
     }
-    Mod+S hotkey-overlay-title="Open Strawberry" {
+    Mod+S hotkey-overlay-title="Open Music player: Strawberry" {
         spawn "strawberry"
     }
     Mod+R hotkey-overlay-title="Open Applications Launcher: Rofi" {
@@ -166,7 +166,10 @@ binds {
         spawn "Telegram"
     }
     Mod+D hotkey-overlay-title="Open Steam" {
-        spawn "steam"
+        spawn-sh "env -u http_proxy -u https_proxy -u ALL_PROXY -u all_proxy steam"
+    }
+    Mod+B hotkey-overlay-title="Open Bluetooth manager" {
+        spawn "kitty" "bluetui"
     }
     Mod+G hotkey-overlay-title="Open Power Menu" {
         spawn "~/.config/niri/scripts/power-menu.sh"
@@ -332,10 +335,6 @@ binds {
     Mod+U hotkey-overlay-title="Switch Wallpaper" {
         spawn-sh "sh ~/.config/niri/scripts/wallpaper.sh"
     }
-    // Lock
-    Mod+Y hotkey-overlay-title="Lock" {
-        spawn-sh "LC_TIME=C hyprlock -c ~/.config/niri/hyprlock.conf"
-    }
     // Clipboard History
     Mod+Shift+H hotkey-overlay-title="Clipboard History" {
         spawn-sh "cliphist list | rofi -dmenu | cliphist decode | wl-copy"
@@ -350,9 +349,6 @@ binds {
     // Screenshots
     Print hotkey-overlay-title="Take a Screenshot" {
         screenshot
-    }
-    Mod+Print hotkey-overlay-title="Pick a Color" {
-        spawn-sh "COLOR=$(hyprpicker -n); [ -n \"$COLOR\" ] && (echo \"$COLOR\" | wl-copy; notify-send \"Color Picked\" \"$COLOR copied to clipboard\")"
     }
     Mod+SHift+Print hotkey-overlay-title="Window Screenshot" {
         screenshot-window
