@@ -29,17 +29,13 @@ in
     github-cli
     imagemagick
     eza
+    sqlite
     file
-    tldr
     fd
     jq
-    viu
-    gvfs
     fastfetch
     ffmpeg-full
     yt-dlp
-    opus-tools
-    ueberzugpp
     dust
     duf
     bc
@@ -48,39 +44,35 @@ in
     cliphist
     ninja
     cmake
-    pkg-config
-    wails
+    nvd
+    nix-output-monitor
+    bluetui
     # Graphics and media
-    pcsx2
     chromium
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.pineconemc.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
-    inputs.prismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.prismlauncher
-    steam
-    hyprlock
     gimp
     nicotine-plus
-    hyprpicker
     imv
-    vlc
     scanmem
     hyprpolkitagent
     telegram-desktop
     zathura
     pkgs.zathuraPkgs.zathura_pdf_mupdf
-    kdePackages.dolphin
     pavucontrol
     qbittorrent
     obsidian
-    osu-lazer-bin
     kitty
     swaynotificationcenter
     rofi
     waybar
     strawberry
     neovim
+    lact
     # Languages
     python3
+    basedpyright
     nodejs
     pnpm
     go
@@ -97,7 +89,6 @@ in
     nixd
     nixfmt
     kdlfmt
-    gnumake
     bash-language-server
     shellcheck
     shfmt
@@ -109,12 +100,16 @@ in
     # XWayland
     xwayland-satellite
     # Qt
-    pkgs.kdePackages.qtstyleplugin-kvantum
-    kdePackages.qtdeclarative
+    kdePackages.qtstyleplugin-kvantum
     kdePackages.qt6ct
-    qt6.qtwayland
-    kdePackages.qtwayland
-    kdePackages.kde-cli-tools
+    (pkgs.catppuccin-kde.override {
+      flavour = [
+        "macchiato"
+      ];
+      accents = [
+        "lavender"
+      ];
+    })
     # GTK
     sassc
     gnome-themes-extra
@@ -127,7 +122,6 @@ in
     frei0r
     ladspaPlugins
     mediainfo
-    glaxnimate
     # Other
     vulkan-tools
     steam-run
@@ -154,6 +148,13 @@ in
       lyricsPlus
       marketplace
     ];
+  };
+
+  # Nix helper settings
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 3d --keep 5";
   };
 
   # Yazi
