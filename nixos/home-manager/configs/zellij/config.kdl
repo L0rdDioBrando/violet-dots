@@ -208,9 +208,6 @@ keybinds {
         }
     }
     scroll {
-        bind "Ctrl s" {
-            SwitchToMode "Normal"
-        }
         bind "e" {
             EditScrollback
             SwitchToMode "Normal"
@@ -243,9 +240,6 @@ keybinds {
         }
     }
     search {
-        bind "Ctrl s" {
-            SwitchToMode "Normal"
-        }
         bind "Ctrl c" {
             ScrollToBottom
             SwitchToMode "Normal"
@@ -313,9 +307,6 @@ keybinds {
     session {
         bind "Ctrl o" {
             SwitchToMode "Normal"
-        }
-        bind "Ctrl s" {
-            SwitchToMode "Scroll"
         }
         bind "d" {
             Detach
@@ -507,11 +498,6 @@ keybinds {
     shared_except "resize" "locked" {
         bind "Ctrl n" {
             SwitchToMode "Resize"
-        }
-    }
-    shared_except "scroll" "locked" {
-        bind "Ctrl s" {
-            SwitchToMode "Scroll"
         }
     }
     shared_except "session" "locked" {
