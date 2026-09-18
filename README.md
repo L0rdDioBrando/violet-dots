@@ -1,5 +1,4 @@
 # <p align="center"> Violet-dots
----
 <p align="center">
   <img src="./assets/screenshot1.png" width="49%">
   <img src="./assets/screenshot2.png" width="49%">
@@ -7,14 +6,13 @@
   <img src="./assets/screenshot4.png" width="49%">
 </p>
 
----
 ## Tech Stack:
 
 **Compositor:** [Niri](https://github.com/YaLTeR/niri),
 
 **Shell:** [Zsh](https://www.zsh.org/),
 
-**File Manager:** [Yazi](https://github.com/sxyazi/yazi) & [Dolphin](https://apps.kde.org/dolphin/),
+**File Manager:** [Yazi](https://github.com/sxyazi/yazi),
 
 **Font:** [FiraCode](https://github.com/tonsky/FiraCode?tab=readme-ov-file),
 
@@ -24,7 +22,7 @@
 
 **Application Launcher:** [Rofi](https://github.com/davatorium/rofi).
 
----
+
 ## Install:
 
 Save your current configs:
@@ -55,8 +53,6 @@ Rebuild system:
 ```bash
 sudo nixos-rebuild switch
 ```
-
----
 
 ## Contact me
 
