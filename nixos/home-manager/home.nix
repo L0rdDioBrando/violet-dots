@@ -86,12 +86,16 @@ in
     lua
     gcc
     cargo
+    rustc
     nixd
     nixfmt
     kdlfmt
     bash-language-server
     shellcheck
     shfmt
+    markdown-oxide
+    markdownlint-cli2
+    prettier
     luarocks
     lua51Packages.jsregexp
     lua51Packages.tree-sitter-cli
