@@ -90,5 +90,5 @@ setopt CORRECT
 # NH
 export NH_FLAKE="/etc/nixos/"
 
-# Neovim
+# Default editor
 export EDITOR=nvim
