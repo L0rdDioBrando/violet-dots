@@ -6,8 +6,8 @@ let
   pname = "osu!";
   version = "2026.804.2";
   src = pkgs.fetchurl {
-    url = "https://github.com/ppy/osu/releases/download/2026.804.2-lazer/osu.AppImage";
-    sha256 = "d0afddcaf230ae507371ec580c20a294d92725d1198dad4e4df028b4fe8cbe36";
+    url = "https://github.com/ppy/osu/releases/download/2026.921.0-lazer/osu.AppImage";
+    sha256 = "dced9463b501009c95dbed891abd2f0acc2efb84ee4336f5b1cc3b7c04a5fc7d";
   };
 
   appimageContents = pkgs.appimageTools.extract {
