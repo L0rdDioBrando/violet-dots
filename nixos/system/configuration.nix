@@ -93,8 +93,6 @@
 
   # Polkit
   security.polkit.enable = true;
-
-  # Polkit agent
   systemd.user.services.hyprpolkitagent = {
     description = "hyprpolkitagent";
     wantedBy = [ "graphical-session.target" ];
@@ -115,28 +113,18 @@
     font = "${pkgs.terminus_font}/share/consolefonts/ter-v16n.psf.gz";
     packages = [ pkgs.terminus_font ];
   };
-
   console.useXkbConfig = true;
 
-  # System font - FiraCode
+  # System font
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
       nerd-fonts.fira-code
-      nerd-fonts.fira-mono
-      terminus_font
     ];
-
     fontconfig = {
-      enable = true;
-      antialias = true;
-      hinting.enable = true;
-      subpixel = {
-        rgba = "rgb";
-        lcdfilter = "default";
-      };
       defaultFonts = {
         monospace = [ "FiraCode Nerd Font Mono" ];
+        serif = [ "FiraCode Nerd Font Mono" ];
         sansSerif = [ "FiraCode Nerd Font Mono" ];
       };
     };
@@ -146,13 +134,12 @@
   networking.networkmanager.enable = true;
   networking.hostName = "nixos";
   networking.nameservers = [
-    "8.8.8.8"
-    "8.8.4.4"
+    "1.1.1.1"
+    "1.0.0.1"
   ];
 
   networking.firewall = {
     enable = true;
-    trustedInterfaces = [ "tun0" ];
     allowedTCPPorts = [
       1111
     ];
@@ -168,11 +155,7 @@
   services.printing.enable = true;
 
   # Environment
-
-  environment.shellAliases = {
-    steam = "env -u all_proxy steam";
-  };
-
+  environment.pathsToLink = [ "/share/bash-completion" ];
   environment.sessionVariables = {
     XCURSOR_SIZE = "24";
     XDG_CURRENT_DESKTOP = "niri";
@@ -186,8 +169,9 @@
   # XDG
   xdg.portal = {
     enable = true;
-    extraPortals = [
-      pkgs.kdePackages.xdg-desktop-portal-kde
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
     ];
     config.common.default = "*";
   };
@@ -195,7 +179,6 @@
   # Xserver
   services.xserver.enable = true;
 
-  environment.pathsToLink = [ "/share/bash-completion" ];
   services.dbus.packages = [ pkgs.gcr_4 ];
 
   # SDDM
@@ -221,31 +204,10 @@
     pulse.enable = true;
     wireplumber.enable = true;
     jack.enable = true;
-    extraConfig.pipewire."10-mono" = {
-      "context.modules" = [
-        {
-          name = "libpipewire-module-loopback";
-          args = {
-            "node.description" = "Mono Sink";
-            "capture.props" = {
-              "node.name" = "mono_sink";
-              "media.class" = "Audio/Sink";
-              "audio.position" = [
-                "FL"
-                "FR"
-              ];
-            };
-            "playback.props" = {
-              "node.passive" = true;
-              "audio.position" = [ "MONO" ];
-            };
-          };
-        }
-      ];
-    };
   };
 
   # User
+  users.defaultUserShell = pkgs.zsh;
   users.users.bopsifox = {
     shell = pkgs.zsh;
     isNormalUser = true;
@@ -266,6 +228,7 @@
     accent = "lavender";
     tty.enable = true;
     limine.enable = true;
+    sddm.enable = true;
   };
 
   # Unfree packages
@@ -273,20 +236,15 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
-    # Utils
-    dracut
     limine-full
     (callPackage ./modules/naiveproxy.nix { })
     (callPackage ./modules/osu.nix { })
-    android-tools
-    proxychains-ng
-    # Other
     cacert
   ];
 
   # Niri
   programs.niri.enable = true;
-  # programs.niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri; # Optional
+  programs.niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
 
   # Packages
   services.flatpak.enable = true;
@@ -317,7 +275,6 @@
   programs.gamemode.enable = true;
   programs.zsh.enable = true;
   programs.fish.enable = true;
-  programs.amnezia-vpn.enable = true;
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
@@ -329,5 +286,5 @@
   };
 
   # System version
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }
