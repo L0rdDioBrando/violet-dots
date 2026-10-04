@@ -49,8 +49,8 @@
   },
   "custom/music": {
     "format": "  {} ",
-    "escape": false,
-    "exec": "playerctl -p spotify,strawberry,mpv,firefox,%any metadata --follow --format '{{artist}} ~ {{title}}' 2>/dev/null",
+    "escape": true,
+    "exec": "playerctl -p strawberry,mpv,firefox,%any metadata --follow --format '{{artist}} ~ {{title}}'",
     "max-length": 50,
     "on-click": "~/.config/waybar/active-player.sh",
     "tooltip": false
@@ -58,27 +58,27 @@
   "custom/prev": {
     "format": "󰙣 ",
     "return-type": "json",
-    "exec": "playerctl -p spotify,strawberry,mpv,firefox,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F 2>/dev/null",
+    "exec": "playerctl -p strawberry,mpv,firefox,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "tooltip": false,
-    "on-click": "playerctl -p spotify,strawberry,mpv,firefox,%any previous"
+    "on-click": "playerctl -p strawberry,mpv,firefox,%any previous"
   },
   "custom/playpause": {
     "format": "{icon}",
     "return-type": "json",
-    "exec": "playerctl -p spotify,strawberry,mpv,firefox,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F 2>/dev/null",
+    "exec": "playerctl -p strawberry,mpv,firefox,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "tooltip": false,
     "format-icons": {
       "Playing": "",
       "Paused": ""
     },
-    "on-click": "playerctl -p spotify,strawberry,mpv,firefox,%any play-pause"
+    "on-click": "playerctl -p strawberry,mpv,firefox,%any play-pause"
   },
   "custom/next": {
     "format": " 󰙡 ",
     "return-type": "json",
-    "exec": "playerctl -p spotify,strawberry,mpv,firefox,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F 2>/dev/null",
+    "exec": "playerctl -p strawberry,mpv,firefox,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "tooltip": false,
-    "on-click": "playerctl -p spotify,strawberry,mpv,firefox,%any next"
+    "on-click": "playerctl -p strawberry,mpv,firefox,%any next"
   },
   "group/group-music": {
     "max-length": 50,
