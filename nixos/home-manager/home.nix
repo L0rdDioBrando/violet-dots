@@ -1,21 +1,16 @@
 { inputs, pkgs, ... }:
-let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in
 {
   imports = [
     ./imports.nix
     ./style.nix
     ./default-apps.nix
     inputs.catppuccin.homeModules.catppuccin
-    inputs.spicetify-nix.homeManagerModules.default
   ];
 
   # Home-manager packages
   home.packages = with pkgs; [
     # Utils
     zellij
-    chafa
     wget
     psmisc
     ripgrep
@@ -24,6 +19,7 @@ in
     curl
     unrar
     playerctl
+    proxychains-ng
     bat
     git
     github-cli
@@ -39,23 +35,23 @@ in
     dust
     duf
     bc
-    lazygit
     wl-clipboard
     cliphist
-    ninja
-    cmake
     nvd
     nix-output-monitor
-    bluetui
-    # Graphics and media
+    steam-run
+    vulkan-tools
+    xwayland-satellite
+    # Apps
     chromium
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.pineconemc.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
     gimp
+    bluetui
+    lazygit
     nicotine-plus
     imv
-    scanmem
     hyprpolkitagent
     telegram-desktop
     zathura
@@ -69,7 +65,6 @@ in
     waybar
     strawberry
     neovim
-    lact
     # Languages
     python3
     basedpyright
@@ -101,8 +96,6 @@ in
     lua51Packages.tree-sitter-cli
     lua-language-server
     vscode-langservers-extracted
-    # XWayland
-    xwayland-satellite
     # Qt
     kdePackages.qtstyleplugin-kvantum
     kdePackages.qt6ct
@@ -115,7 +108,6 @@ in
       ];
     })
     # GTK
-    sassc
     gnome-themes-extra
     # Cursors
     catppuccin-cursors.macchiatoDark
@@ -126,39 +118,14 @@ in
     frei0r
     ladspaPlugins
     mediainfo
-    # Other
-    vulkan-tools
-    steam-run
   ];
-
-  # Spicetify
-  programs.spicetify = {
-    enable = true;
-    wayland = true;
-    theme = spicePkgs.themes.catppuccin;
-    colorScheme = "macchiato";
-    enabledExtensions = with spicePkgs.extensions; [
-      adblock
-      fullAppDisplay
-      shuffle
-      history
-      hidePodcasts
-      beautifulLyrics
-      wikify
-    ];
-    enabledCustomApps = with spicePkgs.apps; [
-      newReleases
-      ncsVisualizer
-      lyricsPlus
-      marketplace
-    ];
-  };
 
   # Nix helper settings
   programs.nh = {
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 3d --keep 5";
+    flake = "/etc/nixos";
   };
 
   # Yazi
@@ -212,5 +179,5 @@ in
   home.homeDirectory = "/home/bopsifox";
   home.shell.enableZshIntegration = true;
 
-  home.stateVersion = "24.11";
+  home.stateVersion = "26.05";
 }
