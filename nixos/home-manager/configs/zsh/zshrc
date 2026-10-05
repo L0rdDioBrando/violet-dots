@@ -6,51 +6,36 @@ export FZF_DEFAULT_OPTS=" \
   --color=selected-bg:#494D64 \
   --color=border:#B7BDF8,label:#CAD3F5 \
   --style=full \
-  --preview '[ -d {} ] && eza --tree --level=2 --color=always {} || bat --style=numbers --color=always --line-range :500 {}'
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort' \
-  --bind 'ctrl-e:execute(nvim {})+abort' \
-  --bind 'ctrl-u:preview-page-up' \
-  --bind 'ctrl-d:preview-page-down' \
+  --preview '[ -d {} ] && eza --icons=auto --tree --level=2 --color=always {} || bat --style=numbers --color=always --line-range :500 {}'
+  --bind 'ctrl-c:execute-silent(realpath {} | wl-copy)' \
+  --bind 'enter:execute($EDITOR {})' \
 "
 
-export FZF_CTRL_R_OPTS=" \
-  --preview 'echo {}' --preview-window down:3:hidden:wrap \
-  --bind 'ctrl-/:toggle-preview' \
-  --color=header:#ED8796 --header 'Press CTRL-/ to toggle full command view' \
-"
+export FZF_CTRL_R_OPTS="$FZF_DEFAULT_OPTS"
 
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude /nix/store/ --exclude /nix/profiles/'
+export FZF_DEFAULT_COMMAND="fd -H -L -E '.git' -E '.npm*' -E '.nix*'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-
-fn() {
-  local file
-  file=$(fd --type f --hidden --exclude .git | fzf --query="$1" --select-1 --exit-0)
-  [ -n "$file" ] && nvim "$file"
-}
+export FZF_ALT_C_COMMAND="fd -t d -H -L -E '.git'"
+export FZF_ALT_C_OPTS="$FZF_DEFAULT_OPTS"
 
 source <(fzf --zsh)
 
 # Eza
-alias eza='LC_TIME=C eza --icons=auto -l --modified --time-style="+%d %B %H:%M" --no-permissions --group-directories-first --header'
-alias ls='eza'
+alias eza="eza --icons=auto -l --modified --time-style='+%d %B %H:%M' --no-permissions --group-directories-first --header"
+alias ls="eza"
 
 # Zoxide
-alias cd='z'
-
-# NixOS alias
-alias nos='nh os switch'
+alias cd="z"
 
 # Bat
-alias cat='bat'
+alias cat="bat"
 
 # Duf 
-alias df='duf'
+alias df="duf"
 
 # Dust
-alias du='dust'
+alias du="dust"
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -74,9 +59,9 @@ zinit ice wait"0" lucid
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit ice wait"0" lucid
 zinit light Aloxaf/fzf-tab
-zstyle ':fzf-tab:*' fzf-flags --border --color=bg+:#363A4F,bg:#24273A,spinner:#F4DBD6,hl:#ED8796,fg:#CAD3F5,header:#ED8796,info:#B7BDF8,pointer:#B7BDF8,marker:#B7BDF8,fg+:#B7BDF8,prompt:#B7BDF8,hl+:#ED8796,selected-bg:#494D64,border:#B7BDF8,label:#CAD3F5
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
+zstyle ":fzf-tab:*" fzf-flags --border --color=bg+:#363A4F,bg:#24273A,spinner:#F4DBD6,hl:#ED8796,fg:#CAD3F5,header:#ED8796,info:#B7BDF8,pointer:#B7BDF8,marker:#B7BDF8,fg+:#B7BDF8,prompt:#B7BDF8,hl+:#ED8796,selected-bg:#494D64,border:#B7BDF8,label:#CAD3F5
+zstyle ":fzf-tab:complete:cd:*" fzf-preview "eza -1 --color=always $realpath"
+zstyle ":fzf-tab:complete:systemctl-*:*" fzf-preview "SYSTEMD_COLORS=1 systemctl status $word"
 
 # Theme
 source ~/.theme.zsh-theme
@@ -86,9 +71,6 @@ fastfetch
 
 # Correction
 setopt CORRECT
-
-# NH
-export NH_FLAKE="/etc/nixos/"
 
 # Default editor
 export EDITOR=nvim
