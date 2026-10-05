@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   # Imports
@@ -164,6 +164,7 @@
     XCURSOR_THEME = "catppuccin-macchiato-dark-cursors";
     TERMINAL_FONT = "FiraCode Nerd Font Mono";
     GTK_USE_PORTAL = "1";
+    NH_OS_FLAKE = "/etc/nixos";
   };
 
   # XDG
@@ -244,7 +245,6 @@
 
   # Niri
   programs.niri.enable = true;
-  programs.niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
 
   # Packages
   services.flatpak.enable = true;

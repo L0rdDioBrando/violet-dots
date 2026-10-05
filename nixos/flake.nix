@@ -2,7 +2,6 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    niri.url = "github:YaLTeR/niri";
     awww.url = "git+https://codeberg.org/LGFae/awww";
     catppuccin.url = "github:catppuccin/nix/release-25.11";
     pineconemc = {
