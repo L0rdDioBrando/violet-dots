@@ -107,14 +107,6 @@
     };
   };
 
-  # Console
-  console = {
-    enable = true;
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-v16n.psf.gz";
-    packages = [ pkgs.terminus_font ];
-  };
-  console.useXkbConfig = true;
-
   # Network
   networking.networkmanager.enable = true;
   networking.hostName = "nixos";
@@ -149,21 +141,54 @@
     config.common.default = "*";
   };
 
+  # Console
+  console = {
+    enable = true;
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-v16n.psf.gz";
+    packages = [ pkgs.terminus_font ];
+  };
+  console.useXkbConfig = true;
+
+  # Font
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      nerd-fonts.fira-code
+    ];
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "FiraCode Nerd Font Mono" ];
+        serif = [ "FiraCode Nerd Font Mono" ];
+        sansSerif = [ "FiraCode Nerd Font Mono" ];
+      };
+    };
+  };
+
   # Xserver
   services.xserver.enable = true;
   services.dbus.packages = [ pkgs.gcr_4 ];
+
+  # XKB settings
+  services.xserver.xkb = {
+    layout = "us,ru";
+    variant = "";
+    options = "grp:alt_shift_toggle,caps:escape";
+  };
+
+  # Catppuccin
+  catppuccin = {
+    enable = false;
+    flavor = "macchiato";
+    accent = "lavender";
+    tty.enable = true;
+    limine.enable = true;
+    sddm.enable = true;
+  };
 
   # SDDM
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-  };
-
-  # Configure xkb
-  services.xserver.xkb = {
-    layout = "us,ru";
-    variant = "";
-    options = "grp:alt_shift_toggle,caps:escape";
   };
 
   # Audio
@@ -193,16 +218,6 @@
     ];
   };
 
-  # Catppuccin
-  catppuccin = {
-    enable = false;
-    flavor = "macchiato";
-    accent = "lavender";
-    tty.enable = true;
-    limine.enable = true;
-    sddm.enable = true;
-  };
-
   # Unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -219,10 +234,17 @@
   services.udisks2.enable = true;
   virtualisation.docker.enable = true;
   services.devmon.enable = true;
-  programs.steam.enable = true;
   services.dbus.enable = true;
   programs.xwayland.enable = true;
   programs.zsh.enable = true;
+  programs.steam.enable = true;
+  hardware.steam-hardware.enable = true;
+  programs.gamemode.enable = true;
+  programs.kdeconnect.enable = true;
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
@@ -238,13 +260,6 @@
       libepoxy
       (pkgs.runCommand "steamrun-lib" { } "mkdir $out; ln -s ${pkgs.steam-run.fhsenv}/usr/lib64 $out/lib")
     ];
-  };
-  hardware.steam-hardware.enable = true;
-  programs.gamemode.enable = true;
-  programs.kdeconnect.enable = true;
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
   };
 
   # System version

@@ -180,21 +180,6 @@
     size = 24;
   };
 
-  # Font
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs; [
-      nerd-fonts.fira-code
-    ];
-    fontconfig = {
-      defaultFonts = {
-        monospace = [ "FiraCode Nerd Font Mono" ];
-        serif = [ "FiraCode Nerd Font Mono" ];
-        sansSerif = [ "FiraCode Nerd Font Mono" ];
-      };
-    };
-  };
-
   # Session variables
   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "niri";
