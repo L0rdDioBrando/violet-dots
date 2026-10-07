@@ -174,25 +174,6 @@
     };
   };
 
-  # Polkit
-  systemd.user.services.polkit-kde-agent-1 = {
-    Unit = {
-      Description = "polkit-kde-agent-1";
-      Wants = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
-    };
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-    };
-    Service = {
-      Type = "simple";
-      ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
-      Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
-    };
-  };
-
   home.username = "bopsifox";
   home.homeDirectory = "/home/bopsifox";
   home.shell.enableZshIntegration = true;
