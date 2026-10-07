@@ -42,12 +42,14 @@
     steam-run
     vulkan-tools
     xwayland-satellite
+    (callPackage ./custom-pkgs/naiveproxy.nix { })
     # Apps
     chromium
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.pineconemc.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
     gimp
+    (callPackage ./custom-pkgs/osu.nix { })
     bluetui
     lazygit
     nicotine-plus

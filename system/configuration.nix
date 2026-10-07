@@ -238,8 +238,6 @@
   # System packages
   environment.systemPackages = with pkgs; [
     limine-full
-    (callPackage ./modules/naiveproxy.nix { })
-    (callPackage ./modules/osu.nix { })
     cacert
   ];
 
