@@ -120,23 +120,17 @@
     ladspaPlugins
     mediainfo
   ];
-
-  # Nix helper settings
   programs.nh = {
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 3d --keep 5";
   };
-
-  # Yazi
   programs.yazi = {
     enable = true;
     package = pkgs.yazi.override {
       _7zz = pkgs._7zz-rar;
     };
   };
-
-  # Mpv
   programs.mpv = {
     enable = true;
     scripts = with pkgs.mpvScripts; [
@@ -145,8 +139,6 @@
       mpris
     ];
   };
-
-  # OBS
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [
@@ -157,21 +149,15 @@
       obs-pipewire-audio-capture
     ];
   };
-
-  # Neovim
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     sideloadInitLua = true;
   };
-
-  # Fzf
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
   };
-
-  # Btop
   programs.btop = {
     enable = true;
     settings = {
@@ -181,14 +167,7 @@
       "catppuccin-macchiato" = builtins.readFile ./configs/btop/catppuccin_macchiato.theme;
     };
   };
-
-  # Zsh
-  programs.zsh.enable = true;
-
-  # Fish
   programs.fish.enable = true;
-
-  # Zoxide
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;

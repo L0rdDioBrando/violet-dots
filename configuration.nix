@@ -3,7 +3,7 @@
 {
   # Imports
   imports = [
-    ../hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   # Experimental
@@ -249,6 +249,7 @@
   programs.steam.enable = true;
   services.dbus.enable = true;
   programs.xwayland.enable = true;
+  programs.zsh.enable = true;
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
