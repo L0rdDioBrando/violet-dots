@@ -120,6 +120,7 @@
     ladspaPlugins
     mediainfo
   ];
+
   programs.nh = {
     enable = true;
     clean.enable = true;
@@ -177,6 +178,21 @@
     gtk.enable = true;
     package = pkgs.catppuccin-cursors.macchiatoDark;
     size = 24;
+  };
+
+  # Font
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      nerd-fonts.fira-code
+    ];
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "FiraCode Nerd Font Mono" ];
+        serif = [ "FiraCode Nerd Font Mono" ];
+        sansSerif = [ "FiraCode Nerd Font Mono" ];
+      };
+    };
   };
 
   # Session variables

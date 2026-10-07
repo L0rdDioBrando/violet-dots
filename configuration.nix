@@ -115,21 +115,6 @@
   };
   console.useXkbConfig = true;
 
-  # System font
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs; [
-      nerd-fonts.fira-code
-    ];
-    fontconfig = {
-      defaultFonts = {
-        monospace = [ "FiraCode Nerd Font Mono" ];
-        serif = [ "FiraCode Nerd Font Mono" ];
-        sansSerif = [ "FiraCode Nerd Font Mono" ];
-      };
-    };
-  };
-
   # Network
   networking.networkmanager.enable = true;
   networking.hostName = "nixos";
