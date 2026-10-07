@@ -1,4 +1,5 @@
 # <p align="center"> Violet-dots
+
 <p align="center">
   <img src="./assets/screenshot1.png" width="49%">
   <img src="./assets/screenshot2.png" width="49%">
@@ -7,7 +8,6 @@
 </p>
 
 ## Tech Stack:
-
 **Compositor:** [Niri](https://github.com/YaLTeR/niri),
 
 **Shell:** [Zsh](https://www.zsh.org/),
@@ -24,7 +24,6 @@
 
 
 ## Install:
-
 Save your current configs:
 
 ```bash
@@ -40,11 +39,13 @@ cd ~/ && git clone https://github.com/L0rdDioBrando/violet-dots.git
 Install my dots:
 
 ```bash
-sudo cp -r ~/violet-dots/nixos/ /etc/
+sudo mkdir /etc/nixos
+sudo cp -r ~/violet-dots/* /etc/nixos/
 ```
 Generate hardware-configuration.nix:
 
 ```bash
+cd /etc/nixos/
 sudo nixos-generate-config
 ```
 
@@ -55,5 +56,4 @@ sudo nixos-rebuild switch
 ```
 
 ## Contact me
-
 [![Telegram](https://img.shields.io/badge/Telegram-8AADF4?style=for-the-badge&logo=telegram&logoColor=CAD3F5)](https://t.me/bopsi_ok)   [![Gmail](https://img.shields.io/badge/Gmail-B7BDF8?style=for-the-badge&logo=gmail&logoColor=CAD3F5)](mailto:kazukiobsidian@gmail.com)
