@@ -7,50 +7,47 @@
   <img src="./assets/screenshot4.png" width="49%">
 </p>
 
+<p align="center"> This is my NixOS configuration with NixOS Flakes & Home Manager. 
+
 ## Tech Stack:
-**Compositor:** [Niri](https://github.com/YaLTeR/niri),
+- Compositor: [Niri](https://github.com/YaLTeR/niri)
 
-**Shell:** [Zsh](https://www.zsh.org/),
+- Shell: [Zsh](https://www.zsh.org/)
 
-**File Manager:** [Yazi](https://github.com/sxyazi/yazi),
+- File Manager: [Yazi](https://github.com/sxyazi/yazi)
 
-**Font:** [FiraCode](https://github.com/tonsky/FiraCode?tab=readme-ov-file),
+- Font: [FiraCode](https://github.com/tonsky/FiraCode?tab=readme-ov-file)
 
-**Terminal:** [Kitty](https://sw.kovidgoyal.net/kitty/),
+- Terminal: [Kitty](https://sw.kovidgoyal.net/kitty/)
 
-**Bar:** [Waybar](https://github.com/Alexays/Waybar),
+- Bar: [Waybar](https://github.com/Alexays/Waybar)
 
-**Application Launcher:** [Rofi](https://github.com/davatorium/rofi).
-
+- Application Launcher: [Rofi](https://github.com/davatorium/rofi)
 
 ## Install:
 Save your current configs:
-
 ```bash
 sudo mv /etc/nixos/ ~/nixos.back
 ```
 
 Clone this repository:
-
 ```bash
-cd ~/ && git clone https://github.com/L0rdDioBrando/violet-dots.git
+git clone https://github.com/L0rdDioBrando/violet-dots.git
 ```
 
 Install my dots:
-
 ```bash
 sudo mkdir /etc/nixos
 sudo cp -r ~/violet-dots/* /etc/nixos/
 ```
-Generate hardware-configuration.nix:
 
+Generate hardware-configuration.nix:
 ```bash
 cd /etc/nixos/
 sudo nixos-generate-config
 ```
 
 Rebuild system:
-
 ```bash
 sudo nixos-rebuild switch
 ```
