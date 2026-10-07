@@ -95,6 +95,7 @@ spawn-at-startup "waybar"
 spawn-at-startup "swaync"
 spawn-sh-at-startup "awww-daemon"
 spawn-sh-at-startup "wl-paste --watch cliphist store"
+spawn-at-startup "systemctl" "--user" "import-environment" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "QT_QPA_PLATFORM"
 // Animations
 animations {
     window-open {

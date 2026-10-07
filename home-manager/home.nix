@@ -52,7 +52,7 @@
     lazygit
     nicotine-plus
     imv
-    kdePackages.polkit-kde-agent-1
+    polkit_gnome
     telegram-desktop
     zathura
     pkgs.zathuraPkgs.zathura_pdf_mupdf
