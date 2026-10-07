@@ -66,6 +66,9 @@ zstyle ":fzf-tab:complete:systemctl-*:*" fzf-preview "SYSTEMD_COLORS=1 systemctl
 # Theme
 source ~/.theme.zsh-theme
 
+# Zoxide
+eval "$(zoxide init zsh)"
+
 # Fastfetch
 fastfetch
 

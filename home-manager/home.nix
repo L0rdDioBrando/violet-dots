@@ -167,11 +167,7 @@
       "catppuccin-macchiato" = builtins.readFile ./configs/btop/catppuccin_macchiato.theme;
     };
   };
-  programs.fish.enable = true;
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
+  programs.zoxide.enable = true;
 
   # Cursor settings
   home.pointerCursor = {
@@ -181,6 +177,17 @@
     gtk.enable = true;
     package = pkgs.catppuccin-cursors.macchiatoDark;
     size = 24;
+  };
+
+  # Session variables
+  home.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "niri";
+    NIXOS_OZONE_WL = "1";
+    QT_QPA_PLATFORM = "wayland;xcb";
+    XCURSOR_THEME = "catppuccin-macchiato-dark-cursors";
+    TERMINAL_FONT = "FiraCode Nerd Font Mono";
+    GTK_USE_PORTAL = "1";
+    NH_OS_FLAKE = "/etc/nixos";
   };
 
   home.username = "bopsifox";

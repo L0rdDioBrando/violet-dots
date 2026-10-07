@@ -174,18 +174,6 @@
     wayland.enable = true;
   };
 
-  # Environment
-  environment.pathsToLink = [ "/share/bash-completion" ];
-  environment.sessionVariables = {
-    XDG_CURRENT_DESKTOP = "niri";
-    NIXOS_OZONE_WL = "1";
-    QT_QPA_PLATFORM = "wayland;xcb";
-    XCURSOR_THEME = "catppuccin-macchiato-dark-cursors";
-    TERMINAL_FONT = "FiraCode Nerd Font Mono";
-    GTK_USE_PORTAL = "1";
-    NH_OS_FLAKE = "/etc/nixos";
-  };
-
   # Configure xkb
   services.xserver.xkb = {
     layout = "us,ru";
