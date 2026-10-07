@@ -154,19 +154,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Environment
-  environment.pathsToLink = [ "/share/bash-completion" ];
-  environment.sessionVariables = {
-    XCURSOR_SIZE = "24";
-    XDG_CURRENT_DESKTOP = "niri";
-    NIXOS_OZONE_WL = "1";
-    QT_QPA_PLATFORM = "wayland;xcb";
-    XCURSOR_THEME = "catppuccin-macchiato-dark-cursors";
-    TERMINAL_FONT = "FiraCode Nerd Font Mono";
-    GTK_USE_PORTAL = "1";
-    NH_OS_FLAKE = "/etc/nixos";
-  };
-
   # XDG
   xdg.portal = {
     enable = true;
@@ -179,13 +166,24 @@
 
   # Xserver
   services.xserver.enable = true;
-
   services.dbus.packages = [ pkgs.gcr_4 ];
 
   # SDDM
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
+  };
+
+  # Environment
+  environment.pathsToLink = [ "/share/bash-completion" ];
+  environment.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "niri";
+    NIXOS_OZONE_WL = "1";
+    QT_QPA_PLATFORM = "wayland;xcb";
+    XCURSOR_THEME = "catppuccin-macchiato-dark-cursors";
+    TERMINAL_FONT = "FiraCode Nerd Font Mono";
+    GTK_USE_PORTAL = "1";
+    NH_OS_FLAKE = "/etc/nixos";
   };
 
   # Configure xkb
@@ -241,17 +239,16 @@
     cacert
   ];
 
-  # Niri
-  programs.niri.enable = true;
-
   # Packages
+  programs.niri.enable = true;
   services.flatpak.enable = true;
-  programs.xwayland.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
   virtualisation.docker.enable = true;
   services.devmon.enable = true;
+  programs.steam.enable = true;
   services.dbus.enable = true;
+  programs.xwayland.enable = true;
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
@@ -268,15 +265,8 @@
       (pkgs.runCommand "steamrun-lib" { } "mkdir $out; ln -s ${pkgs.steam-run.fhsenv}/usr/lib64 $out/lib")
     ];
   };
-  programs.steam.enable = true;
   hardware.steam-hardware.enable = true;
   programs.gamemode.enable = true;
-  programs.zsh.enable = true;
-  programs.fish.enable = true;
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
   programs.kdeconnect.enable = true;
   programs.appimage = {
     enable = true;

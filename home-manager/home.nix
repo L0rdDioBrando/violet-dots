@@ -66,7 +66,6 @@
     rofi
     waybar
     strawberry
-    neovim
     # Languages
     python3
     basedpyright
@@ -159,6 +158,13 @@
     ];
   };
 
+  # Neovim
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    sideloadInitLua = true;
+  };
+
   # Fzf
   programs.fzf = {
     enable = true;
@@ -174,6 +180,28 @@
     themes = {
       "catppuccin-macchiato" = builtins.readFile ./configs/btop/catppuccin_macchiato.theme;
     };
+  };
+
+  # Zsh
+  programs.zsh.enable = true;
+
+  # Fish
+  programs.fish.enable = true;
+
+  # Zoxide
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  # Cursor settings
+  home.pointerCursor = {
+    enable = true;
+    name = "catppuccin-macchiato-dark-cursors";
+    x11.enable = true;
+    gtk.enable = true;
+    package = pkgs.catppuccin-cursors.macchiatoDark;
+    size = 24;
   };
 
   home.username = "bopsifox";
