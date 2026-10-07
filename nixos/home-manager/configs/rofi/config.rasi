@@ -4,9 +4,12 @@ configuration {
 	modes: "window,drun,run,ssh,filebrowser";
 	font: "FiraCode Nerd Font 14";
 	terminal: "kitty";
-  separator-style: "none";
   show-icons: true;
   icon-theme: "Papirus";
+  normalize-match: true;
+}
+listview {
+  scrollbar: false;
 }
 window {
   border-radius: 10px;

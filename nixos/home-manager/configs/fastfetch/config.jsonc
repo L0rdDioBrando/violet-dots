@@ -1,8 +1,9 @@
 {
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
     "source": "~/.config/fastfetch/ascii.txt",
     "padding": {
-      "top": 2,
+      "top": 3,
       "left": 0,
       "right": 2
     },
@@ -13,71 +14,70 @@
   "display": {
     "separator": ": ",
     "key": {
-      "width": 14,
+      "width": 15,
       "type": "string"
     }
   },
   "modules": [
     {
       "type": "custom",
-      "format": "{#blue}┌ OS ────────────────────────────{#}"
+      "format": "{##8aadf4}┌ OS ────────────────────────────{#}"
     },
     {
       "type": "os",
       "key": "├─ os",
-      "keyColor": "blue",
+      "keyColor": "#8aadf4",
       "format": "{name} {version}"
     },
     {
       "type": "kernel",
       "key": "├─ kernel",
-      "keyColor": "blue"
+      "keyColor": "#8aadf4"
     },
     {
       "type": "shell",
       "key": "└─ shell",
-      "keyColor": "blue"
+      "keyColor": "#8aadf4"
     },
     "break",
     {
       "type": "custom",
-      "format": "{#cyan}┌ HARDWARE ──────────────────────{#}",
-      "keyColor": "cyan"
+      "format": "{##8bd5ca}┌ HARDWARE ──────────────────────{#}"
     },
     {
       "type": "display",
       "key": "├─ display",
-      "keyColor": "cyan"
+      "keyColor": "#8bd5ca"
     },
     {
       "type": "cpu",
       "key": "├─ cpu",
-      "keyColor": "cyan"
+      "keyColor": "#8bd5ca"
     },
     {
       "type": "gpu",
       "key": "├─ gpu",
-      "keyColor": "cyan"
+      "keyColor": "#8bd5ca"
     },
     {
       "type": "disk",
       "key": "├─ disk",
-      "keyColor": "cyan"
+      "keyColor": "#8bd5ca"
     },
     {
       "type": "memory",
-      "key": "└─ memory",
-      "keyColor": "cyan"
+      "key": "├─ memory",
+      "keyColor": "#8bd5ca"
+    },
+    {
+      "type": "bluetooth",
+      "key": "└─ bluetooth",
+      "keyColor": "#8bd5ca"
     },
     "break",
     {
       "type": "custom",
       "format": "{##b7bdf8}┌ APPEARANCE ────────────────────{#}"
-    },
-    {
-      "type": "de",
-      "key": "├─ de",
-      "keyColor": "#b7bdf8"
     },
     {
       "type": "wm",
@@ -87,22 +87,19 @@
     {
       "type": "theme",
       "key": "├─ theme",
-      "format": "catppuccin-macchiato-lavender [Qt]",
-      "keyColor": "#b7bdf8"
-    },
-    {
-      "type": "cursor",
-      "key": "├─ cursor",
+      "format": "{theme1}",
       "keyColor": "#b7bdf8"
     },
     {
       "type": "icons",
       "key": "├─ icons",
+      "format": "{icons1}",
       "keyColor": "#b7bdf8"
     },
     {
       "type": "font",
       "key": "├─ font",
+      "format": "{font1}",
       "keyColor": "#b7bdf8"
     },
     {
@@ -113,11 +110,15 @@
     {
       "type": "media",
       "key": "└─ music",
+      "format": "{artist} - {title} {progress}",
       "keyColor": "#b7bdf8"
     },
     {
       "type": "colors",
       "symbol": "circle"
     }
-  ]
+  ],
+  "general": {
+    "playerName": "strawberry"
+  }
 }

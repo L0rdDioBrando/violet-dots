@@ -8,7 +8,7 @@ export FZF_DEFAULT_OPTS=" \
   --style=full \
   --preview '[ -d {} ] && eza --icons=auto --tree --level=2 --color=always {} || bat --style=numbers --color=always --line-range :500 {}'
   --bind 'ctrl-c:execute-silent(realpath {} | wl-copy)' \
-  --bind 'enter:execute($EDITOR {})' \
+  --bind 'ctrl-e:execute(nvim {})' \
 "
 
 export FZF_CTRL_R_OPTS="$FZF_DEFAULT_OPTS"

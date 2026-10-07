@@ -52,7 +52,7 @@
     lazygit
     nicotine-plus
     imv
-    hyprpolkitagent
+    kdePackages.polkit-kde-agent-1
     telegram-desktop
     zathura
     pkgs.zathuraPkgs.zathura_pdf_mupdf
@@ -171,6 +171,25 @@
     };
     themes = {
       "catppuccin-macchiato" = builtins.readFile ./configs/btop/catppuccin_macchiato.theme;
+    };
+  };
+
+  # Polkit
+  systemd.user.services.polkit-kde-agent-1 = {
+    Unit = {
+      Description = "polkit-kde-agent-1";
+      Wants = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
     };
   };
 
