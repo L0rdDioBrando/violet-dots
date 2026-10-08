@@ -4,7 +4,6 @@
     ./imports.nix
     ./style.nix
     ./default-apps.nix
-    inputs.catppuccin.homeModules.catppuccin
   ];
 
   # Home-manager packages
@@ -189,6 +188,18 @@
     TERMINAL_FONT = "FiraCode Nerd Font Mono";
     GTK_USE_PORTAL = "1";
     NH_OS_FLAKE = "/etc/nixos";
+    NH_HOME_FLAKE = "/etc/nixos";
+  };
+
+  # Fonts settings
+  fonts = {
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "FiraCode Nerd Font Mono" ];
+        serif = [ "FiraCode Nerd Font Mono" ];
+        sansSerif = [ "FiraCode Nerd Font Mono" ];
+      };
+    };
   };
 
   home.username = "bopsifox";
