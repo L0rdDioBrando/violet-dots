@@ -58,7 +58,6 @@
     enable = true;
     enable32Bit = true;
   };
-
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   # Bluetooth
@@ -149,24 +148,16 @@
   };
   console.useXkbConfig = true;
 
-  # Font
+  # Fonts settings
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
       nerd-fonts.fira-code
     ];
-    fontconfig = {
-      defaultFonts = {
-        monospace = [ "FiraCode Nerd Font Mono" ];
-        serif = [ "FiraCode Nerd Font Mono" ];
-        sansSerif = [ "FiraCode Nerd Font Mono" ];
-      };
-    };
   };
 
   # Xserver
   services.xserver.enable = true;
-  services.dbus.packages = [ pkgs.gcr_4 ];
 
   # XKB settings
   services.xserver.xkb = {
@@ -232,9 +223,12 @@
   services.flatpak.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
-  virtualisation.docker.enable = true;
   services.devmon.enable = true;
-  services.dbus.enable = true;
+  virtualisation.docker.enable = true;
+  services.dbus = {
+    enable = true;
+    packages = [ pkgs.gcr_4 ];
+  };
   programs.xwayland.enable = true;
   programs.zsh.enable = true;
   programs.steam.enable = true;
