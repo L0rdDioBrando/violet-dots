@@ -6,13 +6,13 @@
   nspr,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "naiveproxy";
-  version = "150.0.7871.63-1";
+  version = "154.0.8037.49-4";
 
   src = fetchurl {
-    url = "https://github.com/klzgrad/naiveproxy/releases/download/v150.0.7871.63-1/naiveproxy-v150.0.7871.63-1-linux-x64.tar.xz";
-    sha256 = "0c4f506ce66a7881892fd6932b542c53fc06ac2351987756096c61e753c687bf";
+    url = "https://github.com/klzgrad/naiveproxy/releases/download/v154.0.8037.49-4/naiveproxy-v154.0.8037.49-4-linux-x64.tar.xz";
+    sha256 = "9d765620b90f7c60eb40c7c68b2f82537757cc52a8693dee7a00f8ba8b13dfd0";
   };
 
   nativeBuildInputs = [ autoPatchelfHook ];
