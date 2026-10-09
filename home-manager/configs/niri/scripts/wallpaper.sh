@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 
 DIR="$HOME/.config/niri/wallpapers"
@@ -10,7 +9,7 @@ for file in "$DIR"/*.{jpg,png}; do
   options+="${filename}\0icon\x1f${file}\n"
 done
 
-chosen=$(echo -e "$options" | rofi -dmenu -theme-str "
+chosen=$(echo -en "$options" | rofi -dmenu -theme-str "
   listview { 
     lines: 6; 
   }
