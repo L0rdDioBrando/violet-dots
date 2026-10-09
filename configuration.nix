@@ -166,6 +166,11 @@
     options = "grp:alt_shift_toggle,caps:escape";
   };
 
+  # Session variables
+  environment.sessionVariables = {
+    NH_OS_FLAKE = "/etc/nixos";
+  };
+
   # Catppuccin
   catppuccin = {
     enable = false;
@@ -231,8 +236,8 @@
   };
   programs.xwayland.enable = true;
   programs.zsh.enable = true;
-  programs.steam.enable = true;
   hardware.steam-hardware.enable = true;
+  programs.steam.enable = true;
   programs.gamemode.enable = true;
   programs.kdeconnect.enable = true;
   programs.appimage = {

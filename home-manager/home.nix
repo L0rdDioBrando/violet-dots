@@ -187,8 +187,6 @@
     XCURSOR_THEME = "catppuccin-macchiato-dark-cursors";
     TERMINAL_FONT = "FiraCode Nerd Font Mono";
     GTK_USE_PORTAL = "1";
-    NH_OS_FLAKE = "/etc/nixos";
-    NH_HOME_FLAKE = "/etc/nixos";
   };
 
   # Fonts settings
