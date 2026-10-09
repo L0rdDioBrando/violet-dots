@@ -89,7 +89,7 @@ layout {
     }
 }
 // Screenshot path
-screenshot-path "~/ from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/ from %Y-%m-%d %H-%M-%S.png"
 // Autostart
 spawn-at-startup "waybar"
 spawn-at-startup "swaync"
