@@ -48,8 +48,8 @@
     inputs.pineconemc.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
     gimp
-    (callPackage ./custom-pkgs/osu.nix { })
     bluetui
+    osu-lazer-bin
     lazygit
     nicotine-plus
     imv
