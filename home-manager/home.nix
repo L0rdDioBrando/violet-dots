@@ -168,6 +168,24 @@
     };
   };
   programs.zoxide.enable = true;
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+
+    matchBlocks = {
+      "*" = {
+        serverAliveInterval = 60;
+        extraOptions = {
+          "AddKeysToAgent" = "yes";
+        };
+      };
+      "fedora" = {
+        hostname = "192.168.3.91";
+        user = "scoleopa";
+        port = 22;
+      };
+    };
+  };
 
   # Cursor settings
   home.pointerCursor = {
