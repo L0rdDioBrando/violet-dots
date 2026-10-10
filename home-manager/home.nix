@@ -71,11 +71,7 @@
     nodejs
     pnpm
     go
-    (gotools.overrideAttrs (old: {
-      postInstall = (old.postInstall or "") + ''
-        rm $out/bin/modernize
-      '';
-    }))
+    gotools
     delve
     gopls
     lua
@@ -154,10 +150,7 @@
     defaultEditor = true;
     sideloadInitLua = true;
   };
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
+  programs.fzf.enable = true;
   programs.btop = {
     enable = true;
     settings = {
@@ -171,18 +164,16 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-
-    matchBlocks = {
+    settings = {
       "*" = {
         serverAliveInterval = 60;
-        extraOptions = {
-          "AddKeysToAgent" = "yes";
-        };
+        AddKeysToAgent = "yes";
       };
       "fedora" = {
         hostname = "192.168.3.91";
         user = "scoleopa";
         port = 22;
+        identityFile = "~/.ssh/id_ed25519";
       };
     };
   };
