@@ -18,7 +18,6 @@
     curl
     unrar
     playerctl
-    proxychains-ng
     bat
     git
     github-cli

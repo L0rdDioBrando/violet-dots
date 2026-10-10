@@ -244,6 +244,18 @@
     enable = true;
     binfmt = true;
   };
+  programs.proxychains = {
+    enable = true;
+    proxyDNS = true;
+    package = pkgs.proxychains-ng;
+    proxies = {
+      myproxy = {
+        type = "socks5";
+        host = "127.0.0.1";
+        port = 8080;
+      };
+    };
+  };
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
