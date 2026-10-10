@@ -42,6 +42,7 @@
     vulkan-tools
     xwayland-satellite
     (callPackage ./custom-pkgs/naiveproxy.nix { })
+    (callPackage ./custom-pkgs/sing-box.nix { })
     # Apps
     chromium
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -194,8 +195,9 @@
     NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORM = "wayland;xcb";
     XCURSOR_THEME = "catppuccin-macchiato-dark-cursors";
-    TERMINAL_FONT = "FiraCode Nerd Font Mono";
     GTK_USE_PORTAL = "1";
+    TERMINAL_FONT = "FiraCode Nerd Font Mono";
+    TERMINAL = "kitty";
   };
 
   # Fonts settings
