@@ -4,12 +4,14 @@
   pkgs,
   ...
 }:
-
+let
+  version = "1.15.0-alpha.11";
+in
 stdenv.mkDerivation {
   pname = "sing-box";
-  version = "1.15.0-alpha.11";
+  version = "${version}";
   src = fetchurl {
-    url = "https://github.com/SagerNet/sing-box/releases/download/v1.15.0-alpha.11/sing-box-1.15.0-alpha.11-linux-amd64.tar.gz";
+    url = "https://github.com/SagerNet/sing-box/releases/download/${version}/sing-box-${version}-linux-amd64.tar.gz";
     sha256 = "00ecddab834733212260164772b6349af24827a8d103b3152ca55607c37c9fd8";
   };
   nativeBuildInputs = [ pkgs.autoPatchelfHook ];
