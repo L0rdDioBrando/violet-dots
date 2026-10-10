@@ -41,6 +41,9 @@
       "text/html" = "zen.desktop";
       "x-scheme-handler/http" = "zen.desktop";
       "x-scheme-handler/https" = "zen.desktop";
+
+      # Yazi
+      "inode/directory" = [ "yazi.desktop" ];
     };
 
     associations.added = {
