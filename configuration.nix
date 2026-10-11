@@ -230,7 +230,7 @@
   programs.zsh.enable = true;
   hardware.steam-hardware.enable = true;
   programs.steam = {
-    # I use "gamescope -W 1920 -H 1080 -f --force-grab-cursor -b -- %command%" steam launch arguments
+    # I use "gamescope -W 1920 -H 1080 -f -b --force-grab-cursor --backend wayland -- %command%" steam launch arguments
     enable = true;
     gamescopeSession.enable = true;
     extraCompatPackages = with pkgs; [
