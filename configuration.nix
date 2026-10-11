@@ -230,6 +230,7 @@
   programs.zsh.enable = true;
   hardware.steam-hardware.enable = true;
   programs.steam = {
+    # I use "gamescope -W 1920 -H 1080 -f --force-grab-cursor -b -- %command%" steam launch arguments
     enable = true;
     gamescopeSession.enable = true;
     extraCompatPackages = with pkgs; [
@@ -237,10 +238,7 @@
     ];
   };
   programs.gamemode.enable = true;
-  programs.gamescope = {
-    enable = true;
-    capSysNice = true;
-  };
+  programs.gamescope.enable = true;
   programs.kdeconnect.enable = true;
   programs.appimage = {
     enable = true;
