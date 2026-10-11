@@ -229,8 +229,18 @@
   programs.xwayland.enable = true;
   programs.zsh.enable = true;
   hardware.steam-hardware.enable = true;
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+  };
   programs.gamemode.enable = true;
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
   programs.kdeconnect.enable = true;
   programs.appimage = {
     enable = true;
