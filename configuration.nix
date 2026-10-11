@@ -148,14 +148,6 @@
   };
   console.useXkbConfig = true;
 
-  # Fonts settings
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs; [
-      nerd-fonts.fira-code
-    ];
-  };
-
   # Xserver
   services.xserver.enable = true;
 
@@ -255,6 +247,12 @@
         port = 8080;
       };
     };
+  };
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      nerd-fonts.fira-code
+    ];
   };
   programs.nix-ld = {
     enable = true;
