@@ -250,6 +250,7 @@
     package = pkgs.proxychains-ng;
     proxies = {
       myproxy = {
+        enable = true;
         type = "socks5";
         host = "127.0.0.1";
         port = 8080;
