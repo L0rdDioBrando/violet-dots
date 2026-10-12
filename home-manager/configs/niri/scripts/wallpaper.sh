@@ -10,8 +10,8 @@ for file in "$DIR"/*.{jpg,png}; do
 done
 
 chosen=$(echo -en "$options" | rofi -dmenu -theme-str "
-  listview { 
-    lines: 6; 
+  listview {
+    lines: 6;
   }
   element-icon {
     size: 5ch;
@@ -20,4 +20,4 @@ chosen=$(echo -en "$options" | rofi -dmenu -theme-str "
 
 awww img "$DIR/$chosen" --transition-type left --transition-step 3 --transition-fps 180
 
-notify-send "Wallpaper update" "$chosen"
+notify-send "Wallpaper update:" "$chosen" -i "$DIR/$chosen"
