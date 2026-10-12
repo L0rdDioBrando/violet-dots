@@ -14,7 +14,6 @@ stdenv.mkDerivation {
     url = "https://github.com/SagerNet/sing-box/releases/download/v${version}/sing-box-${version}-linux-amd64.tar.gz";
     sha256 = "b107528ec7d989333d986573c097d840b9ef1afa9bb177f8eb03e0767f370514";
   };
-  nativeBuildInputs = [ pkgs.autoPatchelfHook ];
   buildInputs = [ pkgs.stdenv.cc.cc.lib ];
   installPhase = ''
     mkdir -p $out/bin
@@ -22,4 +21,5 @@ stdenv.mkDerivation {
     cp libcronet.so $out/bin/libcronet.so
     chmod +x $out/bin/sing-box
   '';
+  doCheck = false;
 }

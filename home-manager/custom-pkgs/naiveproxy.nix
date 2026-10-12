@@ -18,4 +18,5 @@ stdenv.mkDerivation {
     cp naive $out/bin/naive
     chmod +x $out/bin/naive
   '';
+  doCheck = false;
 }
