@@ -49,7 +49,8 @@
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
     gimp
     bluetui
-    osu-lazer-bin
+    #osu-lazer-bin
+    (callPackage ./custom-pkgs/osu.nix { })
     lazygit
     nicotine-plus
     imv
