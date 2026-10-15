@@ -39,6 +39,7 @@
     nix-output-monitor
     steam-run
     vulkan-tools
+    protontricks
     xwayland-satellite
     (callPackage ./custom-pkgs/naiveproxy.nix { })
     (callPackage ./custom-pkgs/sing-box.nix { })
