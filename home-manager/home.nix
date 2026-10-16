@@ -117,11 +117,7 @@
     mediainfo
   ];
 
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 3d --keep 5";
-  };
+  programs.nh.enable = true;
   programs.yazi = {
     enable = true;
     package = pkgs.yazi.override {
