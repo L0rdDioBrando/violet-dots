@@ -20,9 +20,7 @@
     limine = {
       enable = true;
       efiSupport = true;
-      extraConfig = ''
-        timeout: 5
-      '';
+      extraConfig = "timeout: 5";
       style = {
         wallpapers = [ ./home-manager/configs/niri/wallpapers/wallhaven-45ydw7_1920x1080.png ];
         graphicalTerminal.background = "8024273a";
