@@ -20,10 +20,20 @@
     limine = {
       enable = true;
       efiSupport = true;
-      extraConfig = "timeout: 5";
+      extraConfig = "
+        timeout: 5
+        term_palette: 24273a;ed8796;a6da95;eed49f;8aadf4;f5bde6;8bd5ca;cad3f5
+        term_palette_bright: 5b6078;ed8796;a6da95;eed49f;8aadf4;f5bde6;8bd5ca;cad3f5
+        term_background: 8024273a
+        term_foreground: cad3f5
+        term_background_bright: 5b6078
+        term_foreground_bright: cad3f5
+        interface_branding_color: b7bdf8
+        interface_help_color: b7bdf8
+        interface_help_color_bright: b7bdf8
+      ";
       style = {
         wallpapers = [ ./home-manager/configs/niri/wallpapers/wallhaven-45ydw7_1920x1080.png ];
-        graphicalTerminal.background = "8024273a";
       };
       maxGenerations = 10;
     };
@@ -38,7 +48,6 @@
     "nfnetlink_queue"
   ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
   boot.kernelParams = [
     "quiet"
     "splash"
@@ -175,7 +184,6 @@
     flavor = "macchiato";
     accent = "lavender";
     tty.enable = true;
-    limine.enable = true;
     sddm.enable = true;
   };
 
