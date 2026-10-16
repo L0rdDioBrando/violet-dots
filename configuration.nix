@@ -6,20 +6,28 @@
     ./hardware-configuration.nix
   ];
 
-  # Experimental
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  # Nix Garbage Collector settings
-  nix.settings.auto-optimise-store = true;
+  # Nix settings
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ]; # Enable flakes
+    auto-optimise-store = true; # Nix Garbage Collector settings
+  };
 
   # Bootloader
   boot.loader = {
     limine = {
       enable = true;
       efiSupport = true;
+      extraConfig = ''
+        timeout: 5
+      '';
+      style = {
+        wallpapers = [ ./home-manager/configs/niri/wallpapers/wallhaven-45ydw7_1920x1080.png ];
+        graphicalTerminal.background = "8024273a";
+      };
+      maxGenerations = 10;
     };
     efi = {
       canTouchEfiVariables = true;
@@ -145,8 +153,8 @@
     enable = true;
     font = "${pkgs.terminus_font}/share/consolefonts/ter-v16n.psf.gz";
     packages = [ pkgs.terminus_font ];
+    useXkbConfig = true;
   };
-  console.useXkbConfig = true;
 
   # Xserver
   services.xserver.enable = true;
