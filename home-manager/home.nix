@@ -60,7 +60,7 @@
     polkit_gnome
     telegram-desktop
     zathura
-    pkgs.zathuraPkgs.zathura_pdf_mupdf
+    zathuraPkgs.zathura_pdf_mupdf
     pavucontrol
     qbittorrent
     obsidian
@@ -274,45 +274,52 @@
   };
 
   # Fonts settings
-  fonts = {
-    fontconfig = {
-      defaultFonts = {
-        monospace = [ "FiraCode Nerd Font Mono" ];
-        serif = [ "FiraCode Nerd Font Mono" ];
-        sansSerif = [ "FiraCode Nerd Font Mono" ];
-      };
-    };
+  fonts.fontconfig.defaultFonts = {
+    monospace = [ "FiraCode Nerd Font Mono" ];
+    serif = [ "FiraCode Nerd Font Mono" ];
+    sansSerif = [ "FiraCode Nerd Font Mono" ];
   };
 
   # Default Applications
-  xdg.mimeApps = {
+  xdg = {
     enable = true;
-    defaultApplications = {
-      # Zathura
-      "application/pdf" = [ "org.pwmt.zathura.desktop" ];
-      "application/x-pdf" = [ "org.pwmt.zathura.desktop" ];
-
-      # Imv
-      "image/*" = [ "imv.desktop" ];
-
-      # Mpv
-      "video/*" = [ "mpv.desktop" ];
-      "audio/*" = [ "mpv.desktop" ];
-
-      # Neovim
-      "text/*" = [ "neovim.desktop" ];
-
-      # Zen broswer
-      "text/html" = "zen.desktop";
-      "x-scheme-handler/http" = "zen.desktop";
-      "x-scheme-handler/https" = "zen.desktop";
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+      ];
+      config.common.default = [ "gtk" ];
     };
+    userDirs = {
+      desktop = null;
+    };
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        # Zathura
+        "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+        "application/x-pdf" = [ "org.pwmt.zathura.desktop" ];
 
-    associations.added = {
-      "image/*" = [ "imv.desktop" ];
-      "application/*" = [ "org.pwmt.zathura.desktop" ];
-      "video/*" = [ "mpv.desktop" ];
-      "audio/*" = [ "mpv.desktop" ];
+        # Imv
+        "image/*" = [ "imv.desktop" ];
+
+        # Mpv
+        "video/*" = [ "mpv.desktop" ];
+        "audio/*" = [ "mpv.desktop" ];
+
+        # Neovim
+        "text/*" = [ "neovim.desktop" ];
+
+        # Zen broswer
+        "text/html" = "zen.desktop";
+        "x-scheme-handler/http" = "zen.desktop";
+        "x-scheme-handler/https" = "zen.desktop";
+      };
+      associations.added = {
+        "image/*" = [ "imv.desktop" ];
+        "video/*" = [ "mpv.desktop" ];
+        "audio/*" = [ "mpv.desktop" ];
+      };
     };
   };
 
