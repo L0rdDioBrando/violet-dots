@@ -180,7 +180,8 @@
 
   # Catppuccin
   catppuccin = {
-    enable = false;
+    enable = true;
+    autoEnable = false;
     flavor = "macchiato";
     accent = "lavender";
     tty.enable = true;
