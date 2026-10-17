@@ -218,7 +218,7 @@
     qt6ctSettings = {
       Appearance = {
         color_sheme = "catppuccin-macchiato-lavender";
-        icon_theme = "Papirus-Dark";
+        icon_theme = "Papirus-Light";
         standard_dialogs = "xdgdesktopportal";
         style = "kvantum";
       };
