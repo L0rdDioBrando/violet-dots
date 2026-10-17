@@ -3,14 +3,17 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     awww.url = "git+https://codeberg.org/LGFae/awww";
-    catppuccin.url = "github:catppuccin/nix/release-25.11";
+    catppuccin.url = "github:catppuccin/nix";
     pineconemc = {
       url = "github:ElyPrismLauncher/Launcher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
     home-manager = {
       url = "github:nix-community/home-manager";
