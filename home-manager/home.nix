@@ -220,7 +220,6 @@
         color_sheme = "catppuccin-macchiato-lavender";
         icon_theme = "Papirus-Dark";
         standard_dialogs = "xdgdesktopportal";
-        icon_theme_search_path = "~/.local/share/icons/";
         style = "kvantum";
       };
       Fonts = {
@@ -252,16 +251,16 @@
       };
     };
     kvantum = {
-      settings = {
-        General = {
-          theme = "catppuccin-macchiato-lavender";
-        };
-      };
-      themes = pkgs.catppuccin-kvantum.override {
-        accents = [ "lavender" ];
-        variant = "macchiato";
+      enable = true;
+      settings.General = {
+        theme = "catppuccin-macchiato-lavender";
       };
     };
+  };
+
+  # Import custom Kvantum theme
+  xdg.configFile = {
+    "Kvantum/catppuccin-macchiato-lavender/".source = ./configs/kvantum;
   };
 
   # Session variables
