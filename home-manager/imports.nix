@@ -16,13 +16,6 @@
     # Rofi
     "rofi/".source = ./configs/rofi;
 
-    # Kvantum
-    "Kvantum/kvantum.kvconfig".source = ./configs/kvantum/kvantum.kvconfig;
-    "Kvantum/catppuccin-macchiato-lavender/".source = ./configs/kvantum/catppuccin-macchiato-lavender;
-
-    # Qt6ct
-    "qt6ct/".source = ./configs/qt6ct;
-
     # KDE
     "kdeglobals".source = ./configs/kde/kdeglobals;
 
