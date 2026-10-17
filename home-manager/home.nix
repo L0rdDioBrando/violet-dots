@@ -8,7 +8,6 @@
 {
   imports = [
     ./imports.nix
-    ./default-apps.nix
   ];
 
   # Home-manager packages
@@ -282,6 +281,38 @@
         serif = [ "FiraCode Nerd Font Mono" ];
         sansSerif = [ "FiraCode Nerd Font Mono" ];
       };
+    };
+  };
+
+  # Default Applications
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      # Zathura
+      "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+      "application/x-pdf" = [ "org.pwmt.zathura.desktop" ];
+
+      # Imv
+      "image/*" = [ "imv.desktop" ];
+
+      # Mpv
+      "video/*" = [ "mpv.desktop" ];
+      "audio/*" = [ "mpv.desktop" ];
+
+      # Neovim
+      "text/*" = [ "neovim.desktop" ];
+
+      # Zen broswer
+      "text/html" = "zen.desktop";
+      "x-scheme-handler/http" = "zen.desktop";
+      "x-scheme-handler/https" = "zen.desktop";
+    };
+
+    associations.added = {
+      "image/*" = [ "imv.desktop" ];
+      "application/*" = [ "org.pwmt.zathura.desktop" ];
+      "video/*" = [ "mpv.desktop" ];
+      "audio/*" = [ "mpv.desktop" ];
     };
   };
 
