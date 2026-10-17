@@ -7,14 +7,21 @@
   ];
 
   # Nix settings
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ]; # Enable flakes
-    auto-optimise-store = true; # Nix Garbage Collector settings
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ]; # Enable flakes
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      dates = "*-*-/3";
+      options = "--delete-older-than 30d";
+      persistent = true;
+    }; # Nix Garbage Collector settings
   };
-
   # Bootloader
   boot.loader = {
     limine = {
