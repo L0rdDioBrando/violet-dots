@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   lib,
+  config,
   ...
 }:
 {
@@ -107,8 +108,6 @@
         "lavender"
       ];
     })
-    # GTK
-    gnome-themes-extra
     # Cursors
     catppuccin-cursors.macchiatoDark
     # Libs
@@ -149,6 +148,7 @@
     enable = true;
     defaultEditor = true;
     sideloadInitLua = true;
+    waylandSupport = true;
   };
   programs.fzf.enable = true;
   programs.btop = {
@@ -191,6 +191,7 @@
   # GTK theme
   gtk = {
     enable = true;
+    gtk4.theme = config.gtk.theme;
     theme = {
       name = "catppuccin-macchiato-lavender-standard";
       package = pkgs.catppuccin-gtk.override {
