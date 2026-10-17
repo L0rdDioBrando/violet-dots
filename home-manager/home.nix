@@ -1,8 +1,12 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./imports.nix
-    ./style.nix
     ./default-apps.nix
   ];
 
@@ -39,7 +43,6 @@
     nix-output-monitor
     steam-run
     vulkan-tools
-    protontricks
     xwayland-satellite
     (callPackage ./custom-pkgs/naiveproxy.nix { })
     (callPackage ./custom-pkgs/sing-box.nix { })
@@ -183,6 +186,34 @@
     gtk.enable = true;
     package = pkgs.catppuccin-cursors.macchiatoDark;
     size = 24;
+  };
+
+  # GTK theme
+  gtk = {
+    enable = true;
+    theme = {
+      name = "catppuccin-macchiato-lavender-standard";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "lavender" ];
+        variant = "macchiato";
+      };
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = lib.mkForce (
+        pkgs.catppuccin-papirus-folders.override {
+          flavor = "macchiato";
+          accent = "lavender";
+        }
+      );
+    };
+  };
+
+  # Qt theme
+  qt = {
+    enable = true;
+    platformTheme.name = "qt6ct";
+    style.name = "kvantum";
   };
 
   # Session variables
