@@ -22,6 +22,7 @@
       persistent = true;
     }; # Nix Garbage Collector settings
   };
+
   # Bootloader
   boot.loader = {
     limine = {
@@ -158,6 +159,7 @@
     extraPortals = with pkgs; [
       xdg-desktop-portal-gnome
       xdg-desktop-portal-gtk
+      kdePackages.xdg-desktop-portal-kde
     ];
     config.common.default = "*";
   };
@@ -261,7 +263,6 @@
   };
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
-  programs.kdeconnect.enable = true;
   programs.appimage = {
     enable = true;
     binfmt = true;

@@ -16,9 +16,6 @@
     # Rofi
     "rofi/".source = ./configs/rofi;
 
-    # KDE
-    "kdeglobals".source = ./configs/kde/kdeglobals;
-
     # Swaync
     "swaync/".source = ./configs/swaync;
 

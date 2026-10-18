@@ -91,7 +91,7 @@ layout {
 // Screenshot path
 screenshot-path "~/Pictures/from %Y-%m-%d %H-%M-%S.png"
 // Autostart
-spawn-at-startup "waybar"
+spawn-sh-at-startup "waybar"
 spawn-at-startup "swaync"
 spawn-sh-at-startup "awww-daemon"
 spawn-sh-at-startup "wl-paste --watch cliphist store"

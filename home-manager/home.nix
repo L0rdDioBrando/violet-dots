@@ -1,13 +1,13 @@
 {
   inputs,
   pkgs,
-  lib,
   config,
   ...
 }:
 {
   imports = [
     ./imports.nix
+    ./theme.nix
   ];
 
   # Home-manager packages
@@ -119,6 +119,9 @@
   ];
 
   programs.nh.enable = true;
+  programs.fzf.enable = true;
+  programs.zoxide.enable = true;
+  services.kdeconnect.enable = true;
   programs.yazi = {
     enable = true;
     package = pkgs.yazi.override {
@@ -149,7 +152,6 @@
     sideloadInitLua = true;
     waylandSupport = true;
   };
-  programs.fzf.enable = true;
   programs.btop = {
     enable = true;
     settings = {
@@ -159,7 +161,6 @@
       "catppuccin-macchiato" = builtins.readFile ./configs/btop/catppuccin_macchiato.theme;
     };
   };
-  programs.zoxide.enable = true;
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
@@ -187,81 +188,6 @@
     size = 24;
   };
 
-  # GTK theme
-  gtk = {
-    enable = true;
-    gtk4.theme = config.gtk.theme;
-    theme = {
-      name = "catppuccin-macchiato-lavender-standard";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "lavender" ];
-        variant = "macchiato";
-      };
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = lib.mkForce (
-        pkgs.catppuccin-papirus-folders.override {
-          flavor = "macchiato";
-          accent = "lavender";
-        }
-      );
-    };
-  };
-
-  # Qt theme
-  qt = {
-    enable = true;
-    platformTheme.name = "qt6ct";
-    style.name = "kvantum";
-    qt6ctSettings = {
-      Appearance = {
-        color_sheme = "catppuccin-macchiato-lavender";
-        icon_theme = "Papirus-Light";
-        standard_dialogs = "xdgdesktopportal";
-        style = "kvantum";
-      };
-      Fonts = {
-        fixed = "\"FiraCode Nerd Font,12,-1,5,300,0,0,0,0,0,0,0,0,0,0,1\"";
-        general = "\"FiraCode Nerd Font,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular\"";
-      };
-      Interface = {
-        activate_item_on_single_click = 1;
-        buttonbox_layout = 3;
-        cursor_flash_time = 1000;
-        dialog_buttons_have_icons = 1;
-        double_click_interval = 400;
-        keyboard_scheme = 4;
-        menus_have_icons = true;
-        show_shortcuts_in_context_menus = true;
-        toolbutton_style = 4;
-        underline_shortcut = 1;
-        wheel_scroll_lines = 3;
-      };
-      PaletteEditor = {
-        geometry = "@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\x2\x14\0\0\0\xb1\0\0\x5\x1d\0\0\x2\xc1\0\0\x2\x14\0\0\0\xb1\0\0\x5\x1d\0\0\x2\xc1\0\0\0\0\0\0\0\0\a\x80\0\0\x2\x14\0\0\0\xb1\0\0\x5\x1d\0\0\x2\xc1)";
-      };
-      SettingsWindow = {
-        geometry = "@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\0\0\0\0\0\0\0\0\aL\0\0\x3\xe3\0\0\0\0\0\0\0\0\0\0\aL\0\0\x3\xe3\0\0\0\0\0\0\0\0\a\x80\0\0\0\0\0\0\0\0\0\0\aL\0\0\x3\xe3)";
-      };
-      Troubleshooting = {
-        force_raster_widgets = 2;
-        ignored_applications = "@Invalid()";
-      };
-    };
-    kvantum = {
-      enable = true;
-      settings.General = {
-        theme = "catppuccin-macchiato-lavender";
-      };
-    };
-  };
-
-  # Import custom Kvantum theme
-  xdg.configFile = {
-    "Kvantum/catppuccin-macchiato-lavender/".source = ./configs/kvantum;
-  };
-
   # Session variables
   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "niri";
@@ -286,12 +212,25 @@
     portal = {
       enable = true;
       extraPortals = with pkgs; [
+        xdg-desktop-portal-gnome
         xdg-desktop-portal-gtk
+        kdePackages.xdg-desktop-portal-kde
       ];
-      config.common.default = [ "gtk" ];
+      config.common.default = "*";
     };
     userDirs = {
-      desktop = null;
+      setSessionVariables = true;
+      extraConfig = {
+        DOCUMENTS = "${config.home.homeDirectory}/Documents";
+        DOWNLOADS = "${config.home.homeDirectory}/Downloads";
+        MUSIC = "${config.home.homeDirectory}/Music";
+        PICTURES = "${config.home.homeDirectory}/Pictures";
+        VIDEOS = "${config.home.homeDirectory}/Videos";
+        PROJECTS = "${config.home.homeDirectory}/Projects";
+        PUBLICSHARE = "${config.home.homeDirectory}";
+        DESKTOP = "${config.home.homeDirectory}";
+        TEMPLATES = "${config.home.homeDirectory}";
+      };
     };
     mimeApps = {
       enable = true;
