@@ -159,7 +159,7 @@ binds {
         spawn-sh "rofi -show drun"
     }
     Mod+W hotkey-overlay-title="Open Browser: Zen" {
-        spawn "zen"
+        spawn "zen-beta"
     }
     Mod+E hotkey-overlay-title="Open File Manager: Yazi" {
         spawn "kitty" "zsh" "-i" "-c" "yazi"
