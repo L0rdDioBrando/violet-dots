@@ -139,11 +139,24 @@
 
   networking.firewall = {
     enable = true;
+    backend = "nftables";
     allowedTCPPorts = [
       1111
     ];
     allowedUDPPorts = [
       1111
+    ];
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
     ];
   };
 
@@ -280,6 +293,7 @@
       };
     };
   };
+  programs.fuse.userAllowOther = true;
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
