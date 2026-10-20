@@ -69,6 +69,8 @@
     rofi
     waybar
     strawberry
+    kdePackages.qtstyleplugin-kvantum
+    kdePackages.qt6ct
     # Languages
     python3
     basedpyright
@@ -96,17 +98,6 @@
     lua51Packages.tree-sitter-cli
     lua-language-server
     vscode-langservers-extracted
-    # Qt
-    kdePackages.qtstyleplugin-kvantum
-    kdePackages.qt6ct
-    (pkgs.catppuccin-kde.override {
-      flavour = [
-        "macchiato"
-      ];
-      accents = [
-        "lavender"
-      ];
-    })
     # Cursors
     catppuccin-cursors.macchiatoDark
     # Libs
@@ -126,6 +117,26 @@
     enable = true;
     package = pkgs.yazi.override {
       _7zz = pkgs._7zz-rar;
+    };
+  };
+  programs.cava = {
+    enable = true;
+    settings = {
+      general = {
+        framerate = 180;
+        sensitivity = 100;
+        bars = 0;
+        bar_width = 3;
+        bar_spacing = 2;
+      };
+      input = {
+        method = "pipewire";
+        source = "auto";
+      };
+      output.method = "ncurses";
+      color = {
+        foreground = "\"#b7bdf8\"";
+      };
     };
   };
   programs.mpv = {
@@ -206,7 +217,7 @@
     sansSerif = [ "FiraCode Nerd Font Mono" ];
   };
 
-  # Default Applications
+  # XDG settings
   xdg = {
     enable = true;
     portal = {

@@ -44,7 +44,7 @@
     "zathura/".source = ./configs/zathura;
 
     # Cava
-    "cava/".source = ./configs/cava;
+    #    "cava/".source = ./configs/cava;
 
     # Fastfetch
     "fastfetch/".source = ./configs/fastfetch;
