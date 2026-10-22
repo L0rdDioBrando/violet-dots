@@ -38,7 +38,7 @@ button:hover {
 #temperature,
 #clock,
 #network,
-#wireplumber {
+#pulseaudio {
   color: @lavender;
 }
 

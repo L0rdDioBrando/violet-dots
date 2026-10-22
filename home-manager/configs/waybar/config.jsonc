@@ -130,22 +130,23 @@
       }
     }
   },
-  "wireplumber": {
+  "pulseaudio": {
     "format": " {volume}% {icon} ",
-    "max-volume": 100,
     "format-muted": "󰝟 ",
-    "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ],
+    "format-icons": {
+      "default": [
+        " ",
+        " ",
+        " ",
+        " ",
+        " ",
+        " ",
+        " ",
+        " ",
+        " ",
+        " "
+      ]
+    },
     "scroll-step": 5,
     "on-click": "pavucontrol"
   },
@@ -169,7 +170,7 @@
     "orientation": "horizontal",
     "modules": [
       "clock",
-      "wireplumber",
+      "pulseaudio",
       "battery"
     ]
   },
