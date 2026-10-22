@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   # Imports
   imports = [
@@ -27,6 +26,7 @@
   boot.loader = {
     limine = {
       enable = true;
+      package = pkgs.limine;
       efiSupport = true;
       extraConfig = "
         timeout: 5

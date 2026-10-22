@@ -34,6 +34,19 @@
           inherit inputs;
         };
         modules = [
+          ({ ... }: {
+            nixpkgs.overlays = [
+              (final: prev: {
+                limine = prev.limine.overrideAttrs (finalAttrs: {
+                  version = "12.9.4";
+                  src = final.fetchurl {
+                    url = "https://github.com/Limine-Bootloader/Limine/releases/download/v${finalAttrs.version}/limine-${finalAttrs.version}.tar.gz";
+                    hash = "sha256-soucn2FPQlLK55WA1su8CfTXZKVB7AHVhrXDheN3bJk=";
+                  };
+                });
+              })
+            ];
+          })
           ./configuration.nix
           { nixpkgs.hostPlatform = "x86_64-linux"; }
           catppuccin.nixosModules.catppuccin
