@@ -6,6 +6,7 @@
     # Zsh
     ".zshrc".source = ./configs/zsh/zshrc;
     ".theme.zsh-theme".source = ./configs/zsh/theme.zsh-theme;
+    ".config/fsh/catppuccin-macchiato.ini".source = ./configs/zsh/catppuccin-macchiato-fsh.ini;
   };
 
   # Configs ~/.config/

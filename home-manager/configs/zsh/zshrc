@@ -55,7 +55,7 @@ zinit ice wait"0" lucid
 zinit light zsh-users/zsh-completions
 zinit ice atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
-zinit ice wait"0" lucid
+zinit ice wait"0" lucid atload"fast-theme -q ~/.config/fsh/catppuccin-macchiato.ini"
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit ice wait"0" lucid
 zinit light Aloxaf/fzf-tab
