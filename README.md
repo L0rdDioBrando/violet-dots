@@ -43,8 +43,8 @@ sudo cp -r ~/violet-dots/* /etc/nixos/
 
 Generate hardware-configuration.nix:
 ```bash
-cd /etc/nixos/
-sudo nixos-generate-config
+sudo rm -rf /etc/nixos/hardware-configuration.nix
+sudo nixos-generate-config --dir /etc/nixos
 ```
 
 Rebuild system:
