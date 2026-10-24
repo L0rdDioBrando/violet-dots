@@ -38,6 +38,9 @@
     # Imv
     "imv/".source = ./configs/imv;
 
+    # Hyprtoolkit
+    "hypr/".source = ./configs/hyprtoolkit;
+
     # OBS
     "obs-studio/themes/".source = ./configs/obs;
 

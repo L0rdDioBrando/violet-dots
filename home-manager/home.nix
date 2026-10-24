@@ -113,7 +113,7 @@
   programs.nh.enable = true;
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
-  services.kdeconnect.enable = true;
+  services.hyprpolkitagent.enable = true;
   programs.yazi = {
     enable = true;
     package = pkgs.yazi.override {

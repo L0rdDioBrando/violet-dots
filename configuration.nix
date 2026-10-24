@@ -115,19 +115,21 @@
 
   # Polkit
   security.polkit.enable = true;
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
-    description = "polkit-gnome-authentication-agent-1";
-    wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
+  /*
+    systemd.user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
     };
-  };
+  */
 
   # Network
   networking.networkmanager.enable = true;
@@ -145,18 +147,6 @@
     ];
     allowedUDPPorts = [
       1111
-    ];
-    allowedTCPPortRanges = [
-      {
-        from = 1714;
-        to = 1764;
-      }
-    ];
-    allowedUDPPortRanges = [
-      {
-        from = 1714;
-        to = 1764;
-      }
     ];
   };
 
@@ -185,14 +175,14 @@
     useXkbConfig = true;
   };
 
-  # Xserver
-  services.xserver.enable = true;
-
   # XKB settings
-  services.xserver.xkb = {
-    layout = "us,ru";
-    variant = "";
-    options = "grp:alt_shift_toggle,caps:escape";
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "us,ru";
+      variant = "";
+      options = "grp:alt_shift_toggle";
+    };
   };
 
   # Session variables
@@ -264,6 +254,7 @@
     packages = [ pkgs.gcr_4 ];
   };
   programs.xwayland.enable = true;
+  programs.kdeconnect.enable = true;
   programs.zsh.enable = true;
   hardware.steam-hardware.enable = true;
   programs.steam = {
