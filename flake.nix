@@ -1,5 +1,9 @@
 # flake.nix
 {
+  nixConfig = {
+    trusted-substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
+    trusted-trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
+  };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     awww.url = "git+https://codeberg.org/LGFae/awww";
@@ -19,6 +23,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
   };
 
   outputs =
@@ -26,6 +31,7 @@
       nixpkgs,
       catppuccin,
       home-manager,
+      zapret-discord-youtube,
       ...
     }@inputs:
     {
@@ -41,7 +47,7 @@
                   version = "12.9.4";
                   src = final.fetchurl {
                     url = "https://github.com/Limine-Bootloader/Limine/releases/download/v${finalAttrs.version}/limine-${finalAttrs.version}.tar.gz";
-                    hash = "sha256-soucn2FPQlLK55WA1su8CfTXZKVB7AHVhrXDheN3bJk=";
+                    hash = "sha256:4f75ffca8e11a1030e43e2b9ab82fac1a0f8985e1c40d429fea9fd2972693447";
                   };
                 });
               })
@@ -49,9 +55,15 @@
           })
           ./configuration.nix
           { nixpkgs.hostPlatform = "x86_64-linux"; }
+          zapret-discord-youtube.nixosModules.withTestTools
           catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
           {
+            services.zapret-discord-youtube = {
+              enable = true;
+              configName = "general(ALT13)";
+              gameFilter = "null";
+            };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
