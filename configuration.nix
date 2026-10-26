@@ -27,7 +27,7 @@
     gc = {
       automatic = true;
       dates = "*-*-/3";
-      options = "--delete-older-than 30d";
+      options = "--delete-older-than 3d";
       persistent = true;
     }; # Nix Garbage Collector settings
   };
@@ -144,6 +144,12 @@
     allowedUDPPorts = [
       1111
     ];
+  };
+
+  services.zapret-discord-youtube = {
+    enable = true;
+    configName = "general(ALT13)";
+    gameFilter = "null";
   };
 
   #networking.nftables.enable = true;

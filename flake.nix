@@ -1,9 +1,5 @@
 # flake.nix
 {
-  nixConfig = {
-    trusted-substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
-    trusted-trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
-  };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     awww.url = "git+https://codeberg.org/LGFae/awww";
@@ -59,11 +55,6 @@
           catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
           {
-            services.zapret-discord-youtube = {
-              enable = true;
-              configName = "general(ALT13)";
-              gameFilter = "null";
-            };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
