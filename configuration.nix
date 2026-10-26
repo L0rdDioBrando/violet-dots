@@ -8,11 +8,21 @@
   # Nix settings
   nix = {
     settings = {
+      substituters = [
+        "https://mirror.sjtu.edu.cn/nix-channels/store"
+        "https://mirrors.ustc.edu.cn/nix-channels/store"
+        "https://cache.nixos.org/"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
       experimental-features = [
         "nix-command"
         "flakes"
       ]; # Enable flakes
       auto-optimise-store = true;
+      http-connections = 128;
+      max-substitution-jobs = 128;
     };
     gc = {
       automatic = true;
@@ -77,11 +87,13 @@
   };
 
   # Graphics
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    amdgpu.initrd.enable = true;
   };
-  boot.initrd.kernelModules = [ "amdgpu" ];
 
   # Bluetooth
   hardware = {
@@ -115,21 +127,6 @@
 
   # Polkit
   security.polkit.enable = true;
-  /*
-    systemd.user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
-  */
 
   # Network
   networking.networkmanager.enable = true;
@@ -141,7 +138,6 @@
 
   networking.firewall = {
     enable = true;
-    backend = "nftables";
     allowedTCPPorts = [
       1111
     ];
@@ -150,8 +146,22 @@
     ];
   };
 
-  networking.nftables.enable = true;
-  networking.enableIPv6 = false;
+  #networking.nftables.enable = true;
+  networking.enableIPv6 = true;
+
+  # NaiveProxy systemd service
+  systemd.user.services.naive = {
+    enable = true;
+    after = [ "network.target" ];
+    wantedBy = [ "default.target" ];
+    description = "NaiveProxy";
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${
+        pkgs.callPackage ./home-manager/custom-pkgs/naiveproxy.nix { }
+      }/bin/naive /home/bopsifox/naiveproxy/config.json";
+    };
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -256,7 +266,6 @@
   programs.xwayland.enable = true;
   programs.kdeconnect.enable = true;
   programs.zsh.enable = true;
-  hardware.steam-hardware.enable = true;
   programs.steam = {
     # I use "gamescope -W 1920 -H 1080 -f -b --force-grab-cursor --backend wayland -- %command%" steam launch arguments
     enable = true;
