@@ -68,7 +68,6 @@
     swaynotificationcenter
     rofi
     strawberry
-    filezilla
     kdePackages.qtstyleplugin-kvantum
     kdePackages.qt6ct
     # Languages
