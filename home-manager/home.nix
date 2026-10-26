@@ -56,6 +56,7 @@
     bluetui
     (callPackage ./custom-pkgs/osu.nix { })
     lazygit
+    gitui
     nicotine-plus
     imv
     telegram-desktop
