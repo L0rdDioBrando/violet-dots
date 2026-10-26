@@ -112,6 +112,7 @@
   programs.nh.enable = true;
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
+  programs.fish.enable = true;
   services.hyprpolkitagent.enable = true;
   programs.waybar.enable = true;
   programs.yazi = {
