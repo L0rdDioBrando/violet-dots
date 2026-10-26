@@ -44,6 +44,7 @@
     steam-run
     vulkan-tools
     xwayland-satellite
+    ipset
     (callPackage ./custom-pkgs/naiveproxy.nix { })
     (callPackage ./custom-pkgs/sing-box.nix { })
     # Apps
@@ -57,7 +58,6 @@
     lazygit
     nicotine-plus
     imv
-    polkit_gnome
     telegram-desktop
     zathura
     zathuraPkgs.zathura_pdf_mupdf
@@ -67,7 +67,6 @@
     kitty
     swaynotificationcenter
     rofi
-    waybar
     strawberry
     filezilla
     kdePackages.qtstyleplugin-kvantum
@@ -114,6 +113,7 @@
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
   services.hyprpolkitagent.enable = true;
+  programs.waybar.enable = true;
   programs.yazi = {
     enable = true;
     package = pkgs.yazi.override {
@@ -226,9 +226,8 @@
       extraPortals = with pkgs; [
         xdg-desktop-portal-gnome
         xdg-desktop-portal-gtk
-        kdePackages.xdg-desktop-portal-kde
       ];
-      config.common.default = "*";
+      config.common.default = "gnome";
     };
     userDirs = {
       setSessionVariables = true;
