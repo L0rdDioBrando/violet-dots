@@ -46,6 +46,20 @@
                     hash = "sha256:4f75ffca8e11a1030e43e2b9ab82fac1a0f8985e1c40d429fea9fd2972693447";
                   };
                 });
+                zapret2 = prev.zapret2.overrideAttrs (finalAttrs: {
+                  src = prev.fetchFromGitHub {
+                    owner = "bol-van";
+                    repo = "zapret2";
+                    tag = "v${finalAttrs.version}";
+                    hash = "sha256-hDETz/EFqrIbtgg8cv0tK+yTsrN+dnkd3oobHmBBmRA=";
+                    leaveDotGit = true;
+                    postFetch = ''
+                      cd "$out"
+                      git rev-parse --short=12 HEAD > COMMIT
+                      find "$out" -name .git -print0 | xargs -0 rm -rf
+                    '';
+                  };
+                });
               })
             ];
           })

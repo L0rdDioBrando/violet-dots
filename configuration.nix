@@ -148,11 +148,10 @@
 
   services.zapret-discord-youtube = {
     enable = true;
-    configName = "general(ALT13)";
-    gameFilter = "null";
+    configName = "general(ALT)";
   };
 
-  #networking.nftables.enable = true;
+  networking.nftables.enable = false;
   networking.enableIPv6 = true;
 
   # NaiveProxy systemd service
@@ -256,6 +255,7 @@
   environment.systemPackages = with pkgs; [
     limine-full
     cacert
+    zapret2
   ];
 
   # Packages
@@ -295,7 +295,7 @@
         enable = true;
         type = "socks5";
         host = "127.0.0.1";
-        port = 8080;
+        port = 1080;
       };
     };
   };

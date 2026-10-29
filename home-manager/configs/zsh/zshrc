@@ -22,7 +22,7 @@ export FZF_ALT_C_OPTS="$FZF_DEFAULT_OPTS"
 source <(fzf --zsh)
 
 # Eza
-alias eza="eza --icons=auto -l --modified --time-style='+%d %B %H:%M' --no-permissions --group-directories-first --header"
+alias eza="eza --git --icons=auto -l --modified --time-style='+%d %B %H:%M' --no-permissions --group-directories-first --header"
 alias ls="eza"
 
 # Zoxide
