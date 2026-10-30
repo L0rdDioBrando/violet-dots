@@ -9,10 +9,6 @@ chosen=$(echo -e "$options" | rofi -dmenu -theme-str "
     height: 159px;
     width: 325px;
   }
-  element selected.normal {
-    background-color: #363a4f;
-    color: #cad3f5;
-  }
 ")
 
 case "$chosen" in
