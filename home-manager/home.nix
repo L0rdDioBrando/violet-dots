@@ -46,6 +46,7 @@
     vulkan-tools
     xwayland-satellite
     ipset
+    trash-cli
     (callPackage ./custom-pkgs/naiveproxy.nix { })
     (callPackage ./custom-pkgs/sing-box.nix { })
     # Apps
@@ -116,6 +117,23 @@
   programs.zoxide.enable = true;
   services.hyprpolkitagent.enable = true;
   programs.waybar.enable = true;
+  programs.fish = {
+    enable = true;
+    plugins = [
+      {
+        name = "done";
+        src = pkgs.fishPlugins.done.src;
+      }
+      {
+        name = "fzf";
+        src = pkgs.fishPlugins.fzf-fish.src;
+      }
+      {
+        name = "fifc";
+        src = pkgs.fishPlugins.fifc.src;
+      }
+    ];
+  };
   programs.yazi = {
     enable = true;
     package = pkgs.yazi.override {
@@ -276,7 +294,7 @@
 
   home.username = "bopsifox";
   home.homeDirectory = "/home/bopsifox";
-  home.shell.enableShellIntegration = true;
+  home.shell.enableFishIntegration = true;
 
   home.stateVersion = "26.05";
 }
