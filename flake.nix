@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake/beta";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
@@ -39,27 +39,13 @@
           ({ ... }: {
             nixpkgs.overlays = [
               (final: prev: {
-                limine = prev.limine.overrideAttrs (finalAttrs: {
-                  version = "12.9.4";
+                limine = prev.limine.overrideAttrs {
+                  version = "12.11.1";
                   src = final.fetchurl {
-                    url = "https://github.com/Limine-Bootloader/Limine/releases/download/v${finalAttrs.version}/limine-${finalAttrs.version}.tar.gz";
-                    hash = "sha256:4f75ffca8e11a1030e43e2b9ab82fac1a0f8985e1c40d429fea9fd2972693447";
+                    url = "https://github.com/Limine-Bootloader/Limine/releases/download/v12.11.1/limine-12.11.1.tar.gz";
+                    hash = "sha256:95b4b52fbafeebad14d5faf9e73bf974da58f68d41d1713bcc452712baddebbd";
                   };
-                });
-                zapret2 = prev.zapret2.overrideAttrs (finalAttrs: {
-                  src = prev.fetchFromGitHub {
-                    owner = "bol-van";
-                    repo = "zapret2";
-                    tag = "v${finalAttrs.version}";
-                    hash = "sha256-hDETz/EFqrIbtgg8cv0tK+yTsrN+dnkd3oobHmBBmRA=";
-                    leaveDotGit = true;
-                    postFetch = ''
-                      cd "$out"
-                      git rev-parse --short=12 HEAD > COMMIT
-                      find "$out" -name .git -print0 | xargs -0 rm -rf
-                    '';
-                  };
-                });
+                };
               })
             ];
           })
