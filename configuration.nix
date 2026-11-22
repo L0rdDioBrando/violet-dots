@@ -95,6 +95,12 @@
     amdgpu.initrd.enable = true;
   };
 
+  # Keyboard
+  hardware.keyboard.qmk = {
+    enable = true;
+    keychronSupport = true;
+  };
+
   # Bluetooth
   hardware = {
     bluetooth = {
@@ -137,7 +143,7 @@
   ];
 
   networking.firewall = {
-    enable = true;
+    enable = false;
     allowedTCPPorts = [
       1111
     ];
@@ -148,7 +154,10 @@
 
   services.zapret-discord-youtube = {
     enable = true;
-    configName = "general(ALT)";
+    configName = "general(ALT13)";
+    listGeneral = [
+      "rutracker.org"
+    ];
   };
 
   networking.nftables.enable = false;
@@ -230,7 +239,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     wireplumber.enable = true;
-    jack.enable = true;
   };
 
   # User
