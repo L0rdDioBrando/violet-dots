@@ -89,6 +89,7 @@
     nixfmt
     kdlfmt
     bash-language-server
+    fish-lsp
     shellcheck
     shfmt
     markdown-oxide
@@ -113,7 +114,6 @@
   programs.nh.enable = true;
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
-  programs.fish.enable = true;
   services.hyprpolkitagent.enable = true;
   programs.waybar.enable = true;
   programs.yazi = {
@@ -276,7 +276,7 @@
 
   home.username = "bopsifox";
   home.homeDirectory = "/home/bopsifox";
-  home.shell.enableZshIntegration = true;
+  home.shell.enableShellIntegration = true;
 
   home.stateVersion = "26.05";
 }
