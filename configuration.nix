@@ -8,14 +8,6 @@
   # Nix settings
   nix = {
     settings = {
-      substituters = [
-        "https://mirror.sjtu.edu.cn/nix-channels/store"
-        "https://mirrors.ustc.edu.cn/nix-channels/store"
-        "https://cache.nixos.org/"
-      ];
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
       experimental-features = [
         "nix-command"
         "flakes"
@@ -244,7 +236,7 @@
   # User
   users.defaultUserShell = pkgs.zsh;
   users.users.bopsifox = {
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     isNormalUser = true;
     description = "bopsifox";
     extraGroups = [
@@ -280,6 +272,7 @@
   programs.xwayland.enable = true;
   programs.kdeconnect.enable = true;
   programs.zsh.enable = true;
+  programs.fish.enable = true;
   programs.steam = {
     # I use "gamescope -W 1920 -H 1080 -f -b --force-grab-cursor --backend wayland -- %command%" steam launch arguments
     enable = true;
