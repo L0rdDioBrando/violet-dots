@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    inputs.zen-browser.homeModules.beta
     ./imports.nix
     ./theme.nix
   ];
@@ -49,7 +50,6 @@
     (callPackage ./custom-pkgs/sing-box.nix { })
     # Apps
     chromium
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.pineconemc.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
     gimp
@@ -59,6 +59,7 @@
     gitui
     nicotine-plus
     imv
+    libreoffice
     telegram-desktop
     zathura
     zathuraPkgs.zathura_pdf_mupdf
@@ -120,6 +121,10 @@
     package = pkgs.yazi.override {
       _7zz = pkgs._7zz-rar;
     };
+  };
+  programs.zen-browser = {
+    enable = true;
+    setAsDefaultBrowser = true;
   };
   programs.cava = {
     enable = true;
@@ -260,11 +265,6 @@
 
         # Neovim
         "text/*" = [ "neovim.desktop" ];
-
-        # Zen broswer
-        "text/html" = "zen.desktop";
-        "x-scheme-handler/http" = "zen.desktop";
-        "x-scheme-handler/https" = "zen.desktop";
       };
       associations.added = {
         "image/*" = [ "imv.desktop" ];
