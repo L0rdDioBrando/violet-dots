@@ -47,6 +47,7 @@
     xwayland-satellite
     ipset
     trash-cli
+    vivid
     (callPackage ./custom-pkgs/naiveproxy.nix { })
     (callPackage ./custom-pkgs/sing-box.nix { })
     # Apps
@@ -125,15 +126,16 @@
         src = pkgs.fishPlugins.done.src;
       }
       {
+        name = "sponge";
+        src = pkgs.fishPlugins.sponge.src;
+      }
+      {
         name = "fzf";
         src = pkgs.fishPlugins.fzf-fish.src;
       }
-      {
-        name = "fifc";
-        src = pkgs.fishPlugins.fifc.src;
-      }
     ];
   };
+  programs.nix-your-shell.enable = true;
   programs.yazi = {
     enable = true;
     package = pkgs.yazi.override {

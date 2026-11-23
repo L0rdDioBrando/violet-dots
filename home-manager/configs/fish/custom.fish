@@ -2,6 +2,8 @@ if status is-interactive
     set -g fish_greeting
     set -g fish_prompt_pwd_dir_length 3
     set -g done_min_duration 10000
+    set -g sponge_allow_previously_successful false
+    set -gx LS_COLORS (vivid generate catppuccin-macchiato)
 
     # Fastfetch
     fastfetch
@@ -42,6 +44,8 @@ if status is-interactive
 
     # Fzf
     fzf --fish | source
+    bind \t fzf_complete
+    set -gx FZF_COMPLETION_OPTS "--preview-window=hidden"
     set -gx FZF_DEFAULT_COMMAND "fd -H -L -E '.git' -E '.npm*' -E '.nix*'"
     set -gx FZF_DEFAULT_OPTS "\
         --header='CTRL-E Edit | CTRL-C Copy | CTRL-/ Preview | CTRL-Q/ESC Quit' \
@@ -57,14 +61,17 @@ if status is-interactive
         --color=info:#b7bdf8,marker:#c6a0f6,pointer:#b7bdf8,prompt:#b7bdf8,spinner:#c6a0f6 \
         --preview '[ -d {} ] && eza --icons=auto --tree --level=2 --color=always {} || bat --style=numbers --color=always --line-range :500 {}' \
         --bind 'ctrl-c:execute-silent(realpath {} | wl-copy)' \
-        --bind 'ctrl-e:execute(nvim {})' \
+        --bind 'ctrl-e:become(nvim {})' \
     "
     set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
     set -gx FZF_CTRL_T_OPTS "--preview-window=hidden"
     set -gx FZF_ALT_C_COMMAND "fd -t d -H -L -E '.git'"
-    set -gx FZF_ALT_C_OPTS "--preview-window=hidden"
+    set -gx FZF_ALT_C_OPTS "\
+        --preview-window=hidden \
+        --header='CTRL-E Edit | CTRL-Y Open with yazi | CTRL-C Copy | CTRL-/ Preview | CTRL-Q/ESC Quit' \
+        --bind 'ctrl-y:become(yazi {})' \
+    "
     set -gx FZF_CTRL_R_OPTS "--preview-window=hidden"
-
     # Zoxide
     zoxide init fish --cmd cd | source
 end
