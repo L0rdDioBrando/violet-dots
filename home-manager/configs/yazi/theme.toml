@@ -2,7 +2,7 @@
 overall = { bg = "#24273a" }
 
 [mgr]
-cwd = { fg = "#8bd5ca" }
+cwd = { fg = "#b7bdf8" }
 
 find_keyword  = { fg = "#eed49f", italic = true }
 find_position = { fg = "#f5bde6", bg = "reset", italic = true }
@@ -17,7 +17,7 @@ count_cut      = { fg = "#24273a", bg = "#ed8796" }
 count_selected = { fg = "#24273a", bg = "#b7bdf8" }
 
 border_symbol = "│"
-border_style  = { fg = "#8087a2" } # #8087a2
+border_style  = { fg = "#5b6078" }
 
 syntect_theme = "./CatppuccinMacchiato.tmTheme"
 
