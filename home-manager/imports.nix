@@ -12,7 +12,7 @@
   # Configs ~/.config/
   xdg.configFile = {
     # Fish
-    "fish/conf.d/custom.fish".source = ./configs/fish/custom.fish;
+    "fish/conf.d/config.fish".source = ./configs/fish/config.fish;
 
     # Niri
     "niri/".source = ./configs/niri;

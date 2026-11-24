@@ -1,9 +1,8 @@
 if status is-interactive
-    set -g fish_greeting
-    set -g fish_prompt_pwd_dir_length 3
-    set -g done_min_duration 10000
-    set -g sponge_allow_previously_successful false
-    set -gx LS_COLORS (vivid generate catppuccin-macchiato)
+    set -gx fish_greeting
+    set -gx fish_prompt_pwd_dir_length 3
+    set -gx done_min_duration 10000
+    set -gx sponge_allow_previously_successful true
 
     # Fastfetch
     fastfetch
@@ -36,8 +35,9 @@ if status is-interactive
     set -g fish_pager_color_selected_background --reverse
 
     # Aliases
-    alias eza 'command eza --git --icons=auto -l --modified --time-style="+%d %B %H:%M" --no-permissions --group-directories-first --header'
+    alias eza 'command eza --git --short-nix --icons=auto -l --modified --time-style="+%d %B %H:%M" --group-directories-first --header'
     abbr -a ls eza
+    abbr -a rm trash
     abbr -a cat bat
     abbr -a df duf
     abbr -a du dust
@@ -45,12 +45,14 @@ if status is-interactive
     # Fzf
     fzf --fish | source
     bind \t fzf_complete
+    set -gx FZF_COMPLETION_TRIGGER ''
     set -gx FZF_COMPLETION_OPTS "--preview-window=hidden"
-    set -gx FZF_DEFAULT_COMMAND "fd -H -L -E '.git' -E '.npm*' -E '.nix*'"
+    set -gx FZF_DEFAULT_COMMAND "fd -c=never -H -L -E '.git' -E '.npm*' -E '.nix*' -E '*cache*'"
     set -gx FZF_DEFAULT_OPTS "\
         --header='CTRL-E Edit | CTRL-C Copy | CTRL-/ Preview | CTRL-Q/ESC Quit' \
         --layout=reverse \
         --multi \
+        --cycle \
         --marker=▌ \
         --style=full \
         --color=bg:#24273a,bg+:#363a4f,selected-bg:#363a4f \
@@ -59,19 +61,20 @@ if status is-interactive
         --color=header:#6e738d \
         --color=border:#5b6078,label:#cad3f5 \
         --color=info:#b7bdf8,marker:#c6a0f6,pointer:#b7bdf8,prompt:#b7bdf8,spinner:#c6a0f6 \
-        --preview '[ -d {} ] && eza --icons=auto --tree --level=2 --color=always {} || bat --style=numbers --color=always --line-range :500 {}' \
-        --bind 'ctrl-c:execute-silent(realpath {} | wl-copy)' \
-        --bind 'ctrl-e:become(nvim {})' \
+        --preview '[ -d {} ] && eza --icons=auto --tree --level=2 --color=always {+} || bat --style=numbers --color=always --line-range :500 {+}' \
+        --bind 'ctrl-c:execute-silent(realpath {+} | wl-copy)' \
+        --bind 'ctrl-e:become(nvim {+})' \
     "
     set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
     set -gx FZF_CTRL_T_OPTS "--preview-window=hidden"
-    set -gx FZF_ALT_C_COMMAND "fd -t d -H -L -E '.git'"
+    set -gx FZF_ALT_C_COMMAND $FZF_DEFAULT_COMMAND
     set -gx FZF_ALT_C_OPTS "\
         --preview-window=hidden \
         --header='CTRL-E Edit | CTRL-Y Open with yazi | CTRL-C Copy | CTRL-/ Preview | CTRL-Q/ESC Quit' \
-        --bind 'ctrl-y:become(yazi {})' \
+        --bind 'ctrl-y:become(yazi {+})' \
     "
     set -gx FZF_CTRL_R_OPTS "--preview-window=hidden"
+
     # Zoxide
     zoxide init fish --cmd cd | source
 end
