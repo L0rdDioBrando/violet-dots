@@ -18,14 +18,11 @@
     wget
     psmisc
     ripgrep
-    unzip
     p7zip
     curl
-    unrar
     playerctl
     bat
     git
-    github-cli
     imagemagick
     eza
     sqlite
@@ -47,7 +44,6 @@
     xwayland-satellite
     ipset
     trash-cli
-    vivid
     (callPackage ./custom-pkgs/naiveproxy.nix { })
     (callPackage ./custom-pkgs/sing-box.nix { })
     # Apps
@@ -116,7 +112,6 @@
   programs.nh.enable = true;
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
-  services.hyprpolkitagent.enable = true;
   programs.waybar.enable = true;
   programs.fish = {
     enable = true;
@@ -215,6 +210,12 @@
       };
     };
   };
+
+  # Polkit agent
+  services.hyprpolkitagent.enable = true;
+
+  # Automount
+  services.udiskie.enable = true;
 
   # Cursor settings
   home.pointerCursor = {
