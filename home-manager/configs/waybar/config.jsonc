@@ -50,15 +50,13 @@
   "custom/music": {
     "format": "  {} ",
     "escape": true,
-    "exec": "playerctl -p strawberry,mpv,firefox,%any metadata --follow --format '{{artist}} ~ {{title}}'",
+    "exec": "playerctl -F -p strawberry,mpv,firefox,%any metadata --format '{{artist}} ~ {{title}}'",
     "max-length": 50,
     "on-click": "~/.config/waybar/active-player.sh",
     "tooltip": false
   },
   "custom/prev": {
     "format": "󰙣 ",
-    "return-type": "json",
-    "exec": "playerctl -p strawberry,mpv,firefox,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "tooltip": false,
     "on-click": "playerctl -p strawberry,mpv,firefox,%any previous"
   },
@@ -75,8 +73,6 @@
   },
   "custom/next": {
     "format": " 󰙡 ",
-    "return-type": "json",
-    "exec": "playerctl -p strawberry,mpv,firefox,%any metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "tooltip": false,
     "on-click": "playerctl -p strawberry,mpv,firefox,%any next"
   },
