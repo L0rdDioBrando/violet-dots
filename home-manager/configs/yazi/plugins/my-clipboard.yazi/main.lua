@@ -3,6 +3,7 @@
 ---@class ClipboardJobArgs
 ---@field action string
 ---@field notify_unknown_display_server? boolean
+---@field disable_paste_notifications? boolean
 
 ---@class ClipboardJob
 ---@field args ClipboardJobArgs
@@ -16,28 +17,29 @@
 ---@alias ClipboardDisplayServer "x11"|"wayland"|"unknown"
 ---@alias ClipboardConflictChoice "overwrite"|"rename"|"skip"
 
+-- Yazi delivers a bare `--flag` as boolean true, and `--flag=value` as a string.
+---@param value unknown
+---@return boolean
+local function to_boolean(value)
+	return value == true or value == "true"
+end
+
 ---@param state table
 ---@return string[]
 local get_yanked_paths = ya.sync(function(state)
 	local paths = {}
 	for _, v in pairs(cx.yanked) do
 		local url = v.url or v
-		local is_regular
-		if url.spec then
-			is_regular = url.spec.is_regular
-		else
-			is_regular = url.is_regular
+		local spec = url.spec or url
+		ya.dbg("Clipboard", "check yanked", {
+			path = tostring(url.path),
+			is_regular = spec.is_regular,
+			is_search = spec.is_search,
+			has_spec = not not url.spec,
+		})
+		if spec.is_regular or spec.is_search then
+			table.insert(paths, tostring(url.path))
 		end
-		ya.dbg(
-			"Clipboard",
-			"check yanked",
-			{ path = tostring(url), is_regular = is_regular, has_spec = not not url.spec }
-		)
-		if not is_regular then
-			goto continue
-		end
-		table.insert(paths, tostring(url))
-		::continue::
 	end
 	return paths
 end)
@@ -50,15 +52,18 @@ end)
 
 ---@class ClipboardPlugin
 ---@field notify_unknown_display_server boolean
+---@field disable_paste_notifications boolean
 local M = {
 	notify_unknown_display_server = false,
+	disable_paste_notifications = false,
 }
 
 ---@param job ClipboardJob
 ---@return nil
 function M:entry(job)
 	ya.dbg("Clipboard", "args", job.args)
-	self.notify_unknown_display_server = job.args.notify_unknown_display_server or false
+	self.notify_unknown_display_server = to_boolean(job.args.notify_unknown_display_server)
+	self.disable_paste_notifications = to_boolean(job.args.disable_paste_notifications)
 
 	if job.args.action == "copy" then
 		return self:copy()
@@ -360,7 +365,7 @@ function M:paste()
 		end
 	end
 
-	if copied > 0 or skipped > 0 then
+	if not self.disable_paste_notifications and (copied > 0 or skipped > 0) then
 		local parts = {}
 		if copied > 0 then
 			table.insert(parts, "Pasted " .. copied .. " file(s)")
