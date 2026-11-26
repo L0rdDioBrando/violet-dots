@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   # Imports
   imports = [
@@ -53,22 +53,27 @@
   };
 
   # Kernel
-  boot.kernelModules = [
-    "nft_queue"
-    "nfnetlink_queue"
-  ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [
-    "quiet"
-    "splash"
-    "boot.shell_on_fail"
-    "loglevel=3"
-    "rd.systemd.show_status=false"
-    "rd.udev.log_level=3"
-    "udev.log_priority=3"
-  ];
+  boot = {
+    kernelModules = [
+      "nft_queue"
+      "nfnetlink_queue"
+    ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
+  };
 
   # Disk
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+  services.devmon.enable = true;
   fileSystems."/mnt/storage" = {
     device = "/dev/disk/by-uuid/74762bf2-2f76-47ef-a3f1-adc34549cced";
     fsType = "ext4";
@@ -78,46 +83,42 @@
     ];
   };
 
-  # Graphics
+  # Hardware
   hardware = {
     graphics = {
       enable = true;
       enable32Bit = true;
     };
-    amdgpu.initrd.enable = true;
-  };
-
-  # Keyboard
-  hardware.keyboard.qmk = {
-    enable = true;
-    keychronSupport = true;
-  };
-
-  # Bluetooth
-  hardware = {
+    amdgpu.initrd.enable = true; # Graphics
+    keyboard.qmk = {
+      enable = true;
+      keychronSupport = true;
+    }; # Keyboard
     bluetooth = {
       enable = true;
       powerOnBoot = true;
     };
-    enableRedistributableFirmware = true;
+    enableRedistributableFirmware = true; # Bluetooth
   };
 
   # Choose your locale
-  i18n.supportedLocales = [
-    "ru_RU.UTF-8/UTF-8"
-    "en_US.UTF-8/UTF-8"
-  ];
-  i18n.defaultLocale = "ru_RU.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "ru_RU.UTF-8";
-    LC_IDENTIFICATION = "ru_RU.UTF-8";
-    LC_MEASUREMENT = "ru_RU.UTF-8";
-    LC_MONETARY = "ru_RU.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "ru_RU.UTF-8";
-    LC_PAPER = "ru_RU.UTF-8";
-    LC_TELEPHONE = "ru_RU.UTF-8";
-    LC_TIME = "ru_RU.UTF-8";
+  i18n = {
+    supportedLocales = [
+      "ru_RU.UTF-8/UTF-8"
+      "en_US.UTF-8/UTF-8"
+    ];
+    defaultLocale = "ru_RU.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "ru_RU.UTF-8";
+      LC_IDENTIFICATION = "ru_RU.UTF-8";
+      LC_MEASUREMENT = "ru_RU.UTF-8";
+      LC_MONETARY = "ru_RU.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "ru_RU.UTF-8";
+      LC_PAPER = "ru_RU.UTF-8";
+      LC_TELEPHONE = "ru_RU.UTF-8";
+      LC_TIME = "ru_RU.UTF-8";
+    };
   };
 
   # Select your time zone
@@ -127,21 +128,24 @@
   security.polkit.enable = true;
 
   # Network
-  networking.networkmanager.enable = true;
-  networking.hostName = "nixos";
-  networking.nameservers = [
-    "1.1.1.1"
-    "1.0.0.1"
-  ];
-
-  networking.firewall = {
-    enable = false;
-    allowedTCPPorts = [
-      1111
-    ];
-    allowedUDPPorts = [
-      1111
-    ];
+  networking = {
+    networkmanager.enable = true;
+    hostName = "nixos";
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ]; # DNS servers
+    firewall = {
+      enable = false;
+      allowedTCPPorts = [
+        1111
+      ];
+      allowedUDPPorts = [
+        1111
+      ];
+    }; # Firewall
+    nftables.enable = false;
+    enableIPv6 = true;
   };
 
   services.zapret-discord-youtube = {
@@ -151,9 +155,6 @@
       "rutracker.org"
     ];
   };
-
-  networking.nftables.enable = false;
-  networking.enableIPv6 = true;
 
   # NaiveProxy systemd service
   systemd.user.services.naive = {
@@ -171,17 +172,6 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # XDG
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gnome
-      xdg-desktop-portal-gtk
-      kdePackages.xdg-desktop-portal-kde
-    ];
-    config.common.default = "*";
-  };
 
   # Console
   console = {
@@ -222,8 +212,24 @@
     wayland.enable = true;
   };
 
+  # Fonts
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      nerd-fonts.fira-code
+    ];
+  };
+
+  # D-Bus
+  services.dbus = {
+    enable = true;
+    packages = [ pkgs.gcr_4 ];
+  };
+
+  # Docker
+  virtualisation.docker.enable = true;
+
   # Audio
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -255,19 +261,15 @@
   environment.systemPackages = with pkgs; [
     limine-full
     cacert
-    zapret2
   ];
 
-  # Packages
-  programs.niri.enable = true;
+  # Enable flatpak packages
   services.flatpak.enable = true;
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
-  services.devmon.enable = true;
-  virtualisation.docker.enable = true;
-  services.dbus = {
+
+  # Packages
+  programs.niri = {
     enable = true;
-    packages = [ pkgs.gcr_4 ];
+    package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
   programs.xwayland.enable = true;
   programs.kdeconnect.enable = true;
@@ -299,12 +301,6 @@
         port = 1080;
       };
     };
-  };
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs; [
-      nerd-fonts.fira-code
-    ];
   };
   programs.nix-ld = {
     enable = true;
