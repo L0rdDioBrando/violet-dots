@@ -4,6 +4,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     awww.url = "git+https://codeberg.org/LGFae/awww";
     catppuccin.url = "github:catppuccin/nix";
+    niri.url = "github:niri-wm/niri";
     pineconemc = {
       url = "github:ElyPrismLauncher/Launcher";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,6 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs =
