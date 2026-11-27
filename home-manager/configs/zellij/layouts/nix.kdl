@@ -1,0 +1,15 @@
+layout {
+    pane size=1 borderless=true {
+        plugin location="tab-bar"
+    }
+    pane split_direction="vertical" {
+        pane command="yazi" cwd="/etc/nixos/" size="45%"
+        pane split_direction="horizontal" {
+            pane command="lazygit" cwd="/etc/nixos/"
+            pane cwd="/etc/nixos/" size="30%"
+        }
+    }
+    pane size=1 borderless=true {
+        plugin location="status-bar"
+    }
+}
