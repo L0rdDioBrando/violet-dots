@@ -31,43 +31,24 @@ button:hover {
   color: @sky;
 }
 
-#workspaces button.active,
-#custom-notification,
+#workspaces button.active {
+  color: @lavender;
+}
+
+#custom-music,
 #cpu,
 #memory,
 #temperature,
 #clock,
-#network,
-#pulseaudio {
+#pulseaudio,
+#language,
+#custom-notification {
   color: @lavender;
+  margin-right: 15px;
 }
 
 #cava {
   color: @lavender;
   margin-left: 4px;
   margin-right: 7px;
-}
-
-#custom-playpause {
-  padding-right: 7px;
-  padding-left: 7px;
-}
-
-#group-music {
-  color: @lavender;
-  border-radius: 2rem;
-}
-
-.modules-left {
-  border-radius: 2rem;
-}
-
-#language {
-  color: @lavender;
-  margin-left: 7px;
-  margin-right: 4px;
-}
-
-#temperature.critical {
-  color: @maroon;
 }
