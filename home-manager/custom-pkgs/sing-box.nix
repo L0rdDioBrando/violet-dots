@@ -5,14 +5,14 @@
   ...
 }:
 let
-  version = "1.15.0-alpha.13";
+  version = "1.15.0-alpha.15";
 in
 stdenv.mkDerivation {
   pname = "sing-box";
   version = "${version}";
   src = fetchurl {
     url = "https://github.com/SagerNet/sing-box/releases/download/v${version}/sing-box-${version}-linux-amd64.tar.gz";
-    sha256 = "sha256:bfc39f643a5ecc1b702c5723ff662e61dde813f12b3af0d0cfce4f629ff74047";
+    sha256 = "sha256:bd190adf2d1c3a3a77a1e4859bbda7768149ff4dadc2ce6c0c7d2b474d955fbf";
   };
   buildInputs = [ pkgs.stdenv.cc.cc.lib ];
   installPhase = ''
