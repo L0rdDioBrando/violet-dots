@@ -16,12 +16,6 @@
       http-connections = 128;
       max-substitution-jobs = 128;
     };
-    gc = {
-      automatic = true;
-      dates = "*-*-/3";
-      options = "--delete-older-than 3d";
-      persistent = true;
-    }; # Nix Garbage Collector settings
   };
 
   # Bootloader
