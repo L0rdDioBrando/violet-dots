@@ -7,10 +7,10 @@
 }:
 pkgs.appimageTools.wrapType2 (finalAttrs: {
   pname = "osu!";
-  version = "2026.1013.0-tachyon";
+  version = "2026.1117.0-lazer";
   src = fetchurl {
     url = "https://github.com/ppy/osu/releases/download/${finalAttrs.version}/osu.AppImage";
-    sha256 = "sha256:32b6eecd68f470491c846bf3a7c4668e289d7fad626e98b6a99c8515024850ba";
+    sha256 = "sha256:4ebbcb5b581c036f16785500af5c8d13ad1e6d93196fd36be8f245c2a0ea1d2d";
   };
   extraPkgs =
     pkgs: with pkgs; [
